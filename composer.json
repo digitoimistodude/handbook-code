@@ -1,0 +1,90 @@
+{
+  "name": "digitoimistodude/dudestack",
+  "type": "project",
+  "license": "MIT",
+  "description": "A modern WordPress stack",
+  "homepage": "https://github.com/digitoimistodude/dudestack",
+  "authors": [
+    {
+      "name": "Roni Laukkarinen",
+      "email": "roni@dude.fi",
+      "homepage": "https://github.com/ronilaukkarinen"
+    }
+  ],
+  "keywords": [
+    "bedrock", "roots", "wordpress", "stack", "composer", "vagrant", "wp"
+  ],
+  "support": {
+    "issues": "https://github.com/digitoimistodude/dudestack/issues"
+  },
+   "config": {
+    "preferred-install": "dist",
+    "generate-salts": true,
+    "secure-http": true
+  },
+  "autoload": {
+    "psr-4": {"Roots\\Bedrock\\": "scripts/Roots/Bedrock"}
+  },
+  "scripts": {
+    "post-root-package-install": ["Roots\\Bedrock\\Installer::addSalts"]
+   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "minimum-stability": "dev"
+    },
+    {
+      "type": "composer",
+      "url": "https://wp-languages.github.io"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:Koodimonni/Composer-Dropin-Installer.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/digitoimistodude/gulp-sitemap-generator"
+    }
+  ],
+  "require": {
+    "koodimonni/composer-dropin-installer": "*",
+    "php": ">=5.6",
+    "koodimonni-language/fi": "*",
+    "koodimonni-language/en_gb": "*",
+    "composer/installers": "~1.2.0",
+    "wp-cli/wp-cli": "*",
+    "vlucas/phpdotenv": "^2.0.1",
+    "wpackagist-plugin/google-analytics-dashboard-for-wp": "*",
+    "wpackagist-plugin/imagify": "*",
+    "wpackagist-plugin/simple-history": "*",
+    "wpackagist-plugin/sendgrid-email-delivery-simplified": "*",
+    "wpackagist-plugin/wp-sanitize-accented-uploads": "*",
+    "wpackagist-plugin/query-monitor": "*",
+    "digitoimistodude/gulp-sitemap-generator":"dev-master",
+    "johnpbloch/wordpress": "4.8.0",
+    "digitoimistodude/air-helper": "*"
+  },
+  "extra": {
+    "dropin-paths": {
+      "content/languages/": ["vendor:koodimonni-language"],
+      "content/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+      "content/languages/themes/": ["vendor:koodimonni-theme-language"]
+    },
+    "installer-paths": {
+      "content/mu-plugins/{$name}/": ["type:wordpress-muplugin",
+        "wpackagist-plugin/google-analytics-dashboard-for-wp",
+        "wpackagist-plugin/imagify",
+        "wpackagist-plugin/simple-history",
+        "wpackagist-plugin/sendgrid-email-delivery-simplified",
+	      "wpackagist-plugin/wp-sanitize-accented-uploads",
+        "wpackagist-plugin/wp-cerber",
+        "digitoimistodude/gulp-sitemap-generator",
+        "digitoimistodude/air-helper"
+      ],
+      "content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "content/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "wp"
+  }
+}
