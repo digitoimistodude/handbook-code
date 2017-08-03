@@ -14,24 +14,16 @@ get_header(); ?>
 <div id="primary" class="content-area">
   <main id="main" class="site-main">
 
-    <div class="slide slide-front-content">
+    <?php if ( have_posts() ) {
+     while ( have_posts() ) {
+       the_post();
+       the_content();
+     }
+   } else {
+     get_template_part( 'template-parts/content', 'none' );
+   }  ?>
 
-      <div class="container">
-
-        <?php if ( have_posts() ) {
-        	while ( have_posts() ) {
-	      		the_post();
-	      		the_content();
-					}
-        } else {
-        	get_template_part( 'template-parts/content', 'none' );
-        }  ?>
-
-      </div><!-- .container -->
-
-    </div><!-- .slide.slide-front-content -->
-
-  </main><!-- #main -->
+ </main><!-- #main -->
 </div><!-- #primary -->
 
 <?php get_footer();

@@ -53,9 +53,9 @@
     "vlucas/phpdotenv": "^2.0.1",
     "wpackagist-plugin/google-analytics-dashboard-for-wp": "*",
     "wpackagist-plugin/simple-history": "*",
-    "wpackagist-plugin/sendgrid-email-delivery-simplified": "*",
     "johnpbloch/wordpress": "4.8.1",
-    "digitoimistodude/air-helper": "*"
+    "digitoimistodude/air-helper": "*",
+    "wpackagist-plugin/wp-github-sync": "*"
   },
   "extra": {
     "dropin-paths": {
@@ -67,8 +67,6 @@
       "content/mu-plugins/{$name}/": ["type:wordpress-muplugin",
         "wpackagist-plugin/google-analytics-dashboard-for-wp",
         "wpackagist-plugin/simple-history",
-        "wpackagist-plugin/sendgrid-email-delivery-simplified",
-        "wpackagist-plugin/wp-cerber",
         "digitoimistodude/air-helper"
       ],
       "content/plugins/{$name}/": ["type:wordpress-plugin"],
