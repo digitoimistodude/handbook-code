@@ -1,0 +1,115 @@
+// ------------------------------------------------------------
+// Site navigation layout
+//
+// The main layout for the website navigation, for both mobile
+// and non-mobile versions. Add general nav styles here, for
+// example link color and effect changes. Originally a fork of
+// responsive-nav 1.0.39 by @viljamis, sassified by
+// @ronilaukkarinen
+// ------------------------------------------------------------
+
+$dropdown-width: 200px;
+$enable-nav-animations: true; // Should we use animations, true or false
+
+#nav {
+  clip: rect(0 0 0 0);
+  max-height: 0;
+  zoom: 1;
+  user-select: none;
+  list-style: none;
+  position: relative;
+  overflow: visible;
+  float: right;
+
+  ul {
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    display: block;
+    list-style: none;
+
+    li {
+      display: block;
+      float: left;
+      width: 100%;
+
+      a {
+        background: transparent;
+        color: #fff;
+        float: left;
+        text-decoration: none;
+        width: 100%;
+        font-size: 14px;
+        margin: 0;
+        text-align: left;
+        display: inline-block;
+        padding: 0 16px;
+
+        &:hover {
+          color: #fff;
+          background-color: #3e4853;
+        }
+      }
+
+      // Accessibility: list item with focus
+      &.focus > a {
+        background-color: #3e4853;
+      }
+    }
+
+    // Separate first level styles, if you'd like to style other levels differently
+    &:first-child {
+      li a {
+        color: #fff;
+        background: transparent;
+
+        &:hover {
+          color: rgba(#fff, .8);
+        }
+      }
+    }
+  }
+
+  .dropdown {
+    ul {
+      max-height: 100%;
+      overflow: visible;
+      margin-bottom: 0;
+      background: #222;
+      border-radius: 0;
+
+      li {
+        a {
+          color: #fff;
+          padding-left: 1.5em;
+          line-height: 1.5;
+
+          &:focus,
+          &:hover,
+          &:active {
+            background: #3e4853;
+            color: #fff;
+            border-radius: 0;
+          }
+        }
+      }
+
+      ul {
+        border: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  // Accessible hover/focus
+  .sub-menu.toggled,
+  .dropdown:hover,
+  li.focus {
+    ul {
+      max-height: 500px; // 100% won't work here, so we need fixed height
+      overflow: visible;
+    }
+  }
+}

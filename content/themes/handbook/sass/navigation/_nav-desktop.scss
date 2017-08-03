@@ -1,0 +1,231 @@
+// -----------------------------------------------------------
+// Site navigation desktop layout
+//
+// The main layout for the website navigation, for a desktop
+// version only.
+// -----------------------------------------------------------
+
+// Desktop styles for navigation
+#nav {
+  @media (min-width: $responsivenav) {
+    // Set based on logo height, for example handbook logo is about 62px, menu links height are 12px, so paddings are (60/2)-12:
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+
+  ul {
+    li {
+      // Desktop navigation start
+      @media (min-width: $responsivenav) {
+        border: 0;
+        display: inline-block;
+        height: auto;
+        position: relative;
+        width: auto;
+
+        // Depth: nav ul li
+        &:hover > ul,
+        li:focus > ul,
+        &.focus > ul,
+        .focus > ul,
+        ul.toggled {
+          // Calculate this with the font size
+          top: 32px;
+          left: 38%;
+          margin-left: -75px;
+          opacity: 1;
+        }
+
+        // Accessible, toggled drop down
+        ul.toggled {
+          max-height: 9999px;
+          overflow: visible;
+          margin-bottom: 0;
+          background: #222;
+          border-radius: 0;
+        }
+
+        // Dropdown toggles
+        &.menu-item-has-children,
+        &.page-item-has-children {
+          > a {
+            padding-right: 2rem;
+          }
+
+          // First level dropdown toggle
+          button.dropdown-toggle {
+            @include vertical-align();
+            opacity: .8;
+            background-image: url('../svg/chevron-down.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            content: ' ';
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            right: 0;
+            margin-top: -.1rem;
+            padding-right: .2rem;
+            vertical-align: text-bottom;
+            background-color: transparent;
+          }
+
+          // Open second level in last navigation item to the left instead of right
+          &:last-child {
+
+            li:hover > ul,
+            li:focus > ul,
+            li.focus > ul,
+            .focus > ul,
+            ul.toggled {
+              top: 0;
+              right: 0%;
+              left: auto;
+              margin-left: auto;
+              margin-right: $dropdown-width;
+              opacity: 1;
+            }
+
+            li {
+
+              a {
+                padding-left: 30px;
+              }
+
+              &.menu-item-has-children,
+              &.page-item-has-children {
+
+                button.dropdown-toggle {
+                  background-image: url('../svg/chevron-left.svg');
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  top: 22px;
+                  padding-right: 0;
+                  padding-left: .2rem;
+                  right: auto;
+                  left: 8px;
+                }
+              }
+
+              ul {
+                li:hover > ul,
+                li:focus > ul,
+                li.focus > ul,
+                .focus > ul,
+                ul.toggled {
+                  top: 0;
+                  right: 0%;
+                  left: auto;
+                  margin-left: auto;
+                  margin-right: $dropdown-width;
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+
+        li {
+          max-width: $dropdown-width;
+          border: 0;
+          display: block;
+          height: auto;
+          line-height: 1.0909090909;
+
+          &.menu-item-has-children,
+          &.page-item-has-children {
+
+            > a {
+              // A bit space for the dropdown toggle
+              padding-right: 2rem;
+            }
+
+            // Second level dropdown toggle
+            button.dropdown-toggle {
+              background-image: url('../svg/chevron-right.svg');
+              background-repeat: no-repeat;
+              background-position: center;
+              top: 22px;
+              padding-right: .2rem;
+            }
+          }
+        }
+
+        // .li
+
+        // Depth: nav ul ul
+        ul {
+          float: left;
+          margin: 0;
+          position: absolute;
+          text-align: center;
+          top: 85px;
+          left: -999em;
+          z-index: 99999;
+          opacity: 0;
+
+          // Animate:
+          @if $enable-nav-animations == true {
+            transition-property: opacity, visibility;
+            transition-duration: .25s, 0s;
+            transition-delay: .25s, .25s;
+            transition: opacity .3s ease-in-out, top .3s ease-in-out;
+          }
+
+          li:hover > ul,
+          li:focus > ul,
+          li.focus > ul,
+          .focus > ul,
+          ul.toggled {
+            top: 0;
+            left: 0%;
+            margin-left: $dropdown-width;
+            opacity: 1;
+          }
+
+          a {
+            padding: 1em 1.5em;
+            white-space: normal;
+            width: $dropdown-width;
+          }
+
+          // Depth: nav ul ul ul
+          ul {
+            left: -999em;
+            top: 20px;
+
+            li:hover > ul,
+            li:focus > ul,
+            li.focus > ul,
+            .focus > ul,
+            &.toggled {
+              top: 0;
+              left: 0%;
+              margin-left: $dropdown-width;
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: $responsivenav) {
+    .dropdown {
+      ul {
+        max-height: 9999px;
+        overflow: visible;
+
+        li {
+          width: 100%;
+
+          a {
+            text-align: left;
+            border: 0;
+          }
+        }
+      }
+    }
+  }
+}

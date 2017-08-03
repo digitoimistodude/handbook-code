@@ -41,10 +41,6 @@
     {
       "type": "vcs",
       "url": "git@github.com:Koodimonni/Composer-Dropin-Installer.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/digitoimistodude/gulp-sitemap-generator"
     }
   ],
   "require": {
@@ -56,13 +52,9 @@
     "wp-cli/wp-cli": "*",
     "vlucas/phpdotenv": "^2.0.1",
     "wpackagist-plugin/google-analytics-dashboard-for-wp": "*",
-    "wpackagist-plugin/imagify": "*",
     "wpackagist-plugin/simple-history": "*",
     "wpackagist-plugin/sendgrid-email-delivery-simplified": "*",
-    "wpackagist-plugin/wp-sanitize-accented-uploads": "*",
-    "wpackagist-plugin/query-monitor": "*",
-    "digitoimistodude/gulp-sitemap-generator":"dev-master",
-    "johnpbloch/wordpress": "4.8.0",
+    "johnpbloch/wordpress": "4.8.1",
     "digitoimistodude/air-helper": "*"
   },
   "extra": {
@@ -74,12 +66,9 @@
     "installer-paths": {
       "content/mu-plugins/{$name}/": ["type:wordpress-muplugin",
         "wpackagist-plugin/google-analytics-dashboard-for-wp",
-        "wpackagist-plugin/imagify",
         "wpackagist-plugin/simple-history",
         "wpackagist-plugin/sendgrid-email-delivery-simplified",
-	      "wpackagist-plugin/wp-sanitize-accented-uploads",
         "wpackagist-plugin/wp-cerber",
-        "digitoimistodude/gulp-sitemap-generator",
         "digitoimistodude/air-helper"
       ],
       "content/plugins/{$name}/": ["type:wordpress-plugin"],
