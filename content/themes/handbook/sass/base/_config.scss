@@ -34,14 +34,14 @@ $font-headings: 'Futura', 'Helvetica Neue', Helvetica, sans-serif;
 $font-monospace: 'Menlo', 'Courier', monospace;
 
 // Font settings
-$font-min-size: 16px; // Minimum font size, on mobile (default: 16px)
-$font-max-size: 18px; // Maximum font size, on desktop
+$font-min-size: 18px; // Minimum font size, on mobile (default: 16px)
+$font-max-size: 21px; // Maximum font size, on desktop
 $font-base-line-height: 1.78; // Line height for paragraphs
 $font-base-line-height-elements: 1.68; // Line height for other elements like table cells and spans
 $headings-line-height-setup: force; // Force: all headings have same line height. Flexible: values are set separately in _typography.scss
 $headings-line-height-forced: 1.22; // This is effective only if force is chosen in $headings-line-height-setup
 $headings-weight: 900; // Default title weight. Usually 700 or 900 works pretty well
-$headings-scale: medium; // Change this as a base for your project or create your own in _typography.scss.
+$headings-scale: small; // Change this as a base for your project or create your own in _typography.scss.
 
 // Breakpoints
 $grid-type: fluid; // 'fluid' or 'snappy'

@@ -1,47 +1,38 @@
-// ------------------------------------------------------------
-// Site footer
-//
-// The very bottom of the site. Usually contains supporting
-// or secondary navigation, social media icons, contact details
-// and such.
-// ------------------------------------------------------------
-
 body {
-  #page {
-    .site-footer {
-      padding: 20px;
-      background: #222;
-      color: #fff;
-      overflow: hidden;
-      clear: both;
+  .site-footer {
+    border-top: 1px solid #d9d9d9;
+    padding: 35px 0;
+    margin-top: 4rem;
 
-      svg {
-        fill: darken($color-fog, 8%);
-        top: 2px;
-        position: relative;
-      }
+    p {
+      font-size: 16px;
+      color: #777;
+      position: relative;
+      top: 5px;
+    }
 
-      p,
-      span {
-        color: darken($color-fog, 8%);
-      }
-
-      a {
-        color: darken($color-fog, 8%);
-
-        &:hover {
-          color: #fff;
+    a {
+      &:hover {
+        svg {
+          path {
+            stroke: #222;
+          }
         }
       }
+    }
 
-      .theme-info {
-        overflow: hidden;
+    svg {
+      width: 40px;
+      height: 64px;
+      fill: #777;
+      float: left;
+      margin-right: 25px;
+      position: relative;
+      top: 5px;
 
-        @media (min-width: $container-ipad) {
-          width: 60%;
-          text-align: right;
-          float: right;
-        }
+      path {
+        transition: all .55s;
+        stroke: #777;
       }
     }
   }

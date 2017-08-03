@@ -57,10 +57,10 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 				if ( comments_open() || get_comments_number() ) {
 					comments_template();
 				}
+
+				get_footer();
       } ?>
     </div><!-- .container -->
 
 	</main><!-- #main -->
 </div><!-- #primary -->
-
-<?php get_footer();

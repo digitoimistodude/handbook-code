@@ -30,11 +30,12 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
       the_posts_navigation();
 		} else {
     	get_template_part( 'template-parts/content', 'none' );
-		} ?>
+		} 
+
+    get_footer();
+    ?>
 
     </div><!-- .container -->
 
   </main><!-- #main -->
 </section><!-- #primary -->
-
-<?php get_footer();

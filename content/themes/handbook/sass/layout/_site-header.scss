@@ -9,9 +9,8 @@
   position: static;
   background: #222;
   width: 100%;
-  height: 100px;
   overflow: hidden;
-  padding: 25px;
+  padding: 35px;
 
   @media(max-width: 900px) {
     height: auto;
@@ -20,9 +19,9 @@
   .handbook-title {
     margin: 0;
     color: #fff;
-    text-transform: uppercase;
-    font-size: 13px;
-    line-height: 13px;
+    text-transform: none;
+    font-size: 18px;
+    line-height: 18px;
   }
 
   .search-form {
@@ -44,7 +43,7 @@
 
         @media(max-width: 535px) {
           width: 85%;
-        }        
+        }
       }
     }
 
@@ -52,8 +51,8 @@
     .search-submit {
       background: rgba(#000, .8);
       border: 0;
-      padding: 20px;
-      height: 3rem;
+      padding: 30px 25px;
+      height: 60px;
       overflow: hidden;
       opacity: .75;
       margin: 0;
@@ -68,6 +67,7 @@
     .search-field {
       transition: all .5s;
       width: 250px;
+      color: #ccc;
 
       @media(min-width: 900px) {
         &:focus {
@@ -80,7 +80,7 @@
     .search-submit {
       background: url('../svg/search.svg') center center no-repeat rgba(#000, .8);
       width: 3rem;
-      height: 3rem;
+      height: 60px;
       text-indent: -999px;
       position: relative;
       padding: 0;
@@ -94,6 +94,8 @@
   .site-branding {
     overflow: hidden;
     float: left;
+    position: relative;
+    top: 3px;
 
     @media(max-width: 900px) {
       float: none;
@@ -106,17 +108,19 @@
       margin: 0;
 
       a {
-        svg {
-          fill: #fff;
-          transition: all .77s;
+        font-size: 28px;
+        color: #fff;
+        text-transform: uppercase;
+
+        .handbook {
           position: relative;
-          height: auto;
+          top: -1px;
+          font-weight: 700;
+          opacity: .6;
         }
 
-        &:hover {
-          svg {
-            fill: $color-fog;
-          }
+        svg {
+          fill: #fff;
         }
       }
     }

@@ -11,10 +11,11 @@
 
 ?>
 
-	</div><!-- #content -->
-
 	<footer id="colophon" class="site-footer">
+    <p><a href="https://www.dude.fi"><?php echo file_get_contents( esc_url( get_theme_file_path( '/svg/neckbeard.svg' ) ) ); ?></a> Tämä Handbook kertoo kuinka me teemme asioita Dudella. Handbook on ensisijaisesti tarkoitettu dudekselle, mutta siitä voi ottaa totta kai koppia myös omaan toimintaan. Emme takaa että kaikki meidän jutut toimivat muilla samalla tavalla. Ole mitä olet!</p>
 	</footer>
+
+</div><!-- #content -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

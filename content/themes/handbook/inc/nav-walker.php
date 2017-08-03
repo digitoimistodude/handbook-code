@@ -16,7 +16,7 @@ class handbook_Walker extends Walker_Nav_Menu {
 
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
-		$output .= "\n$indent<ul class=\"sub-menu\">\n";
+		$output .= "\n$indent<ol class=\"sub-menu\">\n";
 	}
 
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
@@ -173,7 +173,7 @@ class handbook_Walker extends Walker_Nav_Menu {
 
 			$fb_output .= '>';
 			$fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">Add a menu</a></li>';
-			$fb_output .= '</ul>';
+			$fb_output .= '</ol>';
 
 			if ( $container ) {
 				$fb_output .= '</' . $container . '>';

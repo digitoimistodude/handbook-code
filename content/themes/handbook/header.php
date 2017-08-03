@@ -30,12 +30,12 @@
    <header class="site-header">
 
     <div class="site-branding">
-      <?php 
+      <?php
       $description = get_bloginfo( 'description', 'display' ); 
       if ( is_front_page() && is_home() ) : ?>
-        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span><?php echo file_get_contents( esc_url( get_theme_file_path( '/svg/logo.svg' ) ) ); ?></a></h1>
+        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span><?php echo file_get_contents( esc_url( get_theme_file_path( '/svg/logo.svg' ) ) ); ?> <span class="handbook"><?php echo esc_html_e('Handbook', 'handbook'); ?></span></a></h1>
       <?php else : ?>
-        <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span><?php echo file_get_contents( esc_url( get_theme_file_path( '/svg/logo.svg' ) ) ); ?></a></p>
+        <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span><?php echo file_get_contents( esc_url( get_theme_file_path( '/svg/logo.svg' ) ) ); ?> <span class="handbook"><?php echo esc_html_e('Handbook', 'handbook'); ?></span></a></p>
       <?php endif; ?>
     <h3 class="handbook-title"><?php echo $description; /* WPCS: xss ok. */ ?></h3>
   </div><!-- .site-branding -->
@@ -49,15 +49,16 @@
   <aside class="side-nav">
     <nav id="nav" class="nav-collapse">
 
+      <h3 class="side-nav-title"><?php echo esc_html_e('Sisällysluettelo', 'handbook'); ?></h3>
+
       <?php wp_nav_menu( array(
         'theme_location'    => 'primary',
         'container'         => false,
-        'depth'             => 4,
         'menu_class'        => 'menu-items',
         'menu_id'           => 'menu',
         'echo'              => true,
         'fallback_cb'       => 'wp_page_menu',
-        'items_wrap'        => '<ul class="%2$s" id="%1$s">%3$s</ul>',
+        'items_wrap'        => '<ol class="%2$s" id="%1$s">%3$s</ol>',
         'walker'            => new handbook_Walker(),
         ) ); ?>
 

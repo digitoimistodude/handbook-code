@@ -21,9 +21,10 @@ get_header(); ?>
      }
    } else {
      get_template_part( 'template-parts/content', 'none' );
-   }  ?>
+   }
+
+   get_footer();
+   ?>
 
  </main><!-- #main -->
 </div><!-- #primary -->
-
-<?php get_footer();

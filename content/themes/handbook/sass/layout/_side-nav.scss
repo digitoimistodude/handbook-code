@@ -1,0 +1,41 @@
+.side-nav {
+  width: 350px;
+  background: rgba(#000, .05);
+  height: calc(100vh - 6rem);
+  padding: 4rem 2rem;
+
+  h3.side-nav-title {
+    font-size: 18px;
+    position: relative;
+    top: 2px;
+  }
+
+  ol {
+    counter-reset: item;
+
+    li {
+      display: block;
+      position: relative;
+      color: #777;
+
+      &.active {
+        > a {
+          font-weight: 900;
+        }
+      }
+
+      &:before {
+        content: counters(item, '.')'.';
+        counter-increment: item;
+        position: absolute;
+        margin-right: 100%;
+        right: 5px; // Space between number and text
+        color: #777;
+      }
+
+      a {
+        color: #222;        
+      }
+    }
+  }
+}
