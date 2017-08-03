@@ -23,11 +23,19 @@ body {
   }
 
   .content-area {
-    width: calc(100% - 300px);
-    max-width: calc(40rem + 340px);
+    width: calc(100% - 350px);
+    max-width: calc(40rem + 350px);
+
+    @media(max-width: 900px) {
+      width: 100%;
+    }
 
     .site-main {
       padding: 4rem;
+
+      @media(max-width: 900px) {
+        padding: 2rem;
+      }
 
       .page {
         max-width: 700px;        

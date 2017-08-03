@@ -4,6 +4,12 @@
   height: calc(100vh - 6rem);
   padding: 4rem 2rem;
 
+  @media(max-width: 900px) {
+    width: 100%;
+    height: auto !important;
+    padding: 2rem;
+  }
+
   h3.side-nav-title {
     font-size: 18px;
     position: relative;
@@ -12,6 +18,8 @@
 
   ol {
     counter-reset: item;
+    margin-bottom: 0;
+    padding-bottom: 0;
 
     li {
       display: block;
