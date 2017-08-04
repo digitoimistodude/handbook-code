@@ -9,6 +9,14 @@
 body {
   margin: 0;
 
+  span.accent {
+    opacity: .5;
+    font-weight: 400;
+    font-style: italic;
+    text-transform: none;
+    margin-right: 10px;
+  }
+
   .site-content {
     display: flex;
     flex-wrap: wrap;
