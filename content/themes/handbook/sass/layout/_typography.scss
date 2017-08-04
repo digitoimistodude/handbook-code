@@ -153,18 +153,18 @@ body {
 
       h1,
       %h1 {
-        @include responsive-font(2.4vw, 24px, 46px);
+        @include responsive-font(2.4vw, 24px, 34px);
       }
 
       h2,
       %h2 {
-        @include responsive-font(1.6vw, 21px, 34px);
+        @include responsive-font(1.6vw, 21px, 21px);
       }
 
       h3,
       %h3,
       .gform_wrapper h3.gform_title {
-        @include responsive-font(1.4vw, 18px, 21px);
+        @include responsive-font(1.4vw, 18px, 18px);
       }
 
       h4,

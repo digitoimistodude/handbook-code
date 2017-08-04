@@ -8,12 +8,13 @@ body {
       @media (max-width: 900px) {
         width: 100%;
         height: auto !important;
-        padding: 2rem;
+        padding-bottom: 0;
+        margin-bottom: 20px;
       }
 
       @media(min-width: 900px) {
         min-height: 100vh;
-      }      
+      }
 
       h3.side-nav-title {
         @extend .screen-reader-text;
@@ -29,6 +30,7 @@ body {
         padding-left: 0;
         padding-right: 0;
         margin-left: 0;
+        margin-bottom: 0;
 
         > li.active {
           overflow: visible;
@@ -53,6 +55,11 @@ body {
           padding-bottom: 5px;
           font-size: 14px;
           height: 30px;
+
+          @media(max-width: 900px) {
+            height: auto;
+            margin-bottom: 0;
+          }
 
           .sub-menu {
             margin-top: 5px;
@@ -93,9 +100,6 @@ body {
             font-size: 14px;
             opacity: .8;
             padding-left: 20px;
-
-            &:hover {
-            }
           }
         }
       }
