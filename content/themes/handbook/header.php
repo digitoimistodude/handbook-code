@@ -46,19 +46,17 @@
 
         <?php echo get_search_form(); ?>
       </header>
-      
+
       <h3 class="side-nav-title"><?php echo esc_html_e('Sisällysluettelo', 'handbook'); ?></h3>
 
-      <?php wp_nav_menu( array(
-        'theme_location'    => 'primary',
-        'container'         => false,
-        'menu_class'        => 'menu-items',
-        'menu_id'           => 'menu',
-        'echo'              => true,
-        'fallback_cb'       => 'wp_page_menu',
-        'items_wrap'        => '<ol class="%2$s" id="%1$s">%3$s</ol>',
-        'walker'            => new handbook_Walker(),
+      <ol>
+      <?php
+      wp_list_pages( array(
+        'title_li'    => '',
+        'depth'     => 2,
+        'sort_column' => 'menu_order',
+        'walker' => new handbook_walker(),
         ) ); ?>
-
+      </ol>
       </nav><!-- #site-navigation -->
     </aside>

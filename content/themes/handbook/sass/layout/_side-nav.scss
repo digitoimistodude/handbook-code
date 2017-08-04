@@ -32,10 +32,12 @@ body {
         margin-left: 0;
         margin-bottom: 0;
 
-        > li.active {
+        > li.active,
+        > li.current_page_item {
           overflow: visible;
           background-color: $color-alt;
-          height: 30px;
+          padding-bottom: 0;
+          margin-bottom: 5px;
 
           > a {
             font-weight: 900;
@@ -53,8 +55,8 @@ body {
           padding-right: 15px;
           padding-top: 5px;
           padding-bottom: 5px;
+          margin-bottom: 0;
           font-size: 14px;
-          height: 30px;
 
           @media(max-width: 900px) {
             height: auto;
@@ -63,6 +65,7 @@ body {
 
           .sub-menu {
             margin-top: 5px;
+            background: #2e3336;
           }
 
           > ol {
@@ -74,7 +77,8 @@ body {
               padding-left: 34px;
               opacity: .5;
 
-              &.active {
+              &.active,
+              &.current_page_item {
                 opacity: 1;
               }
 

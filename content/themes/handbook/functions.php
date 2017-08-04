@@ -11,8 +11,28 @@ define( 'AIR_VERSION', '2.7.9' );
  * Requires.
  */
 require get_theme_file_path( '/inc/functions.php' );
-require get_theme_file_path( '/inc/menus.php' );
-require get_theme_file_path( '/inc/nav-walker.php' );
+
+/**
+ * Walker for sitemap
+ */
+class handbook_walker extends Walker_Page {
+    /**
+     * @see Walker::start_lvl()
+     * @since 2.1.0
+     *
+     * @param string $output Passed by reference. Used to append additional content.
+     * @param int $depth Depth of page. Used for padding.
+     * @param array $args
+     */
+    function start_lvl( &$output, $depth = 0, $args = array() ) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ol class='sub-menu children'>\n";
+    }
+
+    function end_lvl( &$output, $depth = 0, $args = array() ) {
+    	$output .= '</ol>';
+    }
+}
 
 /**
  * Disable stuff.
