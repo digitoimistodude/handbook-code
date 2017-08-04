@@ -23,8 +23,8 @@ body {
   }
 
   .content-area {
-    width: calc(100% - 350px);
-    max-width: calc(40rem + 350px);
+    width: calc(100% - 230px);
+    max-width: calc(40rem + 230px);
 
     @media(max-width: 900px) {
       width: 100%;

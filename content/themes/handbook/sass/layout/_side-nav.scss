@@ -1,48 +1,103 @@
-.side-nav {
-  width: 350px;
-  background: rgba(#000, .05);
-  height: calc(100vh - 6rem);
-  padding: 4rem 2rem;
+body {
+  .site-content {
+    .side-nav {
+      width: 230px;
+      background: #2e3336;
+      padding: 2rem 0;
 
-  @media(max-width: 900px) {
-    width: 100%;
-    height: auto !important;
-    padding: 2rem;
-  }
+      @media (max-width: 900px) {
+        width: 100%;
+        height: auto !important;
+        padding: 2rem;
+      }
 
-  h3.side-nav-title {
-    font-size: 18px;
-    position: relative;
-    top: 2px;
-  }
+      @media(min-width: 900px) {
+        min-height: 100vh;
+      }      
 
-  ol {
-    counter-reset: item;
-    margin-bottom: 0;
-    padding-bottom: 0;
+      h3.side-nav-title {
+        @extend .screen-reader-text;
+        font-size: 18px;
+        position: relative;
+        top: 2px;
+      }
 
-    li {
-      display: block;
-      position: relative;
-      color: #777;
+      ol {
+        counter-reset: item;
+        padding-bottom: 0;
+        margin-top: 30px;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
 
-      &.active {
-        > a {
-          font-weight: 900;
+        > li.active {
+          overflow: visible;
+          background-color: $color-alt;
+          height: 30px;
+
+          > a {
+            font-weight: 900;
+            color: #fff;
+            opacity: .9;
+          }
         }
-      }
 
-      &:before {
-        content: counters(item, '.')'.';
-        counter-increment: item;
-        position: absolute;
-        margin-right: 100%;
-        right: 5px; // Space between number and text
-        color: #777;
-      }
+        li {
+          display: block;
+          position: relative;
+          color: #777;
+          margin-left: 0;
+          padding-left: 15px;
+          padding-right: 15px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          font-size: 14px;
+          height: 30px;
 
-      a {
-        color: #222;        
+          .sub-menu {
+            margin-top: 5px;
+          }
+
+          > ol {
+            margin-top: 0;
+            margin-left: -15px;
+            margin-right: -15px;
+
+            li {
+              padding-left: 34px;
+              opacity: .5;
+
+              &.active {
+                opacity: 1;
+              }
+
+              &:before {
+                right: -46px;
+              }
+            }
+          }
+
+          &:before {
+            content: counters(item, '.')'.';
+            counter-increment: item;
+            position: absolute;
+            margin-right: 100%;
+            right: -28px;
+            top: 5px;
+            color: #eaeaeb;
+            font-size: 14px;
+          }
+
+          a {
+            color: #eaeaeb;
+            font-size: 14px;
+            opacity: .8;
+            padding-left: 20px;
+
+            &:hover {
+            }
+          }
+        }
       }
     }
   }

@@ -7,26 +7,19 @@
 
 .site-header {
   position: static;
-  background: #222;
-  width: 100%;
   overflow: hidden;
-  padding: 35px;
-
-  @media(max-width: 900px) {
-    height: auto;
-  }
 
   .handbook-title {
-    margin: 0;
-    color: #fff;
+    margin: 10px auto 30px;
     text-transform: none;
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #898e8b;
   }
 
   .search-form {
-    margin: 0;
-    float: right;
+    margin: 0 15px;
+    position: relative;
 
     @media(max-width: 900px) {
       display: inline-block;
@@ -47,43 +40,46 @@
       }
     }
 
-    .search-field,
-    .search-submit {
-      background: rgba(#000, .8);
+    .search-field {
+      background: none;
       border: 0;
-      padding: 30px 25px;
-      height: 60px;
+      padding-top: 6px;
+      padding-left: 26px;
+      padding-bottom: 6px;
+      padding-right: 6px;
+      width: 100%;
       overflow: hidden;
       opacity: .75;
       margin: 0;
-      float: left;
+      transition: all .5s;
+      color: #ccc;
+      border-bottom: 1px solid #666;
+      font-weight: 500;
+      font-size: 14px;
+
+      // I'm sorry
+      &:focus {
+        outline: none;
+      }
 
       &::placeholder {
         color: #fff;
         opacity: .5;
-      }
-    }
-
-    .search-field {
-      transition: all .5s;
-      width: 250px;
-      color: #ccc;
-
-      @media(min-width: 900px) {
-        &:focus {
-          width: 320px;
-          outline: none;
-        }
+        font-weight: 500;
+        font-size: 14px;
       }
     }
 
     .search-submit {
-      background: url('../svg/search.svg') center center no-repeat rgba(#000, .8);
-      width: 3rem;
-      height: 60px;
+      background: url('../svg/search.svg') center center no-repeat transparent;
+      width: 20px;
+      height: 30px;
       text-indent: -999px;
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
       padding: 0;
+      border: 0;
 
       &:hover {
         cursor: pointer;
@@ -93,19 +89,11 @@
 
   .site-branding {
     overflow: hidden;
-    float: left;
-    position: relative;
-    top: 3px;
-
-    @media(max-width: 900px) {
-      float: none;
-      display: block;
-      margin-bottom: 40px;
-    }
+    text-align: center;
 
     .site-title {
       overflow: hidden;
-      margin: 0;
+      margin: 0 auto;
 
       a {
         font-size: 28px;
@@ -113,8 +101,8 @@
         text-transform: uppercase;
 
         .handbook {
+          @extend .screen-reader-text;
           position: relative;
-          top: -1px;
           font-weight: 700;
           opacity: .6;
         }
