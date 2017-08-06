@@ -153,6 +153,7 @@ gulp.task('js', function() {
       gulp.src(
         [
           themeDir + '/js/src/fitvids.js',
+          themeDir + '/js/src/prism.js',
           themeDir + '/js/src/scripts.js'
         ])
         .pipe(concat('all.js'))
