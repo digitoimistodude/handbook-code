@@ -76,4 +76,10 @@ body {
       }
     }
   }
+
+  &.search-results {
+    article {
+      margin-bottom: 40px;
+    }
+  }
 }
