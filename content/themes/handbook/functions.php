@@ -8,6 +8,83 @@
 define( 'AIR_VERSION', '2.7.9' );
 
 /**
+ * Disable admin bar.
+ */
+show_admin_bar(false);
+
+/**
+ * Hide WP updates nag.
+ * Turn off by using `remove_action( 'admin_menu', 'air_helper_wphidenag' )`
+ *
+ * @since  0.1.0
+ */
+function air_helper_wphidenag() {
+  remove_action( 'admin_notices', 'update_nag', 3 );
+}
+add_action( 'admin_menu', 'air_helper_wphidenag' );
+
+/**
+ *  Force to address in wp_mail.
+ *  Change address from admin_email by using `add_filter( 'air_helper_helper_mail_to', 'myprefix_override_air_helper_helper_mail_to' )`
+ *
+ *  @since  0.1.0
+ *  @param  array $args Default wp_mail agruments.
+ *  @return array         New wp_mail agruments with forced to address
+ */
+function air_helper_helper_force_mail_to( $args ) {
+    $args['to'] = apply_filters( 'air_helper_helper_mail_to', get_option( 'admin_email' ) );
+    return $args;
+}
+
+/**
+ * Remove archive title prefix.
+ * Turn off by using `remove_filter( 'get_the_archive_title', 'air_helper_helper_remove_archive_title_prefix' )`
+ *
+ * @since  0.1.0
+ * @param  string $title Default title.
+ * @return string Title without prefix
+ */
+function air_helper_helper_remove_archive_title_prefix( $title ) {
+    return preg_replace( '/^\w+: /', '', $title );
+}
+add_filter( 'get_the_archive_title', 'air_helper_helper_remove_archive_title_prefix' );
+
+/**
+ * Disable emojicons introduced with WP 4.2.
+ * Turn off by using `remove_action( 'init', 'air_helper_helper_disable_wp_emojicons' )`
+ *
+ * @since  0.1.0
+ * @link http://wordpress.stackexchange.com/questions/185577/disable-emojicons-introduced-with-wp-4-2
+ */
+function air_helper_helper_disable_wp_emojicons() {
+    remove_action( 'admin_print_styles', 'print_emoji_styles' );
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+    add_filter( 'emoji_svg_url', '__return_false' );
+    // Disable classic smilies.
+    add_filter( 'option_use_smilies', '__return_false' );
+    add_filter( 'tiny_mce_plugins', 'air_helper_helper_disable_emojicons_tinymce' );
+}
+add_action( 'init', 'air_helper_helper_disable_wp_emojicons' );
+/**
+ * Disable emojicons introduced with WP 4.2.
+ *
+ * @since 0.1.0
+ * @param array $plugins Plugins.
+ */
+function air_helper_helper_disable_emojicons_tinymce( $plugins ) {
+    if ( is_array( $plugins ) ) {
+        return array_diff( $plugins, array( 'wpemoji' ) );
+    } else {
+        return array();
+    }
+}
+
+/**
  * Requires.
  */
 require get_theme_file_path( '/inc/functions.php' );

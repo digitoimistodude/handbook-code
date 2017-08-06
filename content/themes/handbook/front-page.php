@@ -9,6 +9,7 @@
  *
  * @package handbook
  */
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -21,10 +22,11 @@ get_header(); ?>
      }
    } else {
      get_template_part( 'template-parts/content', 'none' );
-   }
+   } ?>
 
-   get_footer();
-   ?>
+   <p><?php edit_post_link(); ?></p>
+
+   <?php get_footer(); ?>
 
  </main><!-- #main -->
 </div><!-- #primary -->

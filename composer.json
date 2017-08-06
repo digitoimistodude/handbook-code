@@ -54,7 +54,6 @@
     "wpackagist-plugin/google-analytics-dashboard-for-wp": "*",
     "wpackagist-plugin/simple-history": "*",
     "johnpbloch/wordpress": "4.8.1",
-    "digitoimistodude/air-helper": "*",
     "wpackagist-plugin/wp-github-sync": "*"
   },
   "extra": {
