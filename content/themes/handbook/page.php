@@ -21,7 +21,9 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 
     <div class="container">
       <?php while ( have_posts() ) {
-      	the_post(); ?>
+      	the_post();
+
+				$git_commit_info = handbook_get_git_commit_info( get_the_id() ); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				  <header class="entry-header">
@@ -39,7 +41,14 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 				  </div><!-- .entry-content -->
 
 				  <p><?php edit_post_link(); ?></p>
-				  <p class="modified">Viimeksi muokattu: <?php the_modified_date( 'j' ); ?>. <?php the_modified_date( 'F' ); ?>ta, <?php the_modified_date( 'Y' ); ?> kello <?php the_modified_date( 'H:i' ); ?></p>
+				  <p class="modified">
+				  	Viimeksi muokattu: <?php the_modified_date( 'j' ); ?>. <?php the_modified_date( 'F' ); ?>ta, <?php the_modified_date( 'Y' ); ?> kello <?php the_modified_date( 'H:i' ); ?>
+				  	<?php /*if ( ! empty( $git_commit_info ) ) : ?>
+				  		käyttäjän <?php echo $git_commit_info->commit->committer->name ?> toimesta<br />
+				  		viestillä "<?php echo $git_commit_info->commit->message ?>"<br />
+				  		<a href="<?php echo $git_commit_info->html_url ?>">katso muutos <?php echo str_split( $git_commit_info->sha, 7 )[0] ?> GitHubissa</a>
+				  	<?php endif;*/ ?>
+				  </p>
 				</article><!-- #post-## -->
 
 				<?php // If comments are open or we have at least one comment, load up the comment template.

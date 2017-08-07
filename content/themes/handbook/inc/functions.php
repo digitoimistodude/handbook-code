@@ -69,3 +69,43 @@ if ( ! function_exists( 'handbook_comments' ) ) {
 		</li>
 	<?php }
 }
+
+function handbook_get_git_commit_info( $post_id = null ) {
+	if ( empty( $post_id ) ) {
+		return 'empty setts';
+	}
+
+	$post_modified = get_the_modified_date( 'Y-m-d H:i', $post_id );
+	$git_file_path = get_post_meta( get_the_id(), '_wpghs_github_path', true );
+	$latest_info_update = get_post_meta( $post_id, '_handbook_latest_commit_info_update', true );
+	$last_commit_timestamp = get_post_meta( $post_id, '_handbook_last_commit_timestamp', true );
+
+	if ( $post_modified === $latest_info_update ) {
+		return get_post_meta( $post_id, '_handbook_latest_commit_info', true );
+	}
+
+	$api_url = "https://api.github.com/repos/digitoimistodude/handbook/commits?path={$git_file_path}";
+
+	if ( ! empty( $last_commit_timestamp ) ) {
+		$api_url .= "&until={$latest_info_sha}";
+	}
+
+	if ( ! empty( $latest_info_sha ) && $sha === $latest_info_sha ) {
+		return get_post_meta( $post_id, '_handbook_latest_commit_info', true );
+	}
+
+	$commit = wp_remote_get( $api_url  );
+
+	if ( is_wp_error( $commit ) ) {
+		return '';
+	}
+
+	$commit = json_decode( $commit['body'] );
+	$commit = $commit[0];
+
+	update_post_meta( $post_id, '_handbook_latest_commit_info_update', date( 'Y-m-d H:i' ) );
+	update_post_meta( $post_id, '_handbook_last_commit_timestamp', $commit->commit->committer->date );
+	update_post_meta( $post_id, '_handbook_latest_commit_info', $commit );
+
+	return $commit;
+}
