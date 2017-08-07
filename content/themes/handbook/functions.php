@@ -13,6 +13,33 @@ define( 'AIR_VERSION', '2.7.9' );
 show_admin_bar( false );
 
 /**
+ * Fix broken umlauts caused by wp-github-sync.
+ *
+ * @link https://gist.github.com/Zodiac1978/05361a79c0bb3085be3e
+ */
+function tl_umlaut_repair( $content ) {
+/*
+ * Why?
+ * For everyone getting this warning from W3C: "Text run is not in Unicode Normalization Form C."
+ * http://www.w3.org/International/docs/charmod-norm/#choice-of-normalization-form
+ */
+
+/*
+ * See: http://www.fileformat.info/info/unicode/char/0308/index.htm
+ */
+$content = str_replace( "a\xCC\x88", 'ä', $content );
+$content = str_replace( "o\xCC\x88", 'ö', $content );
+$content = str_replace( "u\xCC\x88", 'ü', $content );
+$content = str_replace( "A\xCC\x88", 'Ä', $content );
+$content = str_replace( "O\xCC\x88", 'Ö', $content );
+$content = str_replace( "U\xCC\x88", 'Ü', $content );
+
+return $content;
+}
+
+add_filter( 'the_content', 'tl_umlaut_repair', 10, 1 );
+
+/**
  * Define SendGrid credentials
  */
 define( 'SENDGRID_API_KEY', getenv( 'SENDGRID_API_KEY' ) );
@@ -38,8 +65,8 @@ add_action( 'admin_menu', 'air_helper_wphidenag' );
  *  @return array         New wp_mail agruments with forced to address
  */
 function air_helper_helper_force_mail_to( $args ) {
-    $args['to'] = apply_filters( 'air_helper_helper_mail_to', get_option( 'admin_email' ) );
-    return $args;
+  $args['to'] = apply_filters( 'air_helper_helper_mail_to', get_option( 'admin_email' ) );
+  return $args;
 }
 
 /**
@@ -51,7 +78,7 @@ function air_helper_helper_force_mail_to( $args ) {
  * @return string Title without prefix
  */
 function air_helper_helper_remove_archive_title_prefix( $title ) {
-    return preg_replace( '/^\w+: /', '', $title );
+  return preg_replace( '/^\w+: /', '', $title );
 }
 add_filter( 'get_the_archive_title', 'air_helper_helper_remove_archive_title_prefix' );
 
@@ -63,17 +90,17 @@ add_filter( 'get_the_archive_title', 'air_helper_helper_remove_archive_title_pre
  * @link http://wordpress.stackexchange.com/questions/185577/disable-emojicons-introduced-with-wp-4-2
  */
 function air_helper_helper_disable_wp_emojicons() {
-    remove_action( 'admin_print_styles', 'print_emoji_styles' );
-    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-    remove_action( 'wp_print_styles', 'print_emoji_styles' );
-    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-    add_filter( 'emoji_svg_url', '__return_false' );
+  remove_action( 'admin_print_styles', 'print_emoji_styles' );
+  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+  remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+  remove_action( 'wp_print_styles', 'print_emoji_styles' );
+  remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+  remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+  add_filter( 'emoji_svg_url', '__return_false' );
     // Disable classic smilies.
-    add_filter( 'option_use_smilies', '__return_false' );
-    add_filter( 'tiny_mce_plugins', 'air_helper_helper_disable_emojicons_tinymce' );
+  add_filter( 'option_use_smilies', '__return_false' );
+  add_filter( 'tiny_mce_plugins', 'air_helper_helper_disable_emojicons_tinymce' );
 }
 add_action( 'init', 'air_helper_helper_disable_wp_emojicons' );
 /**
@@ -83,11 +110,11 @@ add_action( 'init', 'air_helper_helper_disable_wp_emojicons' );
  * @param array $plugins Plugins.
  */
 function air_helper_helper_disable_emojicons_tinymce( $plugins ) {
-    if ( is_array( $plugins ) ) {
-        return array_diff( $plugins, array( 'wpemoji' ) );
-    } else {
-        return array();
-    }
+  if ( is_array( $plugins ) ) {
+    return array_diff( $plugins, array( 'wpemoji' ) );
+  } else {
+    return array();
+  }
 }
 
 /**
@@ -108,20 +135,20 @@ class handbook_walker extends Walker_Page {
      * @param array $args
      */
     function start_lvl( &$output, $depth = 0, $args = array() ) {
-        $indent = str_repeat( "\t", $depth );
-        $output .= "\n$indent<ol class='sub-menu children'>\n";
+      $indent = str_repeat( "\t", $depth );
+      $output .= "\n$indent<ol class='sub-menu children'>\n";
     }
 
     function end_lvl( &$output, $depth = 0, $args = array() ) {
     	$output .= '</ol>';
     }
-}
+  }
 
 /**
  * Disable stuff.
  */
 function remove_posts_menu() {
-    remove_menu_page( 'edit.php' );
+  remove_menu_page( 'edit.php' );
 }
 add_action( 'admin_init', 'remove_posts_menu' );
 
