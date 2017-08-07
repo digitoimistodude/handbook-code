@@ -39,6 +39,18 @@ return $content;
 
 add_filter( 'the_content', 'tl_umlaut_repair', 10, 1 );
 
+add_filter( 'the_title', 'wpse_title' ); 
+function wpse_title( $title ) {
+  $title = str_replace( "a\xCC\x88", 'ä', $title );
+  $title = str_replace( "o\xCC\x88", 'ö', $title );
+  $title = str_replace( "u\xCC\x88", 'ü', $title );
+  $title = str_replace( "A\xCC\x88", 'Ä', $title );
+  $title = str_replace( "O\xCC\x88", 'Ö', $title );
+  $title = str_replace( "U\xCC\x88", 'Ü', $title );
+
+  return $title;
+}
+
 /**
  * Define SendGrid credentials
  */
