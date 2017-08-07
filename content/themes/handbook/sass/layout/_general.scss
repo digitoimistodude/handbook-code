@@ -15,7 +15,7 @@ body {
     font-style: italic;
     text-transform: none;
     margin-right: 10px;
-  }
+  }  
 
   a,
   a:link,
@@ -40,6 +40,11 @@ body {
     h2,
     h3 {
       text-transform: uppercase;
+    }
+
+    p.modified {
+      font-size: 15px;
+      opacity: .7;
     }
   }
 

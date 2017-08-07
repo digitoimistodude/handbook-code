@@ -39,6 +39,7 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 				  </div><!-- .entry-content -->
 
 				  <p><?php edit_post_link(); ?></p>
+				  <p class="modified">Viimeksi muokattu: <?php the_modified_date( 'j' ); ?>. <?php the_modified_date( 'F' ); ?>ta, <?php the_modified_date( 'Y' ); ?> kello <?php the_modified_date( 'H:i' ); ?></p>
 				</article><!-- #post-## -->
 
 				<?php // If comments are open or we have at least one comment, load up the comment template.

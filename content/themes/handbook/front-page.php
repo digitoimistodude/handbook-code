@@ -25,6 +25,7 @@ get_header(); ?>
    } ?>
 
    <p><?php edit_post_link(); ?></p>
+   <p class="modified">Viimeksi muokattu: <?php the_modified_date( 'j' ); ?>. <?php the_modified_date( 'F' ); ?>ta, <?php the_modified_date( 'Y' ); ?> kello <?php the_modified_date( 'H:i' ); ?></p>
 
    <?php get_footer(); ?>
 
