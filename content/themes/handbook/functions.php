@@ -10,7 +10,13 @@ define( 'AIR_VERSION', '2.7.9' );
 /**
  * Disable admin bar.
  */
-show_admin_bar(false);
+show_admin_bar( false );
+
+/**
+ * Define SendGrid credentials
+ */
+define( 'SENDGRID_API_KEY', getenv( 'SENDGRID_API_KEY' ) );
+define( 'SENDGRID_CATEGORIES', 'handbook' );
 
 /**
  * Hide WP updates nag.
@@ -102,7 +108,7 @@ class handbook_walker extends Walker_Page {
      * @param array $args
      */
     function start_lvl( &$output, $depth = 0, $args = array() ) {
-        $indent = str_repeat("\t", $depth);
+        $indent = str_repeat( "\t", $depth );
         $output .= "\n$indent<ol class='sub-menu children'>\n";
     }
 
