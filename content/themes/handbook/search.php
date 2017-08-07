@@ -30,7 +30,7 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
       the_posts_navigation();
 		} else {
     	get_template_part( 'template-parts/content', 'none' );
-		} 
+		}
 
     get_footer();
     ?>
@@ -39,3 +39,8 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 
   </main><!-- #main -->
 </section><!-- #primary -->
+
+<?php wp_footer(); ?>
+
+</body>
+</html>

@@ -26,9 +26,13 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
 
+			<?php get_footer(); ?>
+
 		</div><!-- .container -->
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php
-get_footer();
+<?php wp_footer(); ?>
+
+</body>
+</html>

@@ -31,3 +31,8 @@ get_header(); ?>
 
  </main><!-- #main -->
 </div><!-- #primary -->
+
+<?php wp_footer(); ?>
+
+</body>
+</html>

@@ -46,3 +46,8 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 
 	</main><!-- #main -->
 </div><!-- #primary -->
+
+<?php wp_footer(); ?>
+
+</body>
+</html>
