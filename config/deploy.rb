@@ -1,5 +1,5 @@
 set :application, "handbook"
-set :repo_url,  "git@bitbucket.org:roni@dude.fi/handbook.git"
+set :repo_url,  "git@github.com:digitoimistodude/handbook-code.git"
 set :branch, :master
 set :log_level, :debug
 set :linked_files, %w{.env}
