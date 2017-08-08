@@ -25,7 +25,11 @@ get_header(); ?>
    } ?>
 
    <p><?php edit_post_link(); ?></p>
-   <p class="modified">Viimeksi muokattu: <?php the_modified_date( 'j' ); ?>. <?php the_modified_date( 'F' ); ?>ta, <?php the_modified_date( 'Y' ); ?> kello <?php the_modified_date( 'H:i' ); ?></p>
+   <p class="modified">
+    Viimeksi muokattu <?php if ( ! empty( $git_commit_info ) ) : ?>
+    käyttäjän <?php echo $git_commit_info->commit->committer->name ?> toimesta viestillä "<?php echo $git_commit_info->commit->message ?>", <a href="<?php echo $git_commit_info->html_url ?>">katso muutos <?php echo str_split( $git_commit_info->sha, 7 )[0] ?> GitHubissa</a>.
+  <?php endif; ?>
+  </p>
 
    <?php get_footer(); ?>
 
