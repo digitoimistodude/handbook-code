@@ -40,12 +40,8 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 				    ?>
 				  </div><!-- .entry-content -->
 
-				  <p><?php edit_post_link(); ?></p>
-				  <p class="modified">
-				  	Viimeksi muokattu <?php if ( ! empty( $git_commit_info ) ) : ?>
-				  		käyttäjän <?php echo $git_commit_info->commit->committer->name ?> toimesta viestillä "<?php echo $git_commit_info->commit->message ?>", <a href="<?php echo $git_commit_info->html_url ?>">katso muutos <?php echo str_split( $git_commit_info->sha, 7 )[0] ?> GitHubissa</a>.
-				  	<?php endif; ?>
-				  </p>
+				  <p><?php edit_post_link(); ?></p>				  
+				  	<?php if ( ! empty( $git_commit_info ) ) : ?><p class="modified">Viimeksi muokattu käyttäjän <?php echo $git_commit_info->commit->committer->name ?> toimesta viestillä "<?php echo $git_commit_info->commit->message ?>", <a href="<?php echo $git_commit_info->html_url ?>">katso muutos <?php echo str_split( $git_commit_info->sha, 7 )[0] ?> GitHubissa</a>.</p><?php endif; ?>				  
 				</article><!-- #post-## -->
 
 				<?php // If comments are open or we have at least one comment, load up the comment template.
