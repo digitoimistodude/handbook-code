@@ -72,7 +72,7 @@ gulp.task('browsersync', function() {
   ];
 
   browserSync.init(files, {
-    proxy: "handbook.dev",
+    proxy: "handbook.test",
     browser: "Google Chrome",
     notify: true
   });
