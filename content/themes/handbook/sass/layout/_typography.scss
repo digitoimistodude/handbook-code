@@ -62,7 +62,6 @@ body {
     kbd,
     pre,
     samp,
-    code,
     th,
     td,
     table,
@@ -431,22 +430,6 @@ body {
     pre,
     samp {
       font-family: $font-monospace;
-    }
-
-    // Code block.
-    code {
-      color: #c7254e;
-      background-color: #f9f2f4;
-      font-family: $font-monospace;
-      line-height: 1;
-      padding: .375rem .5rem;
-      border-radius: .3rem;
-      font-size: inherit; // normalize.css sets this as 1em by default
-
-      pre & {
-        display: inline-block;
-        padding: 1.15rem 1rem .85rem;
-      }
     }
 
     // Preformatted text.
