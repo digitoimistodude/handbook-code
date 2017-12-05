@@ -57,6 +57,11 @@ body {
           padding-bottom: 5px;
           margin-bottom: 0;
           font-size: 14px;
+          height: 31px;
+
+          &.page_item_has_children {
+            height: auto;
+          }
 
           @media(max-width: 900px) {
             height: auto;
