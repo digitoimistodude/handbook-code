@@ -39,6 +39,10 @@ body {
           padding-bottom: 0;
           margin-bottom: 5px;
 
+          &:hover {
+            background: $color-alt;
+          }
+
           > a {
             font-weight: 900;
             color: #fff;
@@ -57,10 +61,19 @@ body {
           padding-bottom: 5px;
           margin-bottom: 0;
           font-size: 14px;
-          height: 31px;
+          height: 31px;          
+
+          &:hover {
+            background: lighten(#2e3336, 15%);
+          }
 
           &.page_item_has_children {
             height: auto;
+            padding-bottom: 0;
+
+            li:last-child {
+              margin-bottom: 5px;
+            }
           }
 
           @media(max-width: 900px) {
