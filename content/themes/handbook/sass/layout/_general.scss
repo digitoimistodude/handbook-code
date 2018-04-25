@@ -36,12 +36,6 @@ body {
     align-items: stretch;
     min-height: calc(100% - 6rem);
 
-    h1,
-    h2,
-    h3 {
-      text-transform: uppercase;
-    }
-
     p.modified {
       font-size: 15px;
       opacity: .7;
