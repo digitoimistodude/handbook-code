@@ -61,7 +61,8 @@ body {
           padding-bottom: 5px;
           margin-bottom: 0;
           font-size: 14px;
-          height: 31px;          
+          min-height: 31px;
+          line-height: 1.3;
 
           &:hover {
             background: lighten($color-background-sidenav, 15%);
@@ -98,6 +99,16 @@ body {
               &.active,
               &.current_page_item {
                 opacity: 1;
+                padding-bottom: 5px;
+
+                &:before {
+                  top: 7px;
+                }
+
+                a {
+                  top: 2px;
+                  position: relative;
+                }
               }
 
               &:before {
@@ -121,7 +132,9 @@ body {
             color: #eaeaeb;
             font-size: 14px;
             opacity: .8;
-            padding-left: 20px;
+            padding-left: 0;
+            left: 20px;
+            position: relative;
           }
         }
       }
