@@ -2,7 +2,7 @@ body {
   .site-content {
     .side-nav {
       width: 230px;
-      background: #2e3336;
+      background: $color-background-sidenav;
       padding: 2rem 0;
 
       @media (max-width: 900px) {
@@ -64,7 +64,7 @@ body {
           height: 31px;          
 
           &:hover {
-            background: lighten(#2e3336, 15%);
+            background: lighten($color-background-sidenav, 15%);
           }
 
           &.page_item_has_children {
@@ -83,7 +83,7 @@ body {
 
           .sub-menu {
             margin-top: 5px;
-            background: #2e3336;
+            background: $color-background-sidenav;
           }
 
           > ol {
