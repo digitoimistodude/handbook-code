@@ -10,11 +10,15 @@
   overflow: hidden;
 
   .handbook-title {
+    font-family: $font-base;
     margin: 10px auto 30px;
     text-transform: none;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: #898e8b;
+    line-height: 1.55;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .search-form {

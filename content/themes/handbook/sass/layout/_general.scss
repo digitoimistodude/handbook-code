@@ -15,7 +15,7 @@ body {
     font-style: italic;
     text-transform: none;
     margin-right: 10px;
-  }  
+  }
 
   a,
   a:link,
@@ -81,4 +81,10 @@ body {
       margin-bottom: 40px;
     }
   }
+}
+
+code {
+  color: #c7254e;
+  background-color: #f9f2f4;
+  padding: .375rem .5rem;
 }

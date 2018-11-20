@@ -47,15 +47,15 @@
         <?php echo get_search_form(); ?>
       </header>
 
-      <h3 class="side-nav-title"><?php echo esc_html_e('Sisällysluettelo', 'handbook'); ?></h3>
+      <h3 class="side-nav-title"><?php echo esc_html_e( 'Sisällysluettelo', 'handbook' ); ?></h3>
 
       <ol>
       <?php
       wp_list_pages( array(
         'title_li'    => '',
-        'depth'     => 2,
+        'depth'       => 2,
         'sort_column' => 'menu_order',
-        'walker' => new handbook_walker(),
+        'walker'      => new handbook_walker(),
         ) ); ?>
       </ol>
       </nav><!-- #site-navigation -->

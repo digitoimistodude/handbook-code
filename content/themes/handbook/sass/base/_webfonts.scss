@@ -16,9 +16,12 @@
 }
 
 // Create a fonts folder and add your custom fonts like this:
-@include fontFace('Futura', '../fonts/FuturaStd-Bold', 700);
-@include fontFace('Futura', '../fonts/FuturaStd-Heavy', 600);
-@include fontFace('Neuzeit Grotesk', '../fonts/32E13D_0_0', 300);
-@include fontFace('Neuzeit Grotesk', '../fonts/32E13D_2_0', 400);
-@include fontFace('Neuzeit Grotesk', '../fonts/32E13D_3_0', 700);
-@include fontFace('Neuzeit Grotesk', '../fonts/32E13D_1_0', 900);
+@include fontFace('Poppins', '../fonts/poppins-light', 200);
+@include fontFace('Poppins', '../fonts/poppins-regular', 400);
+@include fontFace('Poppins', '../fonts/poppins-medium', 500);
+@include fontFace('Poppins', '../fonts/poppins-semibold', 600);
+@include fontFace('Poppins', '../fonts/poppins-bold', 700);
+@include fontFace('Karla', '../fonts/karla-regular', 400);
+@include fontFace('Karla', '../fonts/karla-italic', 400, italic);
+@include fontFace('Karla', '../fonts/karla-bold', 700);
+@include fontFace('Karla', '../fonts/karla-bolditalic', 700, italic);

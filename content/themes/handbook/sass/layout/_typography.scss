@@ -40,7 +40,7 @@ body {
     p {
       margin-top: 29px;
       margin-bottom: 29px;
-      line-height: $font-base-line-height;
+      line-height: 1.77;
 
       &:first-child {
         margin-top: 0;
@@ -71,120 +71,39 @@ body {
       color: $color-headings;
       font-family: $font-headings;
       font-weight: $headings-weight;
+      line-height: $font-base-line-height;
     }
 
-      h1,
-      %h1 {
-        @include responsive-font(1.6vw, 21px, 34px);
-      }
-
-      h2,
-      %h2 {
-        @include responsive-font(1.4vw, 18px, 21px);
-      }
-
-      h3,
-      %h3 {
-        @include responsive-font(1.2vw, 14px, 18px);
-      }
-
-      h4,
-      %h4 {
-        @include responsive-font(1.2vw, 14px, 18px);
-      }
-
-      h5,
-      %h5 {
-        @include responsive-font(1.2vw, 14px, 18px);
-      }
-
-      h6,
-      %h6 {
-        @include responsive-font(1.2vw, 14px, 18px);
-      }
-
+    // Define heading scales
+    // Current: Perfect fourth: https://type-scale.com/
     h1,
     %h1 {
-      letter-spacing: -.02em;
-
-      @if $headings-line-height-setup == flexible {
-        line-height: 3.8rem;
-      } @else {
-        line-height: $headings-line-height-forced;
-      }
-
-      &:first-child {
-        margin-top: 0;
-      }
+      @include responsive-font(3.2vw, 32px, 51px);
     }
 
     h2,
     %h2 {
-      letter-spacing: -.02em;
-
-      @if $headings-line-height-setup == flexible {
-        line-height: 3.2rem;
-      } @else {
-        line-height: $headings-line-height-forced;
-      }
-
-      &:first-child {
-        margin-top: 0;
-      }
+      @include responsive-font(2.4vw, 24px, 38px);
     }
 
     h3,
     %h3 {
-      letter-spacing: -.02em;
-
-      @if $headings-line-height-setup == flexible {
-        line-height: 2.2rem;
-      } @else {
-        line-height: $headings-line-height-forced;
-      }
-
-      &:first-child {
-        margin-top: 0;
-      }
+      @include responsive-font(1.6vw, 21px, 28px);
     }
 
     h4,
     %h4 {
-      @if $headings-line-height-setup == flexible {
-        line-height: 1.4rem;
-      } @else {
-        line-height: $headings-line-height-forced;
-      }
-
-      &:first-child {
-        margin-top: 0;
-      }
+      @include responsive-font(1.4vw, 18px, 21px);
     }
 
     h5,
     %h5 {
-      @if $headings-line-height-setup == flexible {
-        line-height: 1.2rem;
-      } @else {
-        line-height: $headings-line-height-forced;
-      }
-
-      &:first-child {
-        margin-top: 0;
-      }
+      @include responsive-font(1.2vw, 14px, 17px);
     }
 
     h6,
     %h6 {
-      @if $headings-line-height-setup == flexible {
-        line-height: 1rem;
-      } @else {
-        line-height: $headings-line-height-forced;
-      }
-
-      &:first-child {
-        margin-top: 0;
-      }
+      @include responsive-font(1.2vw, 14px, 12px);
     }
 
     // Lists
