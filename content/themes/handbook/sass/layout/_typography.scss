@@ -79,6 +79,15 @@ body {
     h1,
     %h1 {
       @include responsive-font(3.2vw, 32px, 51px);
+      line-height: 1.22;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .entry-header h1:first-child {
+      margin-top: 0;
     }
 
     h2,
