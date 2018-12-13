@@ -42,3 +42,4 @@ content/w3tc/dbcache/*
 !content/w3tc/dbcache/.htaccess
 !content/w3tc/dbcache/index.php
 content/w3tc/pgcache/*
+w3cErrors/

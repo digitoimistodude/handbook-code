@@ -39,7 +39,7 @@ return $content;
 
 add_filter( 'the_content', 'tl_umlaut_repair', 10, 1 );
 
-add_filter( 'the_title', 'wpse_title' ); 
+add_filter( 'the_title', 'wpse_title' );
 function wpse_title( $title ) {
   $title = str_replace( "a\xCC\x88", 'ä', $title );
   $title = str_replace( "o\xCC\x88", 'ö', $title );
@@ -187,7 +187,7 @@ setlocale( LC_ALL, 'fi_FI.utf8' );
  * Enqueue scripts and styles.
  */
 function handbook_scripts() {
-	$handbook_template = 'global';
+	$handbook_template = 'global.min';
 
 	// Styles.
 	wp_enqueue_style( 'styles', get_theme_file_uri( "css/{$handbook_template}.css" ), array(), filemtime( get_theme_file_path( "css/{$handbook_template}.css" ) ) );

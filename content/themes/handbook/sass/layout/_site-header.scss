@@ -25,7 +25,7 @@
     margin: 0 15px;
     position: relative;
 
-    @media(max-width: 900px) {
+    @media (max-width: 900px) {
       display: inline-block;
       width: 100%;
       float: none;
@@ -34,11 +34,11 @@
         width: 92%;
         display: inline-block;
 
-        @media(max-width: 655px) {
+        @media (max-width: 655px) {
           width: 90%;
         }
 
-        @media(max-width: 535px) {
+        @media (max-width: 535px) {
           width: 85%;
         }
       }
