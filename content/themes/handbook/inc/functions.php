@@ -50,7 +50,7 @@ if ( ! function_exists( 'handbook_comments' ) ) {
 				<h4 class="comment-author"><?php echo get_comment_author_link(); ?></h4>
 
 				<?php if ( 0 === $comment->comment_approved ) : ?>
-					<p><em><?php _e( 'Your comment is awaiting approval.', 'handbook' ); ?></em></p>
+					<p><em><?php esc_html_e( 'Your comment is awaiting approval.', 'handbook' ); ?></em></p>
 				<?php endif; ?>
 
 				<p class="comment-time">
@@ -90,7 +90,7 @@ function handbook_get_git_commit_info( $post_id = null ) {
 		$api_url .= "&since={$last_commit_timestamp}";
 	}
 
-	$commit = wp_remote_get( $api_url  );
+	$commit = wp_remote_get( $api_url );
 
 	if ( is_wp_error( $commit ) ) {
 		return '';
