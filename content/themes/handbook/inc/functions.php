@@ -86,22 +86,41 @@ function handbook_get_git_commit_info( $post_id = null ) {
 
 	$api_url = "https://api.github.com/repos/digitoimistodude/handbook/commits?path={$git_file_path}";
 
-	if ( ! empty( $last_commit_timestamp ) ) {
-		$api_url .= "&since={$last_commit_timestamp}";
-	}
+	// Do not add since because we want full commit history to show
+	// if ( ! empty( $last_commit_timestamp ) ) {
+	// 	$api_url .= "&since={$last_commit_timestamp}";
+	// }
 
-	$commit = wp_remote_get( $api_url );
+	$commits = wp_remote_get( $api_url );
 
-	if ( is_wp_error( $commit ) ) {
+	if ( is_wp_error( $commits ) ) {
 		return '';
 	}
 
-	$commit = json_decode( $commit['body'] );
-	$commit = $commit[0];
+	$commits = json_decode( $commits['body'] );
+	$commit = $commits[0];
 
 	update_post_meta( $post_id, '_last_commit_update_sha', $sha );
 	update_post_meta( $post_id, '_handbook_last_commit_timestamp', $commit->commit->committer->date );
 	update_post_meta( $post_id, '_handbook_latest_commit_info', $commit );
 
+	$commits_save = array();
+	foreach ( $commits as $commit_save ) {
+		$commits_save[] = array(
+			'sha'				=> $commit_save->sha,
+			'committer'	=> $commit_save->commit->committer,
+			'message'		=> $commit_save->commit->message,
+			'html_url'	=> $commit_save->html_url,
+		);
+	}
+
+	if ( ! empty( $commits_save ) ) {
+		update_post_meta( $post_id, '_handbook_commit_history', $commits_save );
+	}
+
 	return $commit;
+}
+
+function handbook_get_git_commit_history( $post_id = null ) {
+	return get_post_meta( $post_id, '_handbook_commit_history', true );
 }
