@@ -48,7 +48,7 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 				  <?php endif;
 
 				  if ( ! empty( $git_commit_history ) ) : ?>
-				  	<div class="git-commit-history">
+				  	<div class="git-commit-history" style="display: none;">
 				  		<h2>Versiohistoria</h2>
 
 				  		<div class="commits">
