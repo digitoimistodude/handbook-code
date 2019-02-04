@@ -28,6 +28,15 @@ body {
       padding-left: 20px;
       color: #000;
     }
+
+    &.text-anchor,
+    &.text-anchor:focus,
+    &.text-anchor:hover {
+      color: #232426;
+      box-shadow: none;
+      text-decoration: none;
+      border: 0;
+    }
   }
 
   .site-content {
