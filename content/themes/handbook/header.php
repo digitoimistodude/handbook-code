@@ -47,7 +47,7 @@
 
       <h3 class="side-nav-title"><?php echo esc_html_e( 'Sisällysluettelo', 'handbook' ); ?></h3>
 
-      <ol>
+      <ol class="side-nav-main">
       <?php
       wp_list_pages( array(
         'title_li'    => '',

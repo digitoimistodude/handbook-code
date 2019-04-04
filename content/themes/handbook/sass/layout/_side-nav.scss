@@ -29,41 +29,56 @@ body .site-content .side-nav {
     padding-right: 0;
     margin-left: 0;
     margin-bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    &.side-nav-main > .page_item {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .children > .page_item {
+      margin-left: -15px;
+      margin-right: -15px;
+      flex-wrap: nowrap;
+    }
 
     > li.active,
     > li.current_page_item {
       overflow: visible;
-      background-color: $color-alt;
-      padding-bottom: 0;
-      margin-bottom: 0;
-
-      &:hover {
-        background: $color-alt;
-      }
 
       > a {
-        font-weight: 900;
+        font-weight: 700;
         color: #fff;
-        opacity: .9;
+        opacity: 1;
       }
     }
 
     li {
-      display: block;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
       position: relative;
       color: #777;
       margin-left: 0;
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 0;
+      padding-right: 0;
       padding-top: 5px;
       padding-bottom: 5px;
       margin-bottom: 0;
       font-size: 13px;
       min-height: 31px;
       line-height: 1.3;
+      align-items: center;
 
-      &:hover {
-        background: lighten($color-background-sidenav, 15%);
+      li {
+        width: 100%;
+      }
+
+      a:hover {
+        color: #fff;
+        opacity: 1;
       }
 
       &.page_item_has_children {
@@ -87,26 +102,16 @@ body .site-content .side-nav {
 
       > ol {
         margin-top: 0;
-        margin-left: -15px;
-        margin-right: -15px;
+        margin-left: 0;
+        margin-right: 0;
 
         li {
           padding-left: 25px;
-          opacity: .5;
+          opacity: .6;
 
           &.active,
           &.current_page_item {
             opacity: 1;
-            padding-bottom: 5px;
-
-            &:before {
-              top: 7px;
-            }
-
-            a {
-              top: 2px;
-              position: relative;
-            }
           }
 
           &:before {
@@ -127,7 +132,6 @@ body .site-content .side-nav {
       a {
         color: #eaeaeb;
         font-size: 13.5px;
-        opacity: .8;
         padding-left: 0;
       }
     }
