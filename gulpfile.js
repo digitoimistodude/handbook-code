@@ -9,7 +9,8 @@ var sass           = require('gulp-sass');
 var sourcemaps     = require('gulp-sourcemaps');
 var browsersync    = require('browser-sync').create();
 var notify         = require('gulp-notify');
-var prefix         = require('gulp-autoprefixer');
+var postcss        = require('gulp-postcss');
+var autoprefixer   = require('autoprefixer');
 var cleancss       = require('gulp-clean-css');
 var uglify         = require('gulp-uglify-es').default;
 var concat         = require('gulp-concat');
@@ -32,7 +33,7 @@ FILE PATHS
 ==========
 */
 
-var themeDir = 'content/themes/handbook';
+var themeDir = 'content/themes/handbook2019';
 var sassSrc = themeDir + '/sass/**/*.{sass,scss}';
 var sassFile = themeDir + '/sass/base/global.scss';
 var phpSrc = themeDir + '/**/*.php';
@@ -78,7 +79,7 @@ gulp.task('browsersync', function() {
   ];
 
   browsersync.init(files, {
-    proxy: "handbook.test",
+    proxy: "handbook-code.test",
     browser: "Google Chrome",
     open: false,
     notify: true,
@@ -125,13 +126,21 @@ gulp.task('scss-lint', function() {
 
 gulp.task('styles', function() {
 
+    // Adds browser fallback (eg. -webkit, -moz, etc.)
+    // When a browser dies, Autoprefixer will automatically stop writing prefixes for that browser
+    // Source: https://css-tricks.com/css-grid-in-ie-css-grid-and-the-new-autoprefixer/
+    var plugins = [
+        autoprefixer({grid: true, browsers: ['>1%']})
+    ];
+
     // Save compressed version
     gulp.src(sassFile)
 
+    .pipe(sourcemaps.init())
     .pipe(sass({
       compass: false,
       bundleExec: true,
-      sourcemap: false,
+      sourcemap: true,
       style: 'compressed',
       debugInfo: true,
       lineNumbers: true,
@@ -144,7 +153,7 @@ gulp.task('styles', function() {
     }))
 
     .on('error', handleError('styles'))
-    .pipe(prefix('last 3 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4')) // Adds browser prefixes (eg. -webkit, -moz, etc.)
+    .pipe(postcss(plugins))
     .pipe(pixrem())
     .pipe(cleancss({
       compatibility: 'ie11',
@@ -164,6 +173,7 @@ gulp.task('styles', function() {
     .pipe(rename({
       suffix: '.min'
     }))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(cssDest))
     .pipe(browsersync.stream());
 
@@ -173,7 +183,7 @@ gulp.task('styles', function() {
     .pipe(sass({
       compass: false,
       bundleExec: true,
-      sourcemap: false,
+      sourcemap: true,
       style: 'expanded',
       debugInfo: true,
       lineNumbers: true,
@@ -186,7 +196,7 @@ gulp.task('styles', function() {
     }))
 
     .on('error', handleError('styles'))
-    .pipe(prefix('last 3 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4')) // Adds browser prefixes (eg. -webkit, -moz, etc.)
+    .pipe(postcss(plugins))
     .pipe(pixrem())
 
     // Process the expanded output with Stylefmt
@@ -202,8 +212,8 @@ gulp.task('uncss', function() {
   gulp.src(cssDest + '/global.css')
     .pipe(uncss({
       html:
-        // Activate gulp-sitemap-generator and go to http://handbook.test?show_sitemap, and paste it here:
-        ["http:\/\/handbook.test\/"]
+        // Activate gulp-sitemap-generator and go to http://handbook-code.test?show_sitemap, and paste it here:
+        ["http:\/\/handbook-code.test\/"]
           }))
           .pipe(gulp.dest(cssDest));
 });
@@ -309,7 +319,21 @@ gulp.task('validatehtml', function() {
         /“data-\*” attribute names must be XML 1.0 4th/g,
         /Attribute “'_blank'”/g,
         /Attribute “'”/g,
-        /Attribute “language_attributes()/g]
+        /Attribute “if\(/g,
+        /Attribute “get_/g,
+        /Attribute “'img/g,
+        /Attribute “\)/g,
+        /Attribute “has_/g,
+        /Attribute “content-{\$/g,
+        /Attribute “shade-{\$/g,
+        /Attribute “color/g,
+        /“<” is not allowed/g,
+        /Attribute “'/g,
+        /Attribute “&&”/g,
+        /Attribute “isset/g,
+        /Duplicate attribute “\$/g,
+        /Duplicate attribute “\(”/g,
+        /Bad value “' . /g]
     }))
 });
 
@@ -366,11 +390,15 @@ gulp.task('js', function() {
 
       gulp.src(
         [
-          themeDir + '/js/src/fitvids.js',
-          themeDir + '/js/src/what-input.js',
-          themeDir + '/js/src/prism.js',
+          themeDir + '/js/src/skip-link-focus-fix.js',
+          themeDir + '/node_modules/moveto/dist/moveTo.js',
+          // themeDir + '/js/src/sticky-nav.js',
+          // themeDir + '/node_modules/slick-carousel/slick/slick.js',
+          themeDir + '/node_modules/what-input/dist/what-input.js',
+          themeDir + '/js/src/navigation.js',
           themeDir + '/js/src/scripts.js'
         ])
+        .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
         .pipe(uglify({
           compress: true,
@@ -379,6 +407,7 @@ gulp.task('js', function() {
             this.emit('end');
           }))
         .pipe(header(banner, {pkg: pkg, currentDate: currentDate}))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(jsDest));
 });
 
@@ -393,8 +422,20 @@ WATCH
 gulp.task('js-watch', ['js'], browsersync.reload);
 gulp.task('watch', ['browsersync'], function() {
 
+  // Lint SCSS on save, auto correct based on stylefmtfile on change
   gulp.watch(sassSrc, ['styles', 'scss-lint']).on( 'change', stylefmtfile );
-  gulp.watch(phpSrc, ['phpcs', 'validatehtml', 'a11y']);
+
+  // Please run validation tests manually:
+  //
+  // gulp validatehtml
+  // gulp phpcs
+  // pa11y-ci --sitemap http://handbook-code.test/sitemap.xml
+
+  // Auto validation (currently disabled)
+  // gulp.watch(phpSrc, ['phpcs', 'validatehtml']);
+  gulp.watch(phpSrc);
+
+  // Update browser window automatically when JavaScript is saved
   gulp.watch(jsSrc, ['js-watch']);
 
 });
