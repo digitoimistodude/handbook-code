@@ -30,6 +30,11 @@ body {
       border: 0;
       box-shadow: none;
       text-shadow: none;
+      transition: .3s all;
+
+      &:hover {
+        opacity: .6;
+      }
     }
 
     &.text-anchor,
@@ -94,18 +99,21 @@ body {
       width: 100%;
     }
 
-    a {
+     a:not(.github) {
       color: #666;
+      background-image: linear-gradient(to top,#050505,#050505);
+      background-size: 100% 1px;
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      transition: .3s all;
       text-decoration: none;
-      text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff;
-      border-bottom: 2px solid #ccc;
-      transition: all .55s;
+      overflow: visible;
 
       &:hover {
-        color: #434343;
-        border-bottom: 2px solid #243344;
-      }
-    }
+       background-size: 100% 2.8rem;
+       color: #fff;
+     }
+   }
 
     .site-main {
       padding: 6rem;
