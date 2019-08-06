@@ -1,6 +1,6 @@
 body .site-content .side-nav {
   width: 230px;
-  background: $color-background-sidenav;
+  background: $color-dude-black;
   padding: 2rem 0;
 
   @media (max-width: 900px) {
@@ -124,14 +124,15 @@ body .site-content .side-nav {
         content: counters(item, '.')'.';
         counter-increment: item;
         color: #eaeaeb;
-        font-size: 13.5px;
+        font-size: 1.4rem;
         display: inline;
         margin-right: 5px;
       }
 
       a {
         color: #eaeaeb;
-        font-size: 13.5px;
+        font-weight: 400;
+        font-size: 1.4rem;
         padding-left: 0;
       }
     }

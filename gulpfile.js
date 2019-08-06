@@ -33,7 +33,7 @@ FILE PATHS
 ==========
 */
 
-var themeDir = 'content/themes/handbook2019';
+var themeDir = 'content/themes/handbook';
 var sassSrc = themeDir + '/sass/**/*.{sass,scss}';
 var sassFile = themeDir + '/sass/base/global.scss';
 var phpSrc = themeDir + '/**/*.php';

@@ -6,10 +6,11 @@
 // --------------------------------------------------------------
 
 // Colors
+$color-dude-black: #222;
 $color-links: lighten(#161f29, 8%);
 $color-hover: #606c76;
 $color-body: #434343;
-$color-servicedescriptions: #565656;
+$color-servicedescriptions: #565657;
 $color-headings: #232426;
 $color-body-darker: #444;
 $color-grey: #dadfe1;
@@ -27,21 +28,17 @@ $color-wordpress: #21759b;
 $color-woocommerce: #a46497;
 $color-background-sidenav: #202428;
 
-// Font settings
-// You can use these font stacks normally with `font-family: $font-sans;` for instance.`
-// Please set up fonts in sass/layout/_typography.scss
-$font-base: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif;
-$font-headings: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif;
+// Fonts
+$font-base: 'Neuzeit Grotesk', 'Helvetica Neue', Helvetica, sans-serif;
+$font-headings: 'Neuzeit Grotesk', 'Helvetica Neue', Helvetica, sans-serif;
 $font-monospace: 'Menlo', 'Courier', monospace;
 
 // Font settings
-$font-min-size: 17px; // Minimum font size, on mobile (default: 16px)
-$font-max-size: 19px; // Maximum font size, on desktop
-$font-base-line-height: 1.5; // Line height for paragraphs
-$font-base-line-height-elements: 1.5; // Line height for other elements like table cells and spans
-$headings-line-height-setup: force; // Force: all headings have same line height. Flexible: values are set separately in _typography.scss
-$headings-line-height-forced: 1.22; // This is effective only if force is chosen in $headings-line-height-setup
-$headings-weight: 700; // Default title weight. Usually 700 or 900 works pretty well
+$font-min-size: 18px;
+$font-max-size: 22px;
+$font-base-line-height: 1.55;
+$font-base-line-height-elements: 1.55;
+$headings-weight: 300;
 
 // Breakpoints
 $grid-type: fluid; // 'fluid' or 'snappy'
