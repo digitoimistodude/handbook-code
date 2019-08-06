@@ -5,6 +5,10 @@
 // the site navigation and search for example.
 // -----------------------------------------------------------
 
+.nav-container {
+  background-color: $color-dude-black;
+}
+
 .site-header {
   position: relative;
   z-index: 15;
@@ -28,5 +32,9 @@
 
   a {
     color: #111;
+  }
+
+  svg {
+    fill: $color-dude-white;
   }
 }

@@ -1,48 +1,53 @@
-// ------------------------------------------------------------
-// Site footer
-//
-// The very bottom of the site. Usually contains supporting
-// or secondary navigation, social media icons, contact details
-// and such.
-//
-// Please note: These are mostly for demo purposes
-// so feel free to remove everything in this file
-// and start over.
-// ------------------------------------------------------------
+body {
+  .site-footer {
+    padding: 35px 0;
 
-.site-footer {
-  padding: 20px;
-  background: #eaeaea;
-  color: #fff;
-  overflow: hidden;
-  clear: both;
-
-  svg {
-    fill: #555;
-    top: 2px;
-    position: relative;
-  }
-
-  p,
-  span {
-    color: #555;
-  }
-
-  a {
-    color: #555;
-
-    &:hover {
-      color: $color-links;
+    .container {
+      border-top: 1px solid #d9d9d9;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 3.2rem;
+      padding-bottom: 3.2rem;
     }
-  }
-}
 
-.theme-info {
-  overflow: hidden;
+    p {
+      font-size: 14px;
+      color: #777;
+      position: relative;
+      top: 5px;
+    }
 
-  @media (min-width: $container-ipad) {
-    width: 60%;
-    text-align: right;
-    float: right;
+    a.github {
+      padding-bottom: 5px;
+      text-shadow: none;
+      box-shadow: none;
+      text-decoration: none;
+      background-position: 1px -1px;
+    }
+
+    a {
+      &:hover {
+        svg {
+          path {
+            stroke: #222;
+          }
+        }
+      }
+    }
+
+    svg {
+      width: 40px;
+      height: 64px;
+      fill: #777;
+      float: left;
+      margin-right: 25px;
+      position: relative;
+      top: 0;
+
+      path {
+        transition: all .55s;
+        stroke: #777;
+      }
+    }
   }
 }

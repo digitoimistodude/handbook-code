@@ -1,50 +1,38 @@
-// ------------------------------------------------
-// Front page
-//
-// The most important page on the website goes here.
-// You can force the styles by defining them inside
-// the body.
-//
-// Please note: These are mostly for demo purposes
-// so feel free to remove everything in this file
-// and start over.
-// ------------------------------------------------
-
-.entry-header-demo {
-  @include background-cover();
-  background-image: url('../images/default.jpg');
-  background-repeat: no-repeat;
+.block.block-front-hero {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  background-color: $color-darkergrey;
   position: relative;
-  min-height: 50rem;
-  max-width: $layout-max-width;
-  margin: 0 auto;
+  height: 35rem;
 
-  // Internet Explorer needs this
-  height: 50rem;
+  .container {
+    width: 100%;
+  }
+
+  .neckbeard {
+    position: absolute;
+    left: 0;
+
+    svg {
+      margin-left: -40%;
+    }
+  }
+
+  h1,
+  h2 {
+    color: $color-dude-white;
+    text-align: center;
+  }
 
   h1 {
-    @include responsive-font(2.4vw, 22px, 46px);
-    color: #383d29;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    z-index: 2;
+    margin-top: 0;
+    margin-bottom: 1rem;
   }
-}
 
-.accent {
-  @extend %h3;
-  font-style: italic;
-  text-transform: lowercase;
-  font-weight: 700;
-  text-align: center;
-  margin: 0;
-  color: $color-links;
-  display: block;
-  position: relative;
-  z-index: 2;
+  h2 {
+    @extend %h5;
+    margin: 0;
+  }
 }

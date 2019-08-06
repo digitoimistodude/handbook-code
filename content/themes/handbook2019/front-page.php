@@ -24,9 +24,12 @@ get_header();
 <div id="content" class="content-area">
   <main role="main" id="main" class="site-main">
 
-    <div class="entry-header-demo">
-      <h1><span class="accent"><?php echo esc_html_e( 'handbook2019 ', 'handbook2019' ); echo esc_attr( AIR_LIGHT_VERSION, 'handbook2019' ); ?></span><?php echo esc_html_e( 'a WordPress starter theme', 'handbook2019' ); ?></h1>
-    </div>
+    <section class="block block-front-hero">
+      <div class="container">
+        <h1>Dude Handbook</h1>
+        <h2>Virallinen operointimanuaali</h2>
+      </div>
+    </section>
 
     <div class="block">
       <div class="container">
