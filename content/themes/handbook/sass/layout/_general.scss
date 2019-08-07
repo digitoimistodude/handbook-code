@@ -31,6 +31,8 @@ body {
       box-shadow: none;
       text-shadow: none;
       transition: .3s all;
+      text-decoration: none;
+      font-weight: 500;
 
       &:hover {
         opacity: .6;
@@ -140,7 +142,7 @@ code {
   color: #c7254e;
   background-color: #f9f2f4;
   padding: .375rem .5rem;
-  transition: all .55s;
+  font-family: 'PT Mono', Menlo, 'Courier New', monospace;
 
   &:hover {
     background-color: darken(#f9f2f4, 5%);
