@@ -109,15 +109,15 @@ body .site-content .side-nav {
       > ol li {
         padding-left: 25px;
         opacity: .6;
+      }
 
-        &.active,
-        &.current_page_item {
-          opacity: 1;
-        }
+      > ol li.active,
+      > ol li.current_page_item {
+        opacity: 1;
+      }
 
-        &:before {
-          right: -46px;
-        }
+      > ol li &:before {
+        right: -46px;
       }
 
       &:before {
