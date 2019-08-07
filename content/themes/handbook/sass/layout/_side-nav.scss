@@ -1,5 +1,5 @@
 body .site-content .side-nav {
-  width: 230px;
+  width: 270px;
   background: $color-dude-black;
   padding: 2rem 0;
 
@@ -84,10 +84,10 @@ body .site-content .side-nav {
       &.page_item_has_children {
         height: auto;
         padding-bottom: 0;
+      }
 
-        li:last-child {
-          margin-bottom: 5px;
-        }
+      &.page_item_has_children li:last-child {
+        margin-bottom: 5px;
       }
 
       @media (max-width: 900px) {
@@ -104,19 +104,19 @@ body .site-content .side-nav {
         margin-top: 0;
         margin-left: 0;
         margin-right: 0;
+      }
 
-        li {
-          padding-left: 25px;
-          opacity: .6;
+      > ol li {
+        padding-left: 25px;
+        opacity: .6;
 
-          &.active,
-          &.current_page_item {
-            opacity: 1;
-          }
+        &.active,
+        &.current_page_item {
+          opacity: 1;
+        }
 
-          &:before {
-            right: -46px;
-          }
+        &:before {
+          right: -46px;
         }
       }
 
