@@ -124,15 +124,15 @@ body .site-content .side-nav {
         content: counters(item, '.')'.';
         counter-increment: item;
         color: #eaeaeb;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         display: inline;
-        margin-right: 5px;
+        margin-right: 10px;
       }
 
       a {
         color: #eaeaeb;
         font-weight: 400;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         padding-left: 0;
       }
     }
