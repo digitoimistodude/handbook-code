@@ -79,7 +79,7 @@ gulp.task('browsersync', function() {
   ];
 
   browsersync.init(files, {
-    proxy: "handbook-code.test",
+    proxy: "handbook.test",
     browser: "Google Chrome",
     open: false,
     notify: true,
@@ -210,7 +210,7 @@ gulp.task('uncss', function() {
     .pipe(uncss({
       html:
         // Activate gulp-sitemap-generator and go to http://handbook-code.test?show_sitemap, and paste it here:
-        ["http:\/\/handbook-code.test\/"]
+        ["http:\/\/handbook.test\/"]
           }))
           .pipe(gulp.dest(cssDest));
 });

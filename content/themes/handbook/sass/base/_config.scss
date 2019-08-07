@@ -7,9 +7,10 @@
 
 // Colors
 $color-dude-black: #222;
-$color-links: lighten(#161f29, 8%);
+$color-dude-deep-black: #050505;
+$color-links: $color-dude-deep-black;
 $color-hover: #606c76;
-$color-body: #434343;
+$color-body: $color-dude-black;
 $color-servicedescriptions: #565657;
 $color-headings: #232426;
 $color-body-darker: #444;

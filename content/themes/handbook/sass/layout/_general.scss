@@ -99,9 +99,9 @@ body {
       width: 100%;
     }
 
-     a:not(.github) {
-      color: #666;
-      background-image: linear-gradient(to top,#050505,#050505);
+    a:not(.github) {
+      color: $color-links;
+      background-image: linear-gradient(to top, #050505, #050505);
       background-size: 100% 1px;
       background-position: left bottom;
       background-repeat: no-repeat;
@@ -110,11 +110,11 @@ body {
       overflow: visible;
 
       &:hover {
-       background-size: 100% 2.8rem;
-       color: #fff;
-       opacity: 1;
-     }
-   }
+        background-size: 100% 2.8rem;
+        color: #fff;
+        opacity: 1;
+      }
+    }
 
     .site-main {
       padding: 6rem;

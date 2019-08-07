@@ -53,7 +53,7 @@
     "vlucas/phpdotenv": "^2.0.1",
     "wpackagist-plugin/google-analytics-dashboard-for-wp": "*",
     "wpackagist-plugin/simple-history": "*",
-    "johnpbloch/wordpress": "5.1.1",
+    "johnpbloch/wordpress": "5.2.2",
     "wpackagist-plugin/wp-github-sync": "*"
   },
   "extra": {
