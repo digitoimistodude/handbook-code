@@ -40,6 +40,13 @@ pre[class*="language-"] {
   padding: 1.25rem;
   border-left: 20px solid #ddd;
   overflow-x: auto;
+  transition: all .66s;
+  width: 100%;
+
+  &:hover {
+    background-color: darken(#efefef, 2%);
+    width: 60vw;
+  }
 }
 
 pre[class*="language-"]::-webkit-scrollbar {
