@@ -43,9 +43,12 @@ pre[class*="language-"] {
   transition: all .66s;
   width: 100%;
 
-  &:hover {
-    background-color: darken(#efefef, 2%);
-    width: 60vw;
+  @media (min-width: $container-ipad) {
+    &:hover {
+      background-color: darken(#efefef, 2%);
+      width: 55vw;
+      min-width: 650px;
+    }
   }
 }
 
