@@ -7,10 +7,13 @@
 // -----------------------------------------------------------
 
 // Set up self-hosted fonts here
-@include fontFace('Neuzeit Grotesk', '../fonts/32E13D_0_0', 300);
-@include fontFace('Neuzeit Grotesk', '../fonts/32E13D_2_0', 400);
-@include fontFace('Neuzeit Grotesk', '../fonts/32E13D_3_0', 700);
-@include fontFace('Neuzeit Grotesk', '../fonts/32E13D_1_0', 900);
+@include fontFace('SFMono', '../fonts/SFMono-Regular', 400);
+@include fontFace('Circular', '../fonts/f5437dcddb7d5641ae51a8109a31fa53', 400);
+@include fontFace('Circular', '../fonts/d2eb57af9849479498a3aab358ef6c92', 400, italic);
+@include fontFace('Circular', '../fonts/86a7bec49ba4953ef59891e1597151d1', 500);
+@include fontFace('Circular', '../fonts/469779bbfe42049602ae0c100c517e90', 500, italic);
+@include fontFace('Circular', '../fonts/0fe7d5a9ec1ccd7bf994e3bbe8cd4c10', 700);
+@include fontFace('Circular', '../fonts/e964570c740cb80bd168ac14fbd51b4f', 900);
 
 // Set root size for rems
 :root {
@@ -28,6 +31,25 @@ body {
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+%textlink {
+  position: relative;
+  overflow: visible;
+  font-weight: 700;
+  z-index: 1;
+  text-decoration: none;
+  transition: all .18s ease-in-out;
+  display: inline;
+  color: $color-body;
+  border-bottom: 1px solid $color-mint;
+  box-shadow: inset 0 -.125em 0 $color-mint;
+
+  &:hover,
+  &:focus {
+    box-shadow: inset 0 -1.125em 0 $color-mint;
+    color: $color-body;
+  }
 }
 
 // Links
@@ -158,7 +180,6 @@ ul {
 b,
 strong {
   font-weight: 500;
-  color: #000;
 }
 
 // Italic.
