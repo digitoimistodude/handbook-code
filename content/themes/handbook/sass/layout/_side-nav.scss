@@ -1,3 +1,154 @@
+$nav-toggle-color: $color-white;
+$nav-toggle-active-color: $color-white;
+$hamburger-padding-x: 1.5rem;
+$hamburger-padding-y: 5rem;
+$hamburger-layer-width: 3rem;
+$hamburger-layer-height: .2rem;
+$hamburger-layer-spacing: .4rem;
+$hamburger-layer-color: $color-white;
+$hamburger-layer-border-radius: 0;
+$hamburger-hover-opacity: .8;
+$hamburger-hover-transition-duration: .15s;
+$hamburger-hover-transition-timing-function: linear;
+$nav-open-from-right: true;
+$nav-open-from-left: false;
+$nav-open-from-bottom: false;
+$nav-open-from-top: false;
+
+@import 'hamburgers/_sass/hamburgers/hamburgers';
+
+.nav-toggle,
+.nav-toggle:focus {
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after,
+  &:focus .hamburger-inner:focus::before,
+  &:focus .hamburger-inner:focus::after {
+    background-color: $color-white;
+    color: $color-white;
+  }
+}
+
+// Choose hamburger animation here
+// Choices: https://jonsuh.com/hamburgers/
+.hamburger {
+  @extend .hamburger--spin;
+}
+
+.nav-toggle {
+  list-style: none;
+  z-index: 100000;
+  -webkit-tap-highlight-color: rgba(#000, 0);
+  border: 0;
+  overflow: visible;
+  color: $nav-toggle-color;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  user-select: none;
+  text-decoration: none;
+  padding: 0;
+  margin: 4rem auto 0 auto;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transform: translateX(-4px);
+
+  @media (min-width: $responsivenav) {
+    display: none;
+  }
+
+  .toggle-text {
+    margin-left: 20px;
+  }
+
+  .hamburger-inner::after {
+    width: 17px;
+    transition: width .5s;
+  }
+
+  &.is-active .hamburger-inner::after,
+  &:hover  .hamburger-inner::after {
+    width: $hamburger-layer-width;
+  }
+
+  span:not(.toggle-text) {
+    color: $nav-toggle-color;
+    font-size: 1.2em;
+  }
+
+  // Alternative focus for mobile nav
+  &:focus {
+    @media (max-width: $container-mobile) {
+      outline: none;
+    }
+
+    span span {
+      background-color: $nav-toggle-color;
+    }
+
+    span span:before,
+    span span:after {
+      background-color: $nav-toggle-color;
+    }
+  }
+
+  &:hover,
+  &:active {
+    color: $nav-toggle-color;
+
+    span {
+      color: $nav-toggle-color;
+    }
+  }
+
+  // Separate active colors for opened state
+  &.is-active {
+    color: $nav-toggle-active-color;
+  }
+
+  &.is-active span:focus,
+  &.is-active span.focus {
+    .hamburger-box .hamburger-inner {
+      background-color: $nav-toggle-active-color;
+    }
+
+    .hamburger-box .hamburger-inner:after {
+      background-color: $nav-toggle-active-color;
+    }
+  }
+
+  &.is-active span.hamburger-box {
+    .hamburger-inner {
+      background-color: $nav-toggle-active-color;
+    }
+
+    .hamburger-inner:after {
+      background-color: $nav-toggle-active-color;
+    }
+  }
+
+  &.is-active span:focus,
+  &.is-active span:hover,
+  &.is-active span:active {
+    color: $nav-toggle-active-color;
+
+    span {
+      color: $nav-toggle-active-color;
+    }
+  }
+
+  &.is-active span {
+    color: $nav-toggle-active-color;
+  }
+}
+
+body.js-nav-active {
+  overflow: hidden;
+}
+
 body .site-content .side-nav {
   width: 270px;
   background: $color-background-sidenav;
@@ -24,14 +175,39 @@ body .site-content .side-nav {
   ol {
     counter-reset: item;
     padding-bottom: 0;
-    margin-top: 30px;
+    margin-top: -1px;
     padding-left: 0;
     padding-right: 0;
     margin-left: 0;
     margin-bottom: 0;
+    padding-top: 30px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    background: $color-background-sidenav;
+
+    ol {
+      padding-top: 5px;
+    }
+
+    &.side-nav-main {
+      @media (max-width: $responsivenav) {
+        transition: all .33s;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        padding-bottom: 0;
+
+        &.is-active {
+          height: calc(100vh - 216px);
+          z-index: 9999;
+          position: fixed;
+          overflow: auto;
+          visibility: visible;
+          padding-bottom: 30px;
+        }
+      }
+    }
 
     &.side-nav-main > .page_item {
       padding-left: 15px;

@@ -6,8 +6,8 @@
 // ---------------------------------------------------------
 
 // Variables
-$focus-background-color: #f9bf47;
-$focus-outline-color: #f9bf47;
+$focus-background-color: $color-cobalt-blue;
+$focus-outline-color: $color-cobalt-blue;
 $focus-text-color: #000;
 
 // Text meant only for screen readers.
@@ -25,6 +25,7 @@ $focus-text-color: #000;
 
   &.skip-link {
     margin: 5px;
+    color: $color-white !important;
   }
 
   &:focus {

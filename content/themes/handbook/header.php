@@ -45,6 +45,11 @@
         <?php echo get_search_form(); ?>
       </header>
 
+      <button id="nav-toggle" class="nav-toggle hamburger firstfocusableitem">
+        <span class="hamburger-box" aria-hidden="true"><span class="hamburger-inner" aria-hidden="true"></span></span>
+        <span id="nav-toggle-label" class="toggle-text"><?php esc_attr_e( 'Avaa valikko', 'handbook' ); ?></span>
+      </button>
+
       <h3 class="side-nav-title"><?php echo esc_html_e( 'Sisällysluettelo', 'handbook' ); ?></h3>
 
       <ol class="side-nav-main">

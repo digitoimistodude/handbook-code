@@ -19,6 +19,11 @@
     line-height: 1.55;
     padding-left: 1rem;
     padding-right: 1rem;
+
+    @media (max-width: $responsivenav) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   .search-form {
@@ -59,7 +64,11 @@
       color: #ccc;
       border-bottom: 1px solid #666;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 15px;
+
+      @media (max-width: $responsivenav) {
+        font-size: 17px;
+      }
 
       // I'm sorry
       &:focus {
@@ -68,9 +77,13 @@
 
       &::placeholder {
         color: #fff;
-        opacity: .5;
+        opacity: .7;
         font-weight: 500;
-        font-size: 14px;
+        font-size: 15px;
+
+        @media (max-width: $responsivenav) {
+          font-size: 17px;
+        }
       }
     }
 
@@ -85,6 +98,10 @@
       padding: 0;
       border: 0;
 
+      @media (max-width: $responsivenav) {
+        background: url('../svg/search-large.svg') center center no-repeat transparent;
+      }
+
       &:hover {
         cursor: pointer;
       }
@@ -98,6 +115,13 @@
     .site-title {
       overflow: hidden;
       margin: 0 auto;
+
+      @media (max-width: 680px) {
+        svg {
+          width: 70px;
+          height: 13.98px;
+        }
+      }
 
       a {
         font-size: 28px;
