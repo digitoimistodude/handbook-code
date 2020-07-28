@@ -44,14 +44,14 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
           <p><?php edit_post_link(); ?></p>
 
           <?php if ( ! empty( $git_commit_info ) ) : ?>
-           <p class="modified">Viimeksi muokattu käyttäjän <?php echo $git_commit_info->commit->committer->name ?> toimesta viestillä "<?php echo $git_commit_info->commit->message ?>", <a href="<?php echo $git_commit_info->html_url ?>">katso muutos <?php echo str_split( $git_commit_info->sha, 7 )[0] ?> GitHubissa</a>. <a class="git-commit-history-toggle">Näytä versiohistoria.</a></p>
+           <p class="modified">Viimeksi muokattu käyttäjän <?php echo $git_commit_info->commit->committer->name ?> toimesta viestillä "<?php echo $git_commit_info->commit->message ?>", <a class="no-text-link" href="<?php echo $git_commit_info->html_url ?>">katso muutos <?php echo str_split( $git_commit_info->sha, 7 )[0] ?> GitHubissa</a>. <a class="git-commit-history-toggle no-text-link">Näytä versiohistoria.</a></p>
          <?php endif;
 
          if ( ! empty( $git_commit_history ) ) : ?>
           <div class="git-commit-history">
             <div class="commits">
              <?php foreach ( $git_commit_history as $git_commit ) : ?>
-              <p class="commit"><span class="date"><?php echo date_i18n( 'j.n.Y H:i:s', strtotime( $git_commit['committer']->date ) ); ?></span> Muokattu käyttäjän <?php echo $git_commit['committer']->name ?> toimesta viestillä "<?php echo $git_commit['message'] ?>", <a href="<?php echo $git_commit['html_url'] ?>">katso muutos <?php echo str_split( $git_commit['sha'], 7 )[0] ?> GitHubissa</a>.</p>
+              <p class="commit"><span class="date"><?php echo date_i18n( 'j.n.Y H:i:s', strtotime( $git_commit['committer']->date ) ); ?></span> Muokattu käyttäjän <?php echo $git_commit['committer']->name ?> toimesta viestillä "<?php echo $git_commit['message'] ?>", <a class="no-text-link" href="<?php echo $git_commit['html_url'] ?>">katso muutos <?php echo str_split( $git_commit['sha'], 7 )[0] ?> GitHubissa</a>.</p>
             <?php endforeach; ?>
           </div>
         </div>
