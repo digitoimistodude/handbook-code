@@ -130,11 +130,12 @@ body {
   }
 }
 
-code {
+code:not([class*="language-"]) {
   color: #c7254e;
   background-color: #f9f2f4;
   padding: .375rem .5rem;
-  font-family: 'PT Mono', Menlo, 'Courier New', monospace;
+  font-family: $font-monospace;
+  font-size: 14px;
 
   &:hover {
     background-color: darken(#f9f2f4, 5%);

@@ -10,7 +10,6 @@
 // Helpers
 @import 'helpers';
 @import 'accessibility';
-@import 'prism';
 
 // Structure
 @import '../layout/side-nav';
@@ -22,3 +21,7 @@
 
 // Views
 @import '../views/front-page';
+
+// Code
+@import 'prism';
+@import 'prism-theme';

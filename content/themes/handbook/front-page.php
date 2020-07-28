@@ -15,6 +15,8 @@ get_header(); ?>
 <div id="primary" class="content-area">
   <main id="main" class="site-main">
 
+    <div class="container">
+    <article class="page type-page status-publish hentry">
     <?php if ( have_posts() ) {
      while ( have_posts() ) {
        the_post();
@@ -28,6 +30,8 @@ get_header(); ?>
     <?php if ( ! empty( $git_commit_info ) ) : ?><p class="modified">Viimeksi muokattu käyttäjän <?php echo $git_commit_info->commit->committer->name ?> toimesta viestillä "<?php echo $git_commit_info->commit->message ?>", <a class="no-text-link" href="<?php echo $git_commit_info->html_url ?>">katso muutos <?php echo str_split( $git_commit_info->sha, 7 )[0] ?> GitHubissa</a>.</p><?php endif; ?>
 
    <?php get_footer(); ?>
+   </article>
+   </div>
 
  </main><!-- #main -->
 </div><!-- #primary -->

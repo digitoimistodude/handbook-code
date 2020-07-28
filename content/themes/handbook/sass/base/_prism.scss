@@ -10,7 +10,6 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: #000;
   background: none;
-  text-shadow: 0 1px #fff;
   font-family: 'PT Mono', Menlo, 'Courier New', monospace;
   font-size: 1em;
   text-align: left;
@@ -22,12 +21,13 @@ pre[class*="language-"] {
   tab-size: 4;
   hyphens: none;
   display: block;
-  line-height: 1.4;
+  line-height: 1.55;
   overflow: auto;
   white-space: pre;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  border-radius: 4px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -38,35 +38,28 @@ pre[class*="language-"] {
   background-color: #efefef;
   margin: 0 0 1rem;
   padding: 1.25rem;
-  border-left: 20px solid #ddd;
+  // border-left: 20px solid #ddd;
   overflow-x: auto;
   transition: all .66s;
   width: 100%;
 
-  @media (min-width: $container-ipad) {
+  @media (min-width: $content-width + 500px) {
     &:hover {
-      background-color: darken(#efefef, 2%);
-      width: 55vw;
-      min-width: 650px;
+      width: calc(#{$content-width} + 100px);
     }
   }
 }
 
 pre[class*="language-"]::-webkit-scrollbar {
-  height: 3px;
+  height: 4px;
 }
 
 pre[class*="language-"]::-webkit-scrollbar-track {
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 pre[class*="language-"]::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-}
-
-code,
-pre {
-  border-radius: 0 !important;
+  border-radius: 4px;
 }
 
 pre[class*="language-"] code:hover {
@@ -103,7 +96,7 @@ pre[class*="language-"] {
 /* Inline code */
 :not(pre) > code[class*="language-"] {
   padding: .1em;
-  border-radius: 0;
+  border-radius: 4px;
   white-space: normal;
 }
 
@@ -164,7 +157,7 @@ pre[class*="language-"] {
 .token.regex,
 .token.important,
 .token.variable {
-  color: #e90;
+  color: #e36209;
 }
 
 .token.important,
