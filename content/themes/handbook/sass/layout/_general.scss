@@ -5,8 +5,112 @@
 // that apply everywhere throughout the website. Add more
 // always repeating elements right below.
 // -----------------------------------------------------------
+// Dude specific general typography related styles
+.block-title {
+  @include responsive-font($font-size-general-headings-mobile, $font-size-general-headings-desktop);
+  margin-bottom: $margin-between-text-elements;
+  margin-top: 0;
+  position: relative;
+
+  @media (min-width: $container-ipad-landscape) {
+    font-size: $font-size-general-headings-desktop;
+  }
+
+  &.block-title-large {
+    @extend %general-heading-alt;
+  }
+
+  &.block-title-small {
+    @extend %general-heading-small;
+  }
+}
+
+%general-heading-cta {
+  @include responsive-font($font-size-general-headings-mobile, $font-size-general-headings-medium-ctas);
+  line-height: 1.35;
+
+  @media (max-width: $container-mobile) {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  @media (min-width: $container-ipad-landscape) {
+    font-size: $font-size-general-headings-medium-ctas;
+  }
+}
+
+%general-heading-alt {
+  @include responsive-font($font-size-general-headings-mobile, 54px);
+  line-height: 1.35;
+  font-weight: 500;
+
+  @media (max-width: $container-mobile) {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  @media (min-width: 1300px) {
+    font-size: 54px;
+  }
+}
+
+%general-heading-large {
+  @include responsive-font(36px, $font-size-general-headings-desktop);
+  margin-bottom: 4rem;
+  line-height: 1.5;
+  font-weight: 400;
+
+  @media (max-width: $container-mobile) {
+    font-size: 36px;
+    font-weight: 500;
+  }
+
+  @media (min-width: $container-ipad-landscape + 200px) {
+    font-size: $font-size-general-headings-desktop;
+  }
+}
+
+%general-heading-small {
+  @include responsive-font(20px, 24px);
+  line-height: 1.5;
+  font-weight: 400;
+
+  @media (min-width: $container-ipad-landscape) {
+    font-size: 24px;
+  }
+}
+
+.large-text,
+%large-text {
+  @extend %general-heading-small;
+}
+
+.block-head {
+  padding: 0;
+
+  p.read-more {
+    margin: 0;
+  }
+}
+
 body {
   margin: 0;
+
+  .container,
+  .entry-content {
+    h1 {
+      @extend %general-heading-cta;
+    }
+
+    h2,
+     {
+      @extend %general-heading-small;
+    }
+
+    h3 {
+      @extend %general-heading-small;
+    }
+  }
 
   span.accent {
     opacity: .5;
