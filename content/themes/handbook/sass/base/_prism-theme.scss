@@ -39,7 +39,7 @@ pre[class*='language-'] {
 
 // code blocks
 pre[class*='language-'] {
-  overflow: auto;
+  overflow: visible;
   margin: 1em 0;
   border-radius: 3px;
   font-size: 85%;

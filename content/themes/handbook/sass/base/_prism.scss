@@ -42,12 +42,6 @@ pre[class*="language-"] {
   overflow-x: auto;
   transition: all .66s;
   width: 100%;
-
-  @media (min-width: $content-width + 500px) {
-    &:hover {
-      width: calc(#{$content-width} + 100px);
-    }
-  }
 }
 
 pre[class*="language-"]::-webkit-scrollbar {
@@ -171,4 +165,53 @@ pre[class*="language-"] {
 
 .token.entity {
   cursor: help;
+}
+
+// Copy to clipboard
+$radius: 4px;
+$background: #f6f8fa;
+
+pre[class*="language-"] {
+  position: relative;
+  overflow: visible;
+  border-radius: $radius;
+}
+
+.copy {
+  content: 'kopioi';
+  padding: 5px 10px 0;
+  position: absolute;
+  top: 18px;
+  right: 11px;
+  transform: none;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  color: rgba($color-midnight-blue, .5);
+  background: $background;
+  cursor: pointer;
+  transition: all 200ms ease;
+  font-size: 13px;
+  font-family: $font-base;
+  font-weight: 300;
+
+  span {
+    @extend .screen-reader-text;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover .copy {
+    transform: translate(-10px, -100%);
+  }
+
+  &:hover {
+    color: $color-midnight-blue;
+  }
+}
+
+code {
+  overflow: scroll;
 }
