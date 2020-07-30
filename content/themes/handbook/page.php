@@ -41,7 +41,7 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
             ?>
           </div><!-- .entry-content -->
 
-          <p><?php edit_post_link(); ?></p>
+          <p class="edit-link"><?php edit_post_link(); ?></p>
 
           <?php if ( ! empty( $git_commit_info ) ) : ?>
            <p class="modified">Viimeksi muokattu käyttäjän <?php echo $git_commit_info->commit->committer->name ?> toimesta viestillä "<?php echo $git_commit_info->commit->message ?>", <a class="no-text-link" href="<?php echo $git_commit_info->html_url ?>">katso muutos <?php echo str_split( $git_commit_info->sha, 7 )[0] ?> GitHubissa</a>. <a class="git-commit-history-toggle no-text-link">Näytä versiohistoria.</a></p>
