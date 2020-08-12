@@ -127,17 +127,17 @@
         font-size: 28px;
         color: #fff;
         text-transform: uppercase;
+      }
 
-        .handbook {
-          @extend .screen-reader-text;
-          position: relative;
-          font-weight: 700;
-          opacity: .6;
-        }
+      a .handbook {
+        @extend .screen-reader-text;
+        position: relative;
+        font-weight: 700;
+        opacity: .6;
+      }
 
-        svg {
-          fill: #fff;
-        }
+      a svg {
+        fill: #fff;
       }
     }
   }

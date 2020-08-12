@@ -1,4 +1,5 @@
 content/themes/handbook/fonts
+content/mu-plugins
 log/
 package-lock.json
 access.log
