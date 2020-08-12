@@ -9,6 +9,11 @@
 $focus-background-color: $color-cobalt-blue;
 $focus-outline-color: $color-cobalt-blue;
 $focus-text-color: #000;
+$tld-mobile: '192.168.196.2:3000';
+$tld-browsersync: 'localhost:3000';
+$tld-development: 'handbook.test';
+$tld-staging: 'handbook.vaiheessa.fi';
+$tld-production: 'handbook.dude.fi';
 
 // Text meant only for screen readers.
 .screen-reader-text {
@@ -100,4 +105,35 @@ $focus-text-color: #000;
   &:focus {
     text-decoration: none;
   }
+}
+
+// Add icon to external links
+a[href*="//"]:not([href*="#{$tld-production}"]):not([href*="#{$tld-staging}"]):not([href*="#{$tld-development}"]):not([href*="#{$tld-browsersync}"]):not([href*="#{$tld-mobile}"]):not(.github):not(.no-external-link-indicator) {
+  background-image: url('../svg/external-link.svg');
+  background-position: right center;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
+  margin-right: 1rem;
+
+  @media (max-width: 600px) {
+    background-size: 14px 14px;
+  }
+}
+
+// Light icons for dark navigation
+.menu-item a[href*="//"]:not([href*="#{$tld-production}"]):not([href*="#{$tld-staging}"]):not([href*="#{$tld-development}"]):not([href*="#{$tld-browsersync}"]):not([href*="#{$tld-mobile}"]):not(.github):not(.no-external-link-indicator) {
+  background-image: url('../svg/external-link-white.svg');
+}
+
+// Do not use email links as external links
+a[href^="mailto"] {
+  background-image: none;
+  padding-right: 0;
+}
+
+// Footer exceptions
+.block-footer .menu-item a[href*="//"]:not([href*="#{$tld-production}"]):not([href*="#{$tld-staging}"]):not([href*="#{$tld-development}"]):not([href*="#{$tld-browsersync}"]),
+.block-footer a[href*="//"]:not([href*="#{$tld-production}"]):not([href*="#{$tld-staging}"]):not([href*="#{$tld-development}"]):not([href*="#{$tld-browsersync}"]):not([href*="#{$tld-mobile}"]):not(.github):not(.no-external-link-indicator) {
+  background-size: 12px 12px;
+  padding-right: 2rem;
 }
