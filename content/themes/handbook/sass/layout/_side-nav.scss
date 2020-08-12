@@ -51,7 +51,7 @@ $content-width: 800px;
   user-select: none;
   text-decoration: none;
   padding: 0;
-  margin: 4rem auto 0 auto;
+  margin: 4rem auto 0;
   background: transparent;
   cursor: pointer;
   display: flex;
@@ -216,6 +216,11 @@ body .site-content .side-nav {
     &.side-nav-main > .page_item {
       padding-left: 15px;
       padding-right: 15px;
+
+      a[href*="//"]:not([href*="www.dudetest.xyz"]):not([href*="air.vaiheessa.fi"]):not([href*="airdev.test"]):not([href*="localhost:3000"]):not([href*="192.168.1.233:3000"]):not(.github):not(.no-external-link-indicator) {
+        padding-right: 0;
+        margin-right: 0;
+      }
     }
 
     .children > .page_item {
@@ -227,10 +232,15 @@ body .site-content .side-nav {
     > li.active,
     > li.current_page_item {
       overflow: visible;
+      color: $color-mint;
+
+      &::before {
+        color: $color-mint;
+      }
 
       > a {
-        font-weight: 700;
-        color: #fff;
+        font-weight: 400;
+        color: $color-mint;
         opacity: 1;
       }
     }

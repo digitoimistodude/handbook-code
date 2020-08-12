@@ -22,10 +22,10 @@
 </head>
 
 <body <?php body_class(); ?>>
-  <div id="page" class="site">
+  <div id="swup" class="site">
    <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'handbook' ); ?></a>
 
-   <div id="content" class="site-content">
+   <div class="site-content">
 
     <aside class="side-nav">
       <nav id="nav" class="nav-collapse">

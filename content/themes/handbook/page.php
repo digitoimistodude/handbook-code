@@ -19,7 +19,7 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
 
-    <div class="container">
+    <div class="container swup-transition-fade">
       <?php while ( have_posts() ) {
       	the_post();
 
@@ -28,7 +28,7 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <header class="entry-header">
-            <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+            <?php the_title( '<h1 class="entry-title" id="content">', '</h1>' ); ?>
           </header><!-- .entry-header -->
 
           <div class="entry-content">
