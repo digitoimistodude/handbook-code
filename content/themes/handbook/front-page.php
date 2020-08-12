@@ -30,7 +30,7 @@ get_header(); ?>
 
     <?php if ( ! empty( $git_commit_info ) ) : ?><p class="modified">Viimeksi muokattu käyttäjän <?php echo $git_commit_info->commit->committer->name ?> toimesta viestillä "<?php echo $git_commit_info->commit->message ?>", <a class="no-text-link" href="<?php echo $git_commit_info->html_url ?>">katso muutos <?php echo str_split( $git_commit_info->sha, 7 )[0] ?> GitHubissa</a>.</p><?php endif; ?>
 
-   <?php get_footer(); ?>
+   <?php wp_footer(); get_footer(); ?>
    </article>
    </div>
 

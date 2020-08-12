@@ -21,93 +21,109 @@ const swup = new Swup({
 
 // Swup starts
 swup.on("contentReplaced", function () {
-  // Fitvids
-  jQuery(
-    ".entry-content, .entry-content p, .entry-content iframe, .slide-single-article, .slide-single-article .post"
-  ).fitVids();
-});
+  // Always move scroll position to up when clicking a link
+  var moveToSwup = new MoveTo({
+    tolerance: 0,
+    duration: 0,
+    easing: "easeOutQuart",
+    container: window,
+  });
 
-// Toggle onclick git commit history
-jQuery(".git-commit-history-toggle").click(function () {
-  jQuery(".commits").slideToggle("slow");
-});
+  var target = document.getElementById("swup");
+  moveToSwup.move(target);
 
-// Init nav opened status
-navOpened = false;
+  // jQuery start
+  (function ($) {
+    // Document ready start
+    $(function () {
+      // Fitvids
+      $(
+        ".entry-content, .entry-content p, .entry-content iframe, .slide-single-article, .slide-single-article .post"
+      ).fitVids();
 
-// Minimal navigation
-jQuery(".nav-toggle").click(function () {
-  // Toggle boolean
-  navOpened ^= true;
+      // Toggle onclick git commit history
+      $(".git-commit-history-toggle").click(function () {
+        $(".commits").slideToggle("slow");
+      });
 
-  jQuery(".side-nav-main").toggleClass("is-active");
-  jQuery("body").toggleClass("js-nav-active");
+      // Init nav opened status
+      navOpened = false;
 
-  // Change text to closed and vice versa
-  var toggletext = jQuery(this).find(".toggle-text").text();
-  if (toggletext == "Avaa valikko") {
-    jQuery(this).find(".toggle-text").text("Sulje valikko");
-  } else {
-    jQuery(this).find(".toggle-text").text("Avaa valikko");
-  }
-});
+      // Minimal navigation
+      $(".nav-toggle").click(function () {
+        // Toggle boolean
+        navOpened ^= true;
 
-firstFocusableElement = document.getElementById("nav-toggle");
-lastFocusableElement = document
-  .getElementsByClassName("page-item-292")[0]
-  .getElementsByTagName("a")[0];
+        $(".side-nav-main").toggleClass("is-active");
+        $("body").toggleClass("js-nav-active");
 
-// Redirect last Tab to first focusable element.
-lastFocusableElement.addEventListener("keydown", function (e) {
-  if (e.keyCode === 9 && !e.shiftKey) {
-    if (navOpened === 1) {
-      e.preventDefault();
+        // Change text to closed and vice versa
+        var toggletext = $(this).find(".toggle-text").text();
+        if (toggletext == "Avaa valikko") {
+          $(this).find(".toggle-text").text("Sulje valikko");
+        } else {
+          $(this).find(".toggle-text").text("Avaa valikko");
+        }
+      });
 
-      firstFocusableElement.focus(); // Set focus on first element - that's actually close menu button.
-    }
-  }
-});
+      firstFocusableElement = document.getElementById("nav-toggle");
+      lastFocusableElement = document
+        .getElementsByClassName("page-item-292")[0]
+        .getElementsByTagName("a")[0];
 
-// Redirect first Shift+Tab to toggle button element.
-firstFocusableElement.addEventListener("keydown", function (e) {
-  if (e.keyCode === 9 && e.shiftKey) {
-    if (navOpened === 1) {
-      e.preventDefault();
-      lastFocusableElement.focus(); // Set focus on last element.
-    }
-  }
-});
+      // Redirect last Tab to first focusable element.
+      lastFocusableElement.addEventListener("keydown", function (e) {
+        if (e.keyCode === 9 && !e.shiftKey) {
+          if (navOpened === 1) {
+            e.preventDefault();
 
-// Close menu using Esc key.
-document.addEventListener("keyup", function (event) {
-  if (event.keyCode == 27) {
-    navOpened = 0;
+            firstFocusableElement.focus(); // Set focus on first element - that's actually close menu button.
+          }
+        }
+      });
 
-    var toggletext = jQuery(this).find(".toggle-text").text();
-    if (toggletext == "Avaa valikko") {
-      jQuery(this).find(".toggle-text").text("Sulje valikko");
-    } else {
-      jQuery(this).find(".toggle-text").text("Avaa valikko");
-    }
+      // Redirect first Shift+Tab to toggle button element.
+      firstFocusableElement.addEventListener("keydown", function (e) {
+        if (e.keyCode === 9 && e.shiftKey) {
+          if (navOpened === 1) {
+            e.preventDefault();
+            lastFocusableElement.focus(); // Set focus on last element.
+          }
+        }
+      });
 
-    jQuery(".side-nav-main").removeClass("is-active");
-    jQuery("body").removeClass("js-nav-active");
-  }
+      // Close menu using Esc key.
+      document.addEventListener("keyup", function (event) {
+        if (event.keyCode == 27) {
+          navOpened = 0;
+
+          var toggletext = $(this).find(".toggle-text").text();
+          if (toggletext == "Avaa valikko") {
+            $(this).find(".toggle-text").text("Sulje valikko");
+          } else {
+            $(this).find(".toggle-text").text("Avaa valikko");
+          }
+
+          $(".side-nav-main").removeClass("is-active");
+          $("body").removeClass("js-nav-active");
+        }
+      });
+    });
+  })(jQuery);
 });
 // Swup ends
 
+// jQuery start
 (function ($) {
+  // Document ready start
   $(function () {
     // Fitvids
     $(
       ".entry-content, .entry-content p, .entry-content iframe, .slide-single-article, .slide-single-article .post"
     ).fitVids();
-  });
 
-  // Document ready
-  $(document).ready(function () {
     // Toggle onclick git commit history
-    $(".git-commit-history-toggle").click(function () {
+    $(".git-commit-history-toggle").on("click", function () {
       $(".commits").slideToggle("slow");
     });
 
@@ -115,9 +131,9 @@ document.addEventListener("keyup", function (event) {
     navOpened = false;
 
     // Minimal navigation
-    $(".nav-toggle").click(function () {
+    $(".nav-toggle").on("click", function () {
       // Toggle boolean
-      navOpened ^= true;
+      //navOpened ^= true;
 
       $(".side-nav-main").toggleClass("is-active");
       $("body").toggleClass("js-nav-active");

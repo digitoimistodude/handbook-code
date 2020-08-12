@@ -39,6 +39,7 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 				get_template_part( 'template-parts/content', 'none' );
 			}
 
+      wp_footer();
 			get_footer();
 			?>
 

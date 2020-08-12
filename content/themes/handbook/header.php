@@ -35,9 +35,9 @@
             <?php
             $description = get_bloginfo( 'description', 'display' );
             if ( is_front_page() && is_home() ) : ?>
-            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span><?php echo file_get_contents( esc_url( get_theme_file_path( '/svg/logo.svg' ) ) ); ?> <span class="handbook"><?php echo esc_html_e( 'Handbook', 'handbook' ); ?></span></a></h1>
+            <h1 class="site-title"><a class="no-external-link-indicator" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span><?php echo file_get_contents( esc_url( get_theme_file_path( '/svg/logo.svg' ) ) ); ?> <span class="handbook"><?php echo esc_html_e( 'Handbook', 'handbook' ); ?></span></a></h1>
           <?php else : ?>
-            <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span><?php echo file_get_contents( esc_url( get_theme_file_path( '/svg/logo.svg' ) ) ); ?> <span class="handbook"><?php echo esc_html_e( 'Handbook', 'handbook' ); ?></span></a></p>
+            <p class="site-title"><a class="no-external-link-indicator" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span><?php echo file_get_contents( esc_url( get_theme_file_path( '/svg/logo.svg' ) ) ); ?> <span class="handbook"><?php echo esc_html_e( 'Handbook', 'handbook' ); ?></span></a></p>
           <?php endif; ?>
           <h3 class="handbook-title"><?php echo $description; /* WPCS: xss ok. */ ?></h3>
         </div><!-- .site-branding -->

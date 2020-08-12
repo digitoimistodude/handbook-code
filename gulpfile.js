@@ -431,6 +431,7 @@ gulp.task("js", function () {
   gulp
     .src([
       themeDir + "/js/src/fitvids.js",
+      themeDir + "/node_modules/moveto/dist/moveTo.js",
       themeDir + "/js/src/what-input.js",
       themeDir + "/js/src/prism.js",
       themeDir + "/node_modules/swup/dist/swup.js",
