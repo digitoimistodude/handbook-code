@@ -116,7 +116,7 @@ body .block-image-links .cols .col,
 }
 
 // Add icon to external links
-a[href*="//"]:not([href*="#{$tld-production}"]):not([href*="#{$tld-staging}"]):not([href*="#{$tld-development}"]):not([href*="#{$tld-browsersync}"]):not([href*="#{$tld-mobile}"]):not(.github):not(.no-external-link-indicator) {
+a[href*="//"]:not([href*="#{$tld-production}"]):not([href*="#{$tld-staging}"]):not([href*="#{$tld-development}"]):not([href*="#{$tld-browsersync}"]):not([href*="#{$tld-mobile}"]):not(.github):not(.no-external-link-indicator):not(.post-edit-link) {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
@@ -128,19 +128,14 @@ a[href*="//"]:not([href*="#{$tld-production}"]):not([href*="#{$tld-staging}"]):n
     background-repeat: no-repeat;
     content: '';
     position: relative;
-    display: flex;
+    display: inline-flex;
     width: 14px;
     height: 14px;
+    background-size: 14px 14px;
     right: 0;
     top: 0;
-    margin-left: .6rem;
-    padding-right: 1rem;
-
-    @media (max-width: 600px) {
-      width: 14px;
-      height: 14px;
-      background-size: 14px 14px;
-    }
+    margin-left: 5px;
+    margin-right: 2px;
   }
 }
 
