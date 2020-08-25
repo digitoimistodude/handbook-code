@@ -31,7 +31,7 @@
 
   @media (max-width: $container-mobile) {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: $headings-weight;
   }
 
   @media (min-width: $container-ipad-landscape) {
@@ -42,11 +42,11 @@
 %general-heading-alt {
   @include responsive-font($font-size-general-headings-mobile, 54px);
   line-height: 1.35;
-  font-weight: 500;
+  font-weight: $headings-weight;
 
   @media (max-width: $container-mobile) {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: $headings-weight;
   }
 
   @media (min-width: 1300px) {
@@ -62,7 +62,7 @@
 
   @media (max-width: $container-mobile) {
     font-size: 36px;
-    font-weight: 500;
+    font-weight: $headings-weight;
   }
 
   @media (min-width: $container-ipad-landscape + 200px) {
@@ -135,7 +135,7 @@ body {
       text-shadow: none;
       transition: .3s all;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: $headings-weight;
 
       &:hover {
         opacity: .6;
@@ -173,7 +173,7 @@ body {
 
     .git-commit-history-toggle {
       cursor: pointer;
-      font-weight: 500;
+      font-weight: $headings-weight;
     }
 
     p.commit {

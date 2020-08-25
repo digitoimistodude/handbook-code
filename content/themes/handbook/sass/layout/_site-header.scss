@@ -14,7 +14,7 @@
     margin: 10px auto 30px;
     text-transform: none;
     font-size: 1.4rem;
-    font-weight: 500;
+    font-weight: $headings-weight;
     color: #898e8b;
     line-height: 1.55;
     padding-left: 1rem;
@@ -63,7 +63,7 @@
       transition: all .5s;
       color: #ccc;
       border-bottom: 1px solid #666;
-      font-weight: 500;
+      font-weight: $headings-weight;
       font-size: 15px;
 
       @media (max-width: $responsivenav) {
@@ -78,7 +78,7 @@
       &::placeholder {
         color: #fff;
         opacity: .7;
-        font-weight: 500;
+        font-weight: $headings-weight;
         font-size: 15px;
 
         @media (max-width: $responsivenav) {
