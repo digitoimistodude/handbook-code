@@ -300,3 +300,17 @@ pre {
   word-wrap: break-word;
   margin-bottom: 2rem;
 }
+
+// Clean mac styled kbds
+kbd > kbd {
+  background-color: black;
+  border-radius: .285714286em; /* 4px */
+  color: ghostwhite;
+  font: 600 .875em/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: .214285714em .642857143em; /* 3px 9px */
+}
+
+kbd > kbd + span {
+  font-weight: 600;
+  margin: 0 -.5em; /* 7px */
+}
