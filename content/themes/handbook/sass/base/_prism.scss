@@ -167,7 +167,6 @@ pre[class*="language-"] {
 
 // Copy to clipboard
 $radius: 4px;
-$background: #f0f3f5;
 
 pre[class*="language-"] {
   position: relative;
@@ -185,7 +184,7 @@ pre[class*="language-"] {
   border-top-left-radius: $radius;
   border-top-right-radius: $radius;
   color: rgba($color-midnight-blue, .5);
-  background: $background;
+  background: transparent;
   cursor: pointer;
   transition: all 200ms ease;
   font-size: 13px;

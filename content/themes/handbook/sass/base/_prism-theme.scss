@@ -11,7 +11,7 @@ $code-colors: (
 	purple: #d73a49,
 	maroon: #6f42c1,
 	green: #005cc5,
-	light-gray: #f0f3f5,
+	light-gray: #f6f8fa,
 	dark-gray: #24292e
 );
 
@@ -65,6 +65,12 @@ code,
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
   background: map-get($code-colors, light-gray);
+  transition: all .55s;
+
+  &:hover,
+  &:focus {
+    background: #f0f3f5;
+  }
 }
 
 // inline code
