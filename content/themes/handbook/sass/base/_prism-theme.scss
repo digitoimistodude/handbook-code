@@ -65,11 +65,15 @@ code,
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
   background: $color-background-code-block;
-  transition: all .55s;
+  transition: all 200ms ease;
 
   &:hover,
   &:focus {
     background: $color-background-code-block-hover;
+
+    .copy {
+      background: $color-background-code-block-hover;
+    }
   }
 }
 
