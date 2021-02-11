@@ -124,3 +124,8 @@ function handbook_get_git_commit_info( $post_id = null ) {
 function handbook_get_git_commit_history( $post_id = null ) {
 	return get_post_meta( $post_id, '_handbook_commit_history', true );
 }
+
+function change_wpghs_sync_branch() {
+  return 'master';
+}
+add_filter( 'wpghs_sync_branch', 'change_wpghs_sync_branch' );
