@@ -112,7 +112,7 @@ body {
   }
 
   span.accent {
-    opacity: .5;
+    opacity: 0.5;
     font-weight: 400;
     font-style: italic;
     text-transform: none;
@@ -133,12 +133,12 @@ body {
       border: 0;
       box-shadow: none;
       text-shadow: none;
-      transition: .3s all;
+      transition: 0.3s all;
       text-decoration: none;
       font-weight: $headings-weight;
 
       &:hover {
-        opacity: .6;
+        opacity: 0.6;
       }
     }
 
@@ -164,7 +164,7 @@ body {
 
     p.modified {
       font-size: 15px;
-      opacity: .7;
+      opacity: 0.7;
     }
 
     .commits {
@@ -183,7 +183,7 @@ body {
       padding-top: 0;
       margin-bottom: 1rem;
       margin-top: 0;
-      opacity: .7;
+      opacity: 0.7;
 
       &:last-child {
         border-bottom: 0;
@@ -233,18 +233,6 @@ body {
   }
 }
 
-code:not([class*="language-"]) {
-  color: #c7254e;
-  background-color: #f9f2f4;
-  padding: .375rem .5rem;
-  font-family: $font-monospace;
-  font-size: 14px;
-
-  &:hover {
-    background-color: darken(#f9f2f4, 5%);
-  }
-}
-
 code[class*=language-] {
   padding: 0;
 }
@@ -260,14 +248,14 @@ code[class*=language-] {
   margin-bottom: 0;
   margin-top: 2rem;
   overflow: hidden;
-  transition: all .22s;
+  transition: all 0.22s;
 
   a,
   .post-edit-link {
     font-weight: 700;
     clear: both;
     text-align: center;
-    transition: all .22s;
+    transition: all 0.22s;
     display: block;
     padding: 2rem;
     background: #fafafa;
