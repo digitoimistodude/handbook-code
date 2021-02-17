@@ -3,6 +3,7 @@
  */
 
 // Import modules
+import "what-input";
 import "./prism.js";
 import "./fitvids.js";
 import MoveTo from "moveto";
@@ -12,10 +13,14 @@ import SwupBodyClassPlugin from '@swup/body-class-plugin';
 import SwupHeadPlugin from '@swup/head-plugin';
 // import LazyLoad from "vanilla-lazyload";
 import AnchorJS from 'anchor-js';
-import "what-input";
 
 const anchors = new AnchorJS();
 anchors.add();
+
+// Define
+var lastFocusableElement = false;
+var firstFocusableElement = false;
+var navOpened = false;
 
 // Initiate Swup transitions
 const swup = new Swup({
@@ -36,6 +41,11 @@ const swup = new Swup({
 
 // Swup starts
 swup.on("contentReplaced", function () {
+  // Define
+  var lastFocusableElement = false;
+  var firstFocusableElement = false;
+  var navOpened = false;
+
   // Always move scroll position to up when clicking a link
   var moveToSwup = new MoveTo({
     tolerance: 0,
@@ -61,8 +71,13 @@ swup.on("contentReplaced", function () {
         $(".commits").slideToggle("slow");
       });
 
+      // Init nav opened status
+      navOpened = false;
+
       // Minimal navigation
       $(".nav-toggle").click(function () {
+        // Toggle boolean
+        navOpened ^= true;
 
         $(".side-nav-main").toggleClass("is-active");
         $("body").toggleClass("js-nav-active");
@@ -84,27 +99,28 @@ swup.on("contentReplaced", function () {
       // Redirect last Tab to first focusable element.
       lastFocusableElement.addEventListener("keydown", function (e) {
         if (e.keyCode === 9 && !e.shiftKey) {
-        
+          if (navOpened === 1) {
             e.preventDefault();
 
             firstFocusableElement.focus(); // Set focus on first element - that's actually close menu button.
-          
+          }
         }
       });
 
       // Redirect first Shift+Tab to toggle button element.
       firstFocusableElement.addEventListener("keydown", function (e) {
         if (e.keyCode === 9 && e.shiftKey) {
-      
+          if (navOpened === 1) {
             e.preventDefault();
             lastFocusableElement.focus(); // Set focus on last element.
-          
+          }
         }
       });
 
       // Close menu using Esc key.
       document.addEventListener("keyup", function (event) {
         if (event.keyCode == 27) {
+          navOpened = 0;
 
           var toggletext = $(this).find(".toggle-text").text();
           if (toggletext == "Avaa valikko") {
@@ -10912,7 +10928,7 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
         // insert code and copy element
         pres[
           i
-        ].innerHTML = `<div class="copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="screen-reader-text">kopioi</span></div><code class="${pres[i].className}">${pres[i].innerHTML}</code>`;
+        ].innerHTML = `<div class="copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="screen-reader-text"></span></div><code class="${pres[i].className}">${pres[i].innerHTML}</code>`;
       }
     }
   }
@@ -10957,8 +10973,13 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
       $(".commits").slideToggle("slow");
     });
 
+    // Init nav opened status
+    navOpened = false;
+
     // Minimal navigation
     $(".nav-toggle").on("click", function () {
+      // Toggle boolean
+      //navOpened ^= true;
 
       $(".side-nav-main").toggleClass("is-active");
       $("body").toggleClass("js-nav-active");
@@ -10980,27 +11001,28 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
     // Redirect last Tab to first focusable element.
     lastFocusableElement.addEventListener("keydown", function (e) {
       if (e.keyCode === 9 && !e.shiftKey) {
-   
+        if (navOpened === 1) {
           e.preventDefault();
 
           firstFocusableElement.focus(); // Set focus on first element - that's actually close menu button.
-        
+        }
       }
     });
 
     // Redirect first Shift+Tab to toggle button element.
     firstFocusableElement.addEventListener("keydown", function (e) {
       if (e.keyCode === 9 && e.shiftKey) {
-
+        if (navOpened === 1) {
           e.preventDefault();
           lastFocusableElement.focus(); // Set focus on last element.
-        
+        }
       }
     });
 
     // Close menu using Esc key.
     document.addEventListener("keyup", function (event) {
       if (event.keyCode == 27) {
+        navOpened = 0;
 
         var toggletext = $(this).find(".toggle-text").text();
         if (toggletext == "Avaa valikko") {
