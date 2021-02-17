@@ -270,8 +270,9 @@ body .site-content .side-nav {
         margin-top: 0;
         padding-top: 0;
 
-        li {
+        > li {
           display: block;
+          opacity: 1;
         }
       }
 
@@ -308,6 +309,10 @@ body .site-content .side-nav {
       > ol li {
         padding-left: 25px;
         opacity: 0.6;
+
+        li {
+          opacity: 1;
+        }
       }
 
       > ol li.active,
