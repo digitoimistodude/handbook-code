@@ -1,0 +1,17 @@
+{
+  "preset": "wordpress",
+  "requireSpacesInsideParentheses": false,
+  "requirePaddingNewLinesBeforeLineComments": false,
+  "disallowSpacesInFunctionExpression": false,
+  "disallowSpacesInAnonymousFunctionExpression": false,
+  "fileExtensions": [".js"],
+  "excludeFiles": [
+    "content/themes/handbook/js/dist/*.js",
+    "content/themes/handbook/js/src/legacy.js",
+    "content/themes/handbook/js/src/modules/lazyload.js",
+    "content/themes/handbook/js/src/modules/sticky-nav.js",
+    "content/themes/handbook/js/src/modules/navigation.js",
+    "content/themes/handbook/js/all.js",
+    "gulpfile.js"
+  ]
+}

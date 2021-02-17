@@ -2,6 +2,21 @@
  * handbook theme JavaScript.
  */
 
+// Import modules
+import "./prism.js";
+import "./fitvids.js";
+import MoveTo from "moveto";
+import Swup from 'swup';
+import SwupScriptsPlugin from '@swup/scripts-plugin';
+import SwupBodyClassPlugin from '@swup/body-class-plugin';
+import SwupHeadPlugin from '@swup/head-plugin';
+// import LazyLoad from "vanilla-lazyload";
+import AnchorJS from 'anchor-js';
+import "what-input";
+
+const anchors = new AnchorJS();
+anchors.add();
+
 // Initiate Swup transitions
 const swup = new Swup({
   linkSelector:
@@ -46,13 +61,8 @@ swup.on("contentReplaced", function () {
         $(".commits").slideToggle("slow");
       });
 
-      // Init nav opened status
-      navOpened = false;
-
       // Minimal navigation
       $(".nav-toggle").click(function () {
-        // Toggle boolean
-        navOpened ^= true;
 
         $(".side-nav-main").toggleClass("is-active");
         $("body").toggleClass("js-nav-active");
@@ -74,28 +84,27 @@ swup.on("contentReplaced", function () {
       // Redirect last Tab to first focusable element.
       lastFocusableElement.addEventListener("keydown", function (e) {
         if (e.keyCode === 9 && !e.shiftKey) {
-          if (navOpened === 1) {
+        
             e.preventDefault();
 
             firstFocusableElement.focus(); // Set focus on first element - that's actually close menu button.
-          }
+          
         }
       });
 
       // Redirect first Shift+Tab to toggle button element.
       firstFocusableElement.addEventListener("keydown", function (e) {
         if (e.keyCode === 9 && e.shiftKey) {
-          if (navOpened === 1) {
+      
             e.preventDefault();
             lastFocusableElement.focus(); // Set focus on last element.
-          }
+          
         }
       });
 
       // Close menu using Esc key.
       document.addEventListener("keyup", function (event) {
         if (event.keyCode == 27) {
-          navOpened = 0;
 
           var toggletext = $(this).find(".toggle-text").text();
           if (toggletext == "Avaa valikko") {
@@ -10948,13 +10957,8 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
       $(".commits").slideToggle("slow");
     });
 
-    // Init nav opened status
-    navOpened = false;
-
     // Minimal navigation
     $(".nav-toggle").on("click", function () {
-      // Toggle boolean
-      //navOpened ^= true;
 
       $(".side-nav-main").toggleClass("is-active");
       $("body").toggleClass("js-nav-active");
@@ -10976,28 +10980,27 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
     // Redirect last Tab to first focusable element.
     lastFocusableElement.addEventListener("keydown", function (e) {
       if (e.keyCode === 9 && !e.shiftKey) {
-        if (navOpened === 1) {
+   
           e.preventDefault();
 
           firstFocusableElement.focus(); // Set focus on first element - that's actually close menu button.
-        }
+        
       }
     });
 
     // Redirect first Shift+Tab to toggle button element.
     firstFocusableElement.addEventListener("keydown", function (e) {
       if (e.keyCode === 9 && e.shiftKey) {
-        if (navOpened === 1) {
+
           e.preventDefault();
           lastFocusableElement.focus(); // Set focus on last element.
-        }
+        
       }
     });
 
     // Close menu using Esc key.
     document.addEventListener("keyup", function (event) {
       if (event.keyCode == 27) {
-        navOpened = 0;
 
         var toggletext = $(this).find(".toggle-text").text();
         if (toggletext == "Avaa valikko") {
