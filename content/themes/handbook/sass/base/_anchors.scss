@@ -1,0 +1,12 @@
+$color-anchor-links-paragraph: rgba($color-midnight, .3);
+$color-anchor-links-paragraph-hover: rgba($color-midnight, .6);
+
+body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edit-link) {
+  color: $color-anchor-links-paragraph;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $color-anchor-links-paragraph-hover;
+  }
+}

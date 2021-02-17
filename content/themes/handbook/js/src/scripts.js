@@ -2,6 +2,9 @@
  * handbook theme JavaScript.
  */
 
+// Disabling eslint because of legacy code
+/* eslint-disable */
+
 // Import modules
 import "what-input";
 import "./prism.js";
@@ -13,9 +16,6 @@ import SwupBodyClassPlugin from '@swup/body-class-plugin';
 import SwupHeadPlugin from '@swup/head-plugin';
 // import LazyLoad from "vanilla-lazyload";
 import AnchorJS from 'anchor-js';
-
-const anchors = new AnchorJS();
-anchors.add();
 
 // Define
 var lastFocusableElement = false;
@@ -41,6 +41,9 @@ const swup = new Swup({
 
 // Swup starts
 swup.on("contentReplaced", function () {
+
+  // Anchors
+
   // Define
   var lastFocusableElement = false;
   var firstFocusableElement = false;
@@ -10956,6 +10959,28 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
   function isPrismClass(preTag) {
     return preTag.className.substring(0, 8) === "language";
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const easeFunctions = {
+      easeInQuad: function (t, b, c, d) {
+        t /= d;
+        return c * t * t + b;
+      },
+      easeOutQuad: function (t, b, c, d) {
+        t /= d;
+        return -c * t * (t - 2) + b;
+      }
+    };
+    const moveTo = new MoveTo({
+        ease: 'easeInQuad'
+      },
+      easeFunctions
+    );
+    const triggers = document.getElementsByClassName('js-trigger');
+    for (var i = 0; i < triggers.length; i++) {
+      moveTo.registerTrigger(triggers[i]);
+    }
+  });
 });
 // Swup ends
 
@@ -10963,6 +10988,31 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
 (function ($) {
   // Document ready start
   $(function () {
+
+    // Anchors
+    const headingAnchors = new AnchorJS();
+    headingAnchors.options = {
+      placement: 'left',
+      visible: 'always',
+      truncate: 10,
+    };
+
+    const paragraphAnchors = new AnchorJS();
+    paragraphAnchors.options = {
+      placement: 'right',
+      visible: 'hover',
+      icon: '¶',
+      truncate: 10,
+    };
+
+    headingAnchors.add('h1');
+    headingAnchors.add('h2');
+    headingAnchors.add('h3');
+    headingAnchors.add('h4');
+    headingAnchors.add('h5');
+    headingAnchors.add('h6');
+    paragraphAnchors.add('p');
+
     // Fitvids
     $(
       ".entry-content, .entry-content p, .entry-content iframe, .slide-single-article, .slide-single-article .post"
@@ -11037,3 +11087,25 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
     });
   });
 })(jQuery);
+
+document.addEventListener('DOMContentLoaded', function () {
+  const easeFunctions = {
+    easeInQuad: function (t, b, c, d) {
+      t /= d;
+      return c * t * t + b;
+    },
+    easeOutQuad: function (t, b, c, d) {
+      t /= d;
+      return -c * t * (t - 2) + b;
+    }
+  };
+  const moveTo = new MoveTo({
+      ease: 'easeInQuad'
+    },
+    easeFunctions
+  );
+  const triggers = document.getElementsByClassName('js-trigger');
+  for (var i = 0; i < triggers.length; i++) {
+    moveTo.registerTrigger(triggers[i]);
+  }
+});

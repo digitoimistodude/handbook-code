@@ -75,4 +75,4 @@ function gutenbergstyles(done) {
 }
 
 exports.styles = styles;
-exports.gutenbergstyles = gutenbergstyles;
+// exports.gutenbergstyles = gutenbergstyles;
