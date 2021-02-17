@@ -27,7 +27,7 @@ const swup = new Swup({
   linkSelector:
     'a[href^="' +
     window.location.origin +
-    '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])',
+    '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup])',
   animationSelector: '[class*="swup-transition-"]',
   plugins: [
     new SwupScriptsPlugin({
@@ -43,6 +43,28 @@ const swup = new Swup({
 swup.on("contentReplaced", function () {
 
   // Anchors
+  const headingAnchors = new AnchorJS();
+  headingAnchors.options = {
+    placement: 'left',
+    visible: 'always',
+    truncate: 20,
+  };
+
+  const paragraphAnchors = new AnchorJS();
+  paragraphAnchors.options = {
+    placement: 'right',
+    visible: 'hover',
+    icon: '¶',
+    truncate: 20,
+  };
+
+  headingAnchors.add('h1');
+  headingAnchors.add('h2');
+  headingAnchors.add('h3');
+  headingAnchors.add('h4');
+  headingAnchors.add('h5');
+  headingAnchors.add('h6');
+  paragraphAnchors.add('p');
 
   // Define
   var lastFocusableElement = false;
@@ -10976,11 +10998,12 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
       },
       easeFunctions
     );
-    const triggers = document.getElementsByClassName('js-trigger');
+    const triggers = document.querySelectorAll('anchorjs-link');
     for (var i = 0; i < triggers.length; i++) {
       moveTo.registerTrigger(triggers[i]);
     }
   });
+
 });
 // Swup ends
 
@@ -11104,7 +11127,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     easeFunctions
   );
-  const triggers = document.getElementsByClassName('js-trigger');
+  const triggers = document.querySelectorAll('anchorjs-link');
   for (var i = 0; i < triggers.length; i++) {
     moveTo.registerTrigger(triggers[i]);
   }

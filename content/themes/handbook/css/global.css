@@ -2413,7 +2413,8 @@ pre[class*='language-'] {
 
 body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edit-link) {
   color: rgba(3, 6, 27, 0.3);
-  text-decoration: none; }
+  text-decoration: none;
+  transition: all .11s; }
   body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edit-link):hover, body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edit-link):focus {
     color: rgba(3, 6, 27, 0.6); }
   @media (min-width: 420px) and (max-width: 600px) {
