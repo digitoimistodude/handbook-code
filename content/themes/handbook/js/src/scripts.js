@@ -23,7 +23,7 @@ const headingAnchors = new AnchorJS();
 headingAnchors.options = {
   placement: 'left',
   visible: 'always',
-  truncate: 10,
+  truncate: 20,
 };
 
 const paragraphAnchors = new AnchorJS();
@@ -31,7 +31,7 @@ paragraphAnchors.options = {
   placement: 'right',
   visible: 'hover',
   icon: '¶',
-  truncate: 10,
+  truncate: 20,
 };
 
 headingAnchors.add('h1');
@@ -92,16 +92,19 @@ const swup = new Swup({
 // Swup starts
 swup.on("contentReplaced", function () {
 
-  // Always move scroll position to up when clicking a normal link
-  var moveToSwup = new MoveTo({
-    tolerance: 0,
-    duration: 0,
-    easing: "easeOutQuart",
-    container: window,
-  });
+  // Always move scroll position to up when clicking a link
+  // If hash # is not present in url
+  if ( ! window.location.hash ) {
+    var moveToSwup = new MoveTo({
+      tolerance: 0,
+      duration: 0,
+      easing: "easeOutQuart",
+      container: window,
+    });
 
-  var target = document.getElementById("swup");
-  moveToSwup.move(target);
+    var target = document.getElementById("swup");
+    moveToSwup.move(target);
+  }
 
   // Anchors
   const headingAnchors = new AnchorJS();
