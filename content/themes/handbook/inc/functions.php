@@ -129,3 +129,6 @@ function change_wpghs_sync_branch() {
   return 'master';
 }
 add_filter( 'wpghs_sync_branch', 'change_wpghs_sync_branch' );
+
+// Allow search
+add_filter( 'air_helper_disable_views_search', '__return_false' );
