@@ -3,12 +3,12 @@ $nav-toggle-active-color: $color-white;
 $hamburger-padding-x: 1.5rem;
 $hamburger-padding-y: 5rem;
 $hamburger-layer-width: 3rem;
-$hamburger-layer-height: .2rem;
-$hamburger-layer-spacing: .4rem;
+$hamburger-layer-height: 0.2rem;
+$hamburger-layer-spacing: 0.4rem;
 $hamburger-layer-color: $color-white;
 $hamburger-layer-border-radius: 0;
-$hamburger-hover-opacity: .8;
-$hamburger-hover-transition-duration: .15s;
+$hamburger-hover-opacity: 0.8;
+$hamburger-hover-transition-duration: 0.15s;
 $hamburger-hover-transition-timing-function: linear;
 $nav-open-from-right: true;
 $nav-open-from-left: false;
@@ -33,6 +33,7 @@ $content-width: 800px;
 
 // Choose hamburger animation here
 // Choices: https://jonsuh.com/hamburgers/
+
 .hamburger {
   @extend .hamburger--spin;
 }
@@ -68,7 +69,7 @@ $content-width: 800px;
 
   .hamburger-inner::after {
     width: 17px;
-    transition: width .5s;
+    transition: width 0.5s;
   }
 
   &.is-active .hamburger-inner::after,
@@ -82,6 +83,7 @@ $content-width: 800px;
   }
 
   // Alternative focus for mobile nav
+
   &:focus {
     @media (max-width: $container-mobile) {
       outline: none;
@@ -91,8 +93,8 @@ $content-width: 800px;
       background-color: $nav-toggle-color;
     }
 
-    span span:before,
-    span span:after {
+    span span::before,
+    span span::after {
       background-color: $nav-toggle-color;
     }
   }
@@ -107,6 +109,7 @@ $content-width: 800px;
   }
 
   // Separate active colors for opened state
+
   &.is-active {
     color: $nav-toggle-active-color;
   }
@@ -117,7 +120,7 @@ $content-width: 800px;
       background-color: $nav-toggle-active-color;
     }
 
-    .hamburger-box .hamburger-inner:after {
+    .hamburger-box .hamburger-inner::after {
       background-color: $nav-toggle-active-color;
     }
   }
@@ -127,7 +130,7 @@ $content-width: 800px;
       background-color: $nav-toggle-active-color;
     }
 
-    .hamburger-inner:after {
+    .hamburger-inner::after {
       background-color: $nav-toggle-active-color;
     }
   }
@@ -196,7 +199,7 @@ body .site-content .side-nav {
 
     &.side-nav-main {
       @media (max-width: $responsivenav) {
-        transition: all .33s;
+        transition: all 0.33s;
         height: 0;
         overflow: hidden;
         visibility: hidden;
@@ -217,7 +220,7 @@ body .site-content .side-nav {
       padding-left: 15px;
       padding-right: 15px;
 
-      a[href*="//"]:not([href*="www.dudetest.xyz"]):not([href*="air.vaiheessa.fi"]):not([href*="airdev.test"]):not([href*="localhost:3000"]):not([href*="192.168.1.233:3000"]):not(.github):not(.no-external-link-indicator) {
+      a[href*='//']:not([href*='www.dudetest.xyz']):not([href*='air.vaiheessa.fi']):not([href*='airdev.test']):not([href*='localhost:3000']):not([href*='192.168.1.233:3000']):not(.github):not(.no-external-link-indicator) {
         padding-right: 0;
         margin-right: 0;
       }
@@ -245,7 +248,8 @@ body .site-content .side-nav {
       }
     }
 
-    li {
+    li,
+    li li {
       display: flex;
       flex-wrap: wrap;
       width: 100%;
@@ -262,8 +266,13 @@ body .site-content .side-nav {
       line-height: 1.3;
       align-items: center;
 
-      li {
-        width: 100%;
+      ol {
+        margin-top: 0;
+        padding-top: 0;
+
+        li {
+          display: block;
+        }
       }
 
       a:hover {
@@ -298,7 +307,7 @@ body .site-content .side-nav {
 
       > ol li {
         padding-left: 25px;
-        opacity: .6;
+        opacity: 0.6;
       }
 
       > ol li.active,
@@ -306,12 +315,12 @@ body .site-content .side-nav {
         opacity: 1;
       }
 
-      > ol li &:before {
+      > ol li &::before {
         right: -46px;
       }
 
-      &:before {
-        content: counters(item, '.')'.';
+      &::before {
+        content: counters(item, '.') '.';
         counter-increment: item;
         color: #eaeaeb;
         font-size: 1.6rem;

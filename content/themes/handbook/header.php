@@ -56,7 +56,7 @@
       <?php
       wp_list_pages( array(
         'title_li'    => '',
-        'depth'       => 2,
+        'depth'       => 3,
         'sort_column' => 'menu_order',
         'walker'      => new handbook_walker(),
         ) ); ?>
