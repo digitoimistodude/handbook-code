@@ -2080,38 +2080,39 @@ kbd > kbd + span {
         fill: #fff; }
 
 body .site-footer {
-  display: flex;
   align-items: center;
   border-top: 1px solid #d9d9d9;
-  padding: 35px 0;
-  margin-top: 4rem; }
+  display: flex;
+  margin-top: 6rem;
+  padding: 35px 0; }
   body .site-footer p {
-    font-size: 14px;
     color: rgba(62, 65, 86, 0.8);
-    position: relative;
-    margin: 0; }
+    font-size: 14px;
+    margin: 0;
+    position: relative; }
   body .site-footer a.github {
-    padding-bottom: 5px;
-    margin-left: 5px;
-    text-shadow: none;
-    box-shadow: none;
-    text-decoration: none;
     background-position: 0 1px;
     background-size: 16px 16px;
-    padding-left: 20px; }
-  body .site-footer a:hover svg path {
+    box-shadow: none;
+    margin-left: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    text-decoration: none;
+    text-shadow: none; }
+  body .site-footer a:hover svg path,
+  body .site-footer a:focus svg path {
     stroke: #131a50; }
   body .site-footer svg {
-    width: 40px;
-    height: 64px;
     fill: rgba(62, 65, 86, 0.6);
     float: left;
+    height: 64px;
     margin-right: 25px;
     position: relative;
-    top: 0; }
+    top: 0;
+    width: 40px; }
     body .site-footer svg path {
-      transition: all .55s;
-      stroke: rgba(62, 65, 86, 0.5); }
+      stroke: rgba(62, 65, 86, 0.5);
+      transition: all .55s; }
 
 body .site-content .slide.slide-front {
   background-position: center;
@@ -2417,10 +2418,15 @@ body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edi
   transition: all .11s; }
   body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edit-link):hover, body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edit-link):focus {
     color: rgba(3, 6, 27, 0.6); }
-  @media (min-width: 420px) and (max-width: 600px) {
+
+.edit-link .anchorjs-link {
+  display: none !important; }
+
+@media (min-width: 420px) and (max-width: 600px) {
   :root {
     --font-size-general-small: 18px; } }
-  @media (max-width: 480px) {
+
+@media (max-width: 480px) {
     a[href*="//"]:not([href*="handbook.dude.fi"]):not([href*="handbook.vaiheessa.fi"]):not([href*="handbook.test"]):not([href*="localhost:3000"]):not([href*="192.168.1.233:3000"]):not(.github):not(.no-external-link-indicator):not(.post-edit-link) {
       padding-bottom: 4px;
       display: inline; }
@@ -2447,10 +2453,12 @@ body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edi
       body .site-content .slide.slide-front .container {
         padding-top: 150px;
         padding-bottom: 100px; } }
-  @media (min-width: 780px) {
+
+@media (min-width: 780px) {
     .nav-toggle {
       display: none; } }
-  @media (max-width: 900px) {
+
+@media (max-width: 900px) {
     body .site-content .side-nav {
       padding-left: 0;
       padding-right: 0;
@@ -2473,10 +2481,12 @@ body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edi
         .site-header .search-form input.search-field {
           width: 92%;
           display: inline-block; } }
-  @media (min-width: 900px) {
+
+@media (min-width: 900px) {
     body .site-content .side-nav {
       min-height: 100vh; } }
-  @media (max-width: 780px) {
+
+@media (max-width: 780px) {
       body .site-content .side-nav ol.side-nav-main {
         transition: all 0.33s;
         height: 0;
@@ -2503,7 +2513,8 @@ body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edi
             font-size: 17px; }
         .site-header .search-form .search-submit {
           background: url("../svg/search-large.svg") center center no-repeat transparent; } }
-  @media screen and (min-width: 320px) {
+
+@media screen and (min-width: 320px) {
     .block-title {
       font-size: calc(24px + 40 * ((100vw - 320px) / 1600)); }
     body .container h1,
@@ -2548,7 +2559,8 @@ body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edi
       font-size: calc(16px + 2 * ((100vw - 320px) / 1600)); }
     .error-404 .page-title {
       font-size: calc(42px + 78 * ((100vw - 320px) / 1600)); } }
-  @media screen and (min-width: 1920px) {
+
+@media screen and (min-width: 1920px) {
     .block-title {
       font-size: 64px; }
     body .container h1,
@@ -2593,7 +2605,8 @@ body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edi
       font-size: 18px; }
     .error-404 .page-title {
       font-size: 120px; } }
-  @media (min-width: 1024px) {
+
+@media (min-width: 1024px) {
     .block-title {
       font-size: 64px; }
     body .container h1,
@@ -2603,24 +2616,30 @@ body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edi
     body .entry-content h2, body .container h3,
     body .entry-content h3 {
       font-size: 24px; } }
-  @media (min-width: 1300px) {
+
+@media (min-width: 1300px) {
     .block-title.block-title-large {
       font-size: 54px; } }
-  @media (max-width: 900px) and (max-width: 655px) {
+
+@media (max-width: 900px) and (max-width: 655px) {
       .site-header .search-form input.search-field {
         width: 90%; } }
-  @media (max-width: 900px) and (max-width: 535px) {
+
+@media (max-width: 900px) and (max-width: 535px) {
       .site-header .search-form input.search-field {
         width: 85%; } }
-  @media (max-width: 680px) {
+
+@media (max-width: 680px) {
         .site-header .site-branding .site-title svg {
           width: 70px;
           height: 13.98px; } }
-  @media (max-height: 480px) {
+
+@media (max-height: 480px) {
       body .site-content .slide.slide-front .container {
         padding-top: 150px;
         padding-bottom: 100px; } }
-  @media print {
+
+@media print {
   code[class*="language-"],
   pre[class*="language-"] {
     text-shadow: none; } }

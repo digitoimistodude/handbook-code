@@ -11,3 +11,7 @@ body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edi
     color: $color-anchor-links-paragraph-hover;
   }
 }
+
+.edit-link .anchorjs-link {
+  display: none !important;
+}

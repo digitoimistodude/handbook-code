@@ -28,12 +28,6 @@ if ( ! function_exists( 'handbook_entry_footer' ) ) {
 			comments_popup_link( sprintf( wp_kses( __( 'Leave a comment<span class="screen-reader-text"> on %s</span>', 'handbook' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
 			echo '</span>';
 		}
-
-		edit_post_link(
-			sprintf( _x( 'Edit %s', '%s: Name of current post', 'handbook' ), the_title( '<span class="screen-reader-text">"', '"</span>', false ) ),
-			'<p class="edit-link">',
-			'</p>'
-		);
 	}
 }
 
@@ -63,7 +57,7 @@ if ( ! function_exists( 'handbook_comments' ) ) {
 				<?php comment_text();
 
 				comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
-				edit_comment_link( __( '&mdash; Edit' ), ' ', '' ) ?>
+				edit_comment_link( __( '&mdash; Muokkaa' ), ' ', '' ) ?>
 
 			</div>
 		</li>
