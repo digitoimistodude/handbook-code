@@ -1378,35 +1378,37 @@ html.is-animating .swup-transition-fade {
   color: #fff; }
 
 .nav-toggle {
-  list-style: none;
-  z-index: 100000;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  align-items: center;
+  background: transparent;
   border: 0;
-  overflow: visible;
   color: #fff;
-  font-weight: 700;
+  cursor: pointer;
+  display: flex;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  list-style: none;
+  margin: 4rem auto 0;
+  overflow: visible;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
   -webkit-touch-callout: none;
+  transform: translateX(-4px);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  text-decoration: none;
-  padding: 0;
-  margin: 4rem auto 0;
-  background: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transform: translateX(-4px); }
+  z-index: 100000; }
   .nav-toggle .toggle-text {
     margin-left: 20px; }
   .nav-toggle .hamburger-inner::after {
-    width: 17px;
-    transition: width 0.5s; }
+    transition: width .5s;
+    width: 17px; }
   .nav-toggle.is-active .hamburger-inner::after,
-  .nav-toggle:hover .hamburger-inner::after {
+  .nav-toggle:hover .hamburger-inner::after,
+  .nav-toggle.is-active .hamburger-inner::after,
+  .nav-toggle:focus .hamburger-inner::after {
     width: 3rem; }
   .nav-toggle span:not(.toggle-text) {
     color: #fff;
@@ -1447,67 +1449,71 @@ body.js-nav-active {
   overflow: hidden; }
 
 body .site-content .side-nav {
-  width: 300px;
   background: #03061b;
-  padding: 2rem 1rem; }
+  padding: 2rem 1rem;
+  width: 300px; }
   body .site-content .side-nav h3.side-nav-title {
     font-size: 18px;
     position: relative;
     top: 2px; }
   body .site-content .side-nav ol {
+    background: #03061b;
     counter-reset: item;
-    padding-bottom: 0;
-    margin-top: -1px;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-bottom: 0;
-    padding-top: 30px;
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    background: #03061b; }
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-top: -1px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 30px;
+    width: 100%; }
     body .site-content .side-nav ol ol {
       padding-top: 5px; }
+      body .site-content .side-nav ol ol li:last-child ol li {
+        margin-bottom: 5px; }
+      body .site-content .side-nav ol ol ol li:last-child {
+        margin-bottom: 0 !important; }
     body .site-content .side-nav ol.side-nav-main > .page_item {
       padding-left: 15px;
       padding-right: 15px; }
       body .site-content .side-nav ol.side-nav-main > .page_item a[href*='//']:not([href*='www.dudetest.xyz']):not([href*='air.vaiheessa.fi']):not([href*='airdev.test']):not([href*="localhost:3000"]):not([href*="192.168.1.233:3000"]):not(.github):not(.no-external-link-indicator) {
-        padding-right: 0;
-        margin-right: 0; }
+        margin-right: 0;
+        padding-right: 0; }
     body .site-content .side-nav ol .children > .page_item {
+      flex-wrap: nowrap;
       margin-left: -15px;
-      margin-right: -15px;
-      flex-wrap: nowrap; }
+      margin-right: -15px; }
     body .site-content .side-nav ol > li.active,
     body .site-content .side-nav ol > li.current_page_item {
-      overflow: visible;
-      color: #7effe1; }
+      color: #7effe1;
+      overflow: visible; }
       body .site-content .side-nav ol > li.active::before,
       body .site-content .side-nav ol > li.current_page_item::before {
         color: #7effe1; }
       body .site-content .side-nav ol > li.active > a,
       body .site-content .side-nav ol > li.current_page_item > a {
-        font-weight: 400;
         color: #7effe1;
+        font-weight: 400;
         opacity: 1; }
     body .site-content .side-nav ol li,
     body .site-content .side-nav ol li li {
+      align-items: center;
+      color: #777;
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
-      position: relative;
-      color: #777;
+      font-size: 13px;
+      line-height: 1.3;
+      margin-bottom: 0;
       margin-left: 0;
+      min-height: 31px;
+      padding-bottom: 5px;
       padding-left: 0;
       padding-right: 0;
       padding-top: 5px;
-      padding-bottom: 5px;
-      margin-bottom: 0;
-      font-size: 13px;
-      min-height: 31px;
-      line-height: 1.3;
-      align-items: center; }
+      position: relative;
+      width: 100%; }
       body .site-content .side-nav ol li ol,
       body .site-content .side-nav ol li li ol {
         margin-top: 0;
@@ -1517,7 +1523,9 @@ body .site-content .side-nav {
           display: block;
           opacity: 1; }
       body .site-content .side-nav ol li a:hover,
-      body .site-content .side-nav ol li li a:hover {
+      body .site-content .side-nav ol li a:focus,
+      body .site-content .side-nav ol li li a:hover,
+      body .site-content .side-nav ol li li a:focus {
         color: #fff;
         opacity: 1; }
       body .site-content .side-nav ol li.page_item_has_children,
@@ -1529,17 +1537,17 @@ body .site-content .side-nav {
         margin-bottom: 5px; }
       body .site-content .side-nav ol li .sub-menu,
       body .site-content .side-nav ol li li .sub-menu {
-        margin-top: 5px;
-        background: #03061b; }
+        background: #03061b;
+        margin-top: 5px; }
       body .site-content .side-nav ol li > ol,
       body .site-content .side-nav ol li li > ol {
-        margin-top: 0;
         margin-left: 0;
-        margin-right: 0; }
+        margin-right: 0;
+        margin-top: 0; }
       body .site-content .side-nav ol li > ol li,
       body .site-content .side-nav ol li li > ol li {
-        padding-left: 25px;
-        opacity: 0.6; }
+        opacity: .6;
+        padding-left: 25px; }
         body .site-content .side-nav ol li > ol li li,
         body .site-content .side-nav ol li li > ol li li {
           opacity: 1; }
@@ -1553,17 +1561,17 @@ body .site-content .side-nav {
         right: -46px; }
       body .site-content .side-nav ol li::before,
       body .site-content .side-nav ol li li::before {
+        color: #eaeaeb;
         content: counters(item, ".") ".";
         counter-increment: item;
-        color: #eaeaeb;
-        font-size: 1.6rem;
         display: inline;
+        font-size: 1.6rem;
         margin-right: 10px; }
       body .site-content .side-nav ol li a,
       body .site-content .side-nav ol li li a {
         color: #eaeaeb;
-        font-weight: 400;
         font-size: 1.6rem;
+        font-weight: 400;
         padding-left: 0; }
 
 .block-title {
@@ -2460,12 +2468,12 @@ body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edi
 
 @media (max-width: 900px) {
     body .site-content .side-nav {
+      height: auto !important;
+      margin-bottom: 20px;
+      padding-bottom: 0;
       padding-left: 0;
       padding-right: 0;
-      width: 100%;
-      height: auto !important;
-      padding-bottom: 0;
-      margin-bottom: 20px; }
+      width: 100%; }
         body .site-content .side-nav ol li,
         body .site-content .side-nav ol li li {
           height: auto;
@@ -2488,18 +2496,18 @@ body .content-area a.anchorjs-link:not(.github):not(.no-text-link):not(.post-edi
 
 @media (max-width: 780px) {
       body .site-content .side-nav ol.side-nav-main {
-        transition: all 0.33s;
         height: 0;
         overflow: hidden;
-        visibility: hidden;
-        padding-bottom: 0; }
+        padding-bottom: 0;
+        transition: all .33s;
+        visibility: hidden; }
         body .site-content .side-nav ol.side-nav-main.is-active {
           height: calc(100vh - 216px);
-          z-index: 9999;
-          position: fixed;
           overflow: auto;
+          padding-bottom: 30px;
+          position: fixed;
           visibility: visible;
-          padding-bottom: 30px; }
+          z-index: 9999; }
       .site-header .handbook-title {
         padding-left: 2rem;
         padding-right: 2rem; }

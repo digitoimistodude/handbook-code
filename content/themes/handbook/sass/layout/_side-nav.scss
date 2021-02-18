@@ -3,12 +3,12 @@ $nav-toggle-active-color: $color-white;
 $hamburger-padding-x: 1.5rem;
 $hamburger-padding-y: 5rem;
 $hamburger-layer-width: 3rem;
-$hamburger-layer-height: 0.2rem;
-$hamburger-layer-spacing: 0.4rem;
+$hamburger-layer-height: .2rem;
+$hamburger-layer-spacing: .4rem;
 $hamburger-layer-color: $color-white;
 $hamburger-layer-border-radius: 0;
-$hamburger-hover-opacity: 0.8;
-$hamburger-hover-transition-duration: 0.15s;
+$hamburger-hover-opacity: .8;
+$hamburger-hover-transition-duration: .15s;
 $hamburger-hover-transition-timing-function: linear;
 $nav-open-from-right: true;
 $nav-open-from-left: false;
@@ -16,7 +16,6 @@ $nav-open-from-bottom: false;
 $nav-open-from-top: false;
 $sidenav-width: 300px;
 $content-width: 800px;
-
 @import 'hamburgers/_sass/hamburgers/hamburgers';
 
 .nav-toggle,
@@ -39,25 +38,25 @@ $content-width: 800px;
 }
 
 .nav-toggle {
-  list-style: none;
-  z-index: 100000;
-  -webkit-tap-highlight-color: rgba(#000, 0);
-  border: 0;
-  overflow: visible;
-  color: $nav-toggle-color;
-  font-weight: 700;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-touch-callout: none;
-  user-select: none;
-  text-decoration: none;
-  padding: 0;
-  margin: 4rem auto 0;
+  align-items: center;
   background: transparent;
+  border: 0;
+  color: $nav-toggle-color;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  list-style: none;
+  margin: 4rem auto 0;
+  overflow: visible;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(#000, 0);
+  text-decoration: none;
+  -webkit-touch-callout: none;
   transform: translateX(-4px);
+  user-select: none;
+  z-index: 100000;
 
   @media (min-width: $responsivenav) {
     display: none;
@@ -68,12 +67,14 @@ $content-width: 800px;
   }
 
   .hamburger-inner::after {
+    transition: width .5s;
     width: 17px;
-    transition: width 0.5s;
   }
 
   &.is-active .hamburger-inner::after,
-  &:hover  .hamburger-inner::after {
+  &:hover .hamburger-inner::after,
+  &.is-active .hamburger-inner::after,
+  &:focus .hamburger-inner::after {
     width: $hamburger-layer-width;
   }
 
@@ -155,17 +156,17 @@ body.js-nav-active {
 }
 
 body .site-content .side-nav {
-  width: $sidenav-width;
   background: $color-background-sidenav;
   padding: 2rem 1rem;
+  width: $sidenav-width;
 
   @media (max-width: 900px) {
+    height: auto !important;
+    margin-bottom: 20px;
+    padding-bottom: 0;
     padding-left: 0;
     padding-right: 0;
     width: 100%;
-    height: auto !important;
-    padding-bottom: 0;
-    margin-bottom: 20px;
   }
 
   @media (min-width: 900px) {
@@ -180,38 +181,46 @@ body .site-content .side-nav {
   }
 
   ol {
+    background: $color-background-sidenav;
     counter-reset: item;
-    padding-bottom: 0;
-    margin-top: -1px;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-bottom: 0;
-    padding-top: 30px;
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    background: $color-background-sidenav;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-top: -1px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 30px;
+    width: 100%;
 
     ol {
       padding-top: 5px;
+
+      li:last-child ol li {
+        margin-bottom: 5px;
+      }
+
+      ol li:last-child {
+        margin-bottom: 0 !important;
+      }
     }
 
     &.side-nav-main {
       @media (max-width: $responsivenav) {
-        transition: all 0.33s;
         height: 0;
         overflow: hidden;
-        visibility: hidden;
         padding-bottom: 0;
+        transition: all .33s;
+        visibility: hidden;
 
         &.is-active {
           height: calc(100vh - 216px);
-          z-index: 9999;
-          position: fixed;
           overflow: auto;
-          visibility: visible;
           padding-bottom: 30px;
+          position: fixed;
+          visibility: visible;
+          z-index: 9999;
         }
       }
     }
@@ -221,50 +230,50 @@ body .site-content .side-nav {
       padding-right: 15px;
 
       a[href*='//']:not([href*='www.dudetest.xyz']):not([href*='air.vaiheessa.fi']):not([href*='airdev.test']):not([href*='localhost:3000']):not([href*='192.168.1.233:3000']):not(.github):not(.no-external-link-indicator) {
-        padding-right: 0;
         margin-right: 0;
+        padding-right: 0;
       }
     }
 
     .children > .page_item {
+      flex-wrap: nowrap;
       margin-left: -15px;
       margin-right: -15px;
-      flex-wrap: nowrap;
     }
 
     > li.active,
     > li.current_page_item {
-      overflow: visible;
       color: $color-mint;
+      overflow: visible;
 
       &::before {
         color: $color-mint;
       }
 
       > a {
-        font-weight: 400;
         color: $color-mint;
+        font-weight: 400;
         opacity: 1;
       }
     }
 
     li,
     li li {
+      align-items: center;
+      color: #777;
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
-      position: relative;
-      color: #777;
+      font-size: 13px;
+      line-height: 1.3;
+      margin-bottom: 0;
       margin-left: 0;
+      min-height: 31px;
+      padding-bottom: 5px;
       padding-left: 0;
       padding-right: 0;
       padding-top: 5px;
-      padding-bottom: 5px;
-      margin-bottom: 0;
-      font-size: 13px;
-      min-height: 31px;
-      line-height: 1.3;
-      align-items: center;
+      position: relative;
+      width: 100%;
 
       ol {
         margin-top: 0;
@@ -276,7 +285,8 @@ body .site-content .side-nav {
         }
       }
 
-      a:hover {
+      a:hover,
+      a:focus {
         color: #fff;
         opacity: 1;
       }
@@ -296,19 +306,19 @@ body .site-content .side-nav {
       }
 
       .sub-menu {
-        margin-top: 5px;
         background: $color-background-sidenav;
+        margin-top: 5px;
       }
 
       > ol {
-        margin-top: 0;
         margin-left: 0;
         margin-right: 0;
+        margin-top: 0;
       }
 
       > ol li {
+        opacity: .6;
         padding-left: 25px;
-        opacity: 0.6;
 
         li {
           opacity: 1;
@@ -325,18 +335,18 @@ body .site-content .side-nav {
       }
 
       &::before {
+        color: #eaeaeb;
         content: counters(item, '.') '.';
         counter-increment: item;
-        color: #eaeaeb;
-        font-size: 1.6rem;
         display: inline;
+        font-size: 1.6rem;
         margin-right: 10px;
       }
 
       a {
         color: #eaeaeb;
-        font-weight: 400;
         font-size: 1.6rem;
+        font-weight: 400;
         padding-left: 0;
       }
     }
