@@ -34,13 +34,13 @@ paragraphAnchors.options = {
   truncate: 20,
 };
 
-headingAnchors.add('h1');
-headingAnchors.add('h2');
-headingAnchors.add('h3');
-headingAnchors.add('h4');
-headingAnchors.add('h5');
-headingAnchors.add('h6');
-paragraphAnchors.add('p');
+headingAnchors.add('.content-area h1');
+headingAnchors.add('.content-area h2');
+headingAnchors.add('.content-area h3');
+headingAnchors.add('.content-area h4');
+headingAnchors.add('.content-area h5');
+headingAnchors.add('.content-area h6');
+paragraphAnchors.add('.content-area p');
 
 // Load these after swup
 document.addEventListener('DOMContentLoaded', function () {
@@ -122,13 +122,13 @@ swup.on("contentReplaced", function () {
     truncate: 20,
   };
 
-  headingAnchors.add('h1');
-  headingAnchors.add('h2');
-  headingAnchors.add('h3');
-  headingAnchors.add('h4');
-  headingAnchors.add('h5');
-  headingAnchors.add('h6');
-  paragraphAnchors.add('p');
+  headingAnchors.add('.content-area h1');
+  headingAnchors.add('.content-area h2');
+  headingAnchors.add('.content-area h3');
+  headingAnchors.add('.content-area h4');
+  headingAnchors.add('.content-area h5');
+  headingAnchors.add('.content-area h6');
+  paragraphAnchors.add('.content-area p');
 
   // Define
   var lastFocusableElement = false;
