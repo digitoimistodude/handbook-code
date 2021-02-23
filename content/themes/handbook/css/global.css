@@ -1492,6 +1492,11 @@ body .site-content .side-nav {
       color: #7effe1;
       opacity: 1;
       overflow: visible; }
+      body .site-content .side-nav ol > li.active ol ol li:not(.current_page_item),
+      body .site-content .side-nav ol > li.current_page_item ol ol li:not(.current_page_item),
+      body .site-content .side-nav ol > li.current_page_parent ol ol li:not(.current_page_item),
+      body .site-content .side-nav ol > li.current_page_ancestor ol ol li:not(.current_page_item) {
+        opacity: .6; }
       body .site-content .side-nav ol > li.active::before,
       body .site-content .side-nav ol > li.current_page_item::before,
       body .site-content .side-nav ol > li.current_page_parent::before,

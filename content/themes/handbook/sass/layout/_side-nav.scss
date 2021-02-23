@@ -249,6 +249,10 @@ body .site-content .side-nav {
       opacity: 1;
       overflow: visible;
 
+      ol ol li:not(.current_page_item) {
+        opacity: .6;
+      }
+
       &::before {
         color: $color-mint;
       }
