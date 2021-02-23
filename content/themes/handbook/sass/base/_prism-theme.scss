@@ -5,32 +5,31 @@
 
 // color vars
 $code-colors: (
-	blue: #005cc5,
-	teal: #005cc5,
-	black: #032f62,
-	purple: #d73a49,
-	maroon: #6f42c1,
-	green: #005cc5,
-	light-gray: $color-background-code-block,
-	dark-gray: #24292e
+  blue: #005cc5,
+  teal: #005cc5,
+  black: #032f62,
+  purple: #d73a49,
+  maroon: #6f42c1,
+  green: #005cc5,
+  light-gray: $color-background-code-block,
+  dark-gray: #24292e
 );
-
 
 // base
 code,
 code[class*='language-'],
 pre[class*='language-'] {
   color: map-get($code-colors, black);
+  cursor: text;
+  direction: ltr;
+  font-family: $font-monospace;
+  font-size: 14px;
+  hyphens: none;
+  line-height: 1.4;
+  tab-size: 4;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
-  tab-size: 4;
-  hyphens: none;
-  font-family: $font-monospace;
-  line-height: 1.4;
-  direction: ltr;
-  cursor: text;
-  font-size: 14px;
 
   * {
     font-size: 14px;
@@ -39,25 +38,51 @@ pre[class*='language-'] {
 
 // code blocks
 pre[class*='language-'] {
-  overflow: visible;
-  margin: 1em 0;
   border-radius: 3px;
   font-size: 85%;
+  margin: 1em 0;
+  overflow: visible;
   padding: 2rem;
+
+  &.wrong .copy,
+  &.right .copy {
+    background: transparent !important;
+
+    &:hover,
+    &:focus {
+      background: transparent !important;
+    }
+  }
+
+  &.wrong {
+    background: #ffe6d8 !important;
+
+    .comment {
+      color: #a81919 !important;
+    }
+  }
+
+  &.right {
+    background: #dbffd8 !important;
+
+    .comment {
+      color: #19a857 !important;
+    }
+  }
 }
 
 p code,
 li code,
 table code {
-  margin: 0;
   border-radius: 3px;
-  padding: .2em 0;
   font-size: 85%;
+  margin: 0;
+  padding: .2em 0;
 
-  &:before,
-  &:after {
-    letter-spacing: -0.2em;
+  &::before,
+  &::after {
     content: '\00a0';
+    letter-spacing: -.2em;
   }
 }
 
@@ -79,10 +104,9 @@ pre[class*='language-'] {
 
 // inline code
 :not(pre) > code[class*='language-'] {
-  padding: .1em;
   border-radius: .3em;
+  padding: .1em;
 }
-
 
 // token colors
 .token {
