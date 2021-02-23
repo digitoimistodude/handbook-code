@@ -1486,14 +1486,21 @@ body .site-content .side-nav {
       margin-left: -15px;
       margin-right: -15px; }
     body .site-content .side-nav ol > li.active,
-    body .site-content .side-nav ol > li.current_page_item {
+    body .site-content .side-nav ol > li.current_page_item,
+    body .site-content .side-nav ol > li.current_page_parent,
+    body .site-content .side-nav ol > li.current_page_ancestor {
       color: #7effe1;
+      opacity: 1;
       overflow: visible; }
       body .site-content .side-nav ol > li.active::before,
-      body .site-content .side-nav ol > li.current_page_item::before {
+      body .site-content .side-nav ol > li.current_page_item::before,
+      body .site-content .side-nav ol > li.current_page_parent::before,
+      body .site-content .side-nav ol > li.current_page_ancestor::before {
         color: #7effe1; }
       body .site-content .side-nav ol > li.active > a,
-      body .site-content .side-nav ol > li.current_page_item > a {
+      body .site-content .side-nav ol > li.current_page_item > a,
+      body .site-content .side-nav ol > li.current_page_parent > a,
+      body .site-content .side-nav ol > li.current_page_ancestor > a {
         color: #7effe1;
         font-weight: 400;
         opacity: 1; }
