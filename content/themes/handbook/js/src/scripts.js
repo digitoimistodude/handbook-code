@@ -11026,7 +11026,7 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
     event.trigger.textContent = "kopioitu!";
     setTimeout(() => {
       event.clearSelection();
-      event.trigger.textContent = "kopioi";
+      event.trigger.textContent = "";
     }, 2000);
   });
 
