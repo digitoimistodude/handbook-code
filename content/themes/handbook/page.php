@@ -21,10 +21,7 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 
     <div class="container swup-transition-fade">
       <?php while ( have_posts() ) {
-      	the_post();
-
-        $git_commit_info = handbook_get_git_commit_info( get_the_id() );
-        $git_commit_history = handbook_get_git_commit_history( get_the_id() ); ?>
+      	the_post(); ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <header class="entry-header">
@@ -44,20 +41,6 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
           <?php if ( get_edit_post_link() ) {
             edit_post_link( sprintf( wp_kses( __( 'Muokkaa <span class="screen-reader-text">%s</span>', 'handbook' ), [ 'span' => [ 'class' => [] ] ] ), get_the_title() ), '<p class="edit-link">', '</p>' );
           } ?>
-
-          <?php if ( ! empty( $git_commit_info ) ) : ?>
-           <p class="modified">Viimeksi muokattu käyttäjän <?php echo $git_commit_info->commit->committer->name ?> toimesta viestillä "<?php echo $git_commit_info->commit->message ?>", <a class="no-text-link" href="<?php echo $git_commit_info->html_url ?>">katso muutos <?php echo str_split( $git_commit_info->sha, 7 )[0] ?> GitHubissa</a>. <a class="git-commit-history-toggle no-text-link">Näytä versiohistoria.</a></p>
-         <?php endif;
-
-         if ( ! empty( $git_commit_history ) ) : ?>
-          <div class="git-commit-history">
-            <div class="commits">
-             <?php foreach ( $git_commit_history as $git_commit ) : ?>
-              <p class="commit"><span class="date"><?php echo date_i18n( 'j.n.Y H:i:s', strtotime( $git_commit['committer']->date ) ); ?></span> Muokattu käyttäjän <?php echo $git_commit['committer']->name ?> toimesta viestillä "<?php echo $git_commit['message'] ?>", <a class="no-text-link" href="<?php echo $git_commit['html_url'] ?>">katso muutos <?php echo str_split( $git_commit['sha'], 7 )[0] ?> GitHubissa</a>.</p>
-            <?php endforeach; ?>
-          </div>
-        </div>
-      <?php endif; ?>
 
     </article><!-- #post-## -->
 
