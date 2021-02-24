@@ -2,7 +2,7 @@
  * Github-like theme for Prism.js
  * @author Luke Askew http://github.com/lukeaskew
  */
-
+/* stylelint-disable */
 // color vars
 $code-colors: (
   blue: #005cc5,
@@ -44,18 +44,12 @@ pre[class*='language-'] {
   overflow: visible;
   padding: 2rem;
 
-  &.wrong .copy,
-  &.right .copy {
-    background: transparent !important;
-
-    &:hover,
-    &:focus {
-      background: transparent !important;
-    }
-  }
-
   &.wrong {
-    background: #ffe6d8 !important;
+    background-color: #ffe6d8 !important;
+
+    .copy {
+      background-color: #ffe6d8 !important;
+    }
 
     .comment {
       color: #a81919 !important;
@@ -63,7 +57,11 @@ pre[class*='language-'] {
   }
 
   &.right {
-    background: #dbffd8 !important;
+    background-color: #dbffd8 !important;
+
+    .copy {
+      background-color: #dbffd8 !important;
+    }
 
     .comment {
       color: #19a857 !important;
