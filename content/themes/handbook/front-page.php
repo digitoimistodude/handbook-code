@@ -31,9 +31,10 @@ get_header(); ?>
     } ?>
 
    </article>
+    <?php get_footer(); ?>
    </div>
 
  </main><!-- #main -->
 </div><!-- #primary -->
 
-<?php get_footer();
+<?php wp_footer();
