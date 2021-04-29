@@ -30,14 +30,10 @@ get_header(); ?>
       edit_post_link( sprintf( wp_kses( __( 'Muokkaa <span class="screen-reader-text">%s</span>', 'handbook' ), [ 'span' => [ 'class' => [] ] ] ), get_the_title() ), '<p class="edit-link">', '</p>' );
     } ?>
 
-   <?php wp_footer(); get_footer(); ?>
    </article>
    </div>
 
  </main><!-- #main -->
 </div><!-- #primary -->
 
-<?php wp_footer(); ?>
-
-</body>
-</html>
+<?php get_footer();

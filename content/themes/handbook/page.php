@@ -49,13 +49,14 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 					comments_template();
 				}
 
-        wp_footer();
 				get_footer();
       } ?>
     </div><!-- .container -->
 
   </main><!-- #main -->
 </div><!-- #primary -->
+
+<?php wp_footer(); ?>
 
 </body>
 </html>

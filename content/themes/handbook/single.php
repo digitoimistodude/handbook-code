@@ -27,7 +27,6 @@ get_template_part( 'template-parts/hero', get_post_type() ); ?>
 				}
 			}
 
-      wp_footer();
       get_footer();
       ?>
     </div><!-- .container -->
