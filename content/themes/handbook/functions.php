@@ -13,51 +13,6 @@ define( 'AIR_VERSION', '2.7.9' );
 show_admin_bar( false );
 
 /**
- * Fix broken umlauts caused by wp-github-sync.
- *
- * @link https://gist.github.com/Zodiac1978/05361a79c0bb3085be3e
- */
-function tl_umlaut_repair( $content ) {
-/*
- * Why?
- * For everyone getting this warning from W3C: "Text run is not in Unicode Normalization Form C."
- * http://www.w3.org/International/docs/charmod-norm/#choice-of-normalization-form
- */
-
-/*
- * See: http://www.fileformat.info/info/unicode/char/0308/index.htm
- */
-$content = str_replace( "a\xCC\x88", 'ä', $content );
-$content = str_replace( "o\xCC\x88", 'ö', $content );
-$content = str_replace( "u\xCC\x88", 'ü', $content );
-$content = str_replace( "A\xCC\x88", 'Ä', $content );
-$content = str_replace( "O\xCC\x88", 'Ö', $content );
-$content = str_replace( "U\xCC\x88", 'Ü', $content );
-
-return $content;
-}
-
-add_filter( 'the_content', 'tl_umlaut_repair', 10, 1 );
-
-add_filter( 'the_title', 'wpse_title' );
-function wpse_title( $title ) {
-  $title = str_replace( "a\xCC\x88", 'ä', $title );
-  $title = str_replace( "o\xCC\x88", 'ö', $title );
-  $title = str_replace( "u\xCC\x88", 'ü', $title );
-  $title = str_replace( "A\xCC\x88", 'Ä', $title );
-  $title = str_replace( "O\xCC\x88", 'Ö', $title );
-  $title = str_replace( "U\xCC\x88", 'Ü', $title );
-
-  return $title;
-}
-
-/**
- * Define SendGrid credentials
- */
-define( 'SENDGRID_API_KEY', getenv( 'SENDGRID_API_KEY' ) );
-define( 'SENDGRID_CATEGORIES', 'handbook' );
-
-/**
  * Requires.
  */
 require get_theme_file_path( '/inc/functions.php' );
@@ -93,14 +48,8 @@ function remove_posts_menu() {
 add_action( 'admin_init', 'remove_posts_menu' );
 
 /**
- * Auto sync nav.
- */
-add_filter( 'amfp_auto_sync_menu', '__return_true' );
-
-/**
  * Enable theme support for essential features.
  */
-add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'title-tag' );
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
@@ -109,7 +58,6 @@ add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list'
  * Load textdomain and set a locale.
  */
 load_theme_textdomain( 'handbook', get_template_directory() . '/languages' );
-setlocale( LC_ALL, 'fi_FI.utf8' );
 
 /**
  * Enqueue scripts and styles.
