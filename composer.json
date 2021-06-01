@@ -58,7 +58,7 @@
     }
   ],
   "require": {
-    "koodimonni/composer-dropin-installer": "*",
+    "koodimonni/composer-dropin-installer": "dev-master",
     "php": ">=7.2",
     "koodimonni-language/fi": "*",
     "koodimonni-language/en_gb": "*",
