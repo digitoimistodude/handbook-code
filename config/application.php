@@ -122,15 +122,6 @@ if ( file_exists( $env_config ) ) {
     require_once $env_config;
 }
 
-Config::apply();
-
-/**
- * Bootstrap WordPress
- */
-if ( ! defined( 'ABSPATH' ) ) {
-    define( 'ABSPATH', $webroot_dir . '/wp/' );
-}
-
 /**
  *  Redis object cache settings for
  *  https://wordpress.org/plugins/redis-cache/
@@ -141,4 +132,13 @@ Config::define( 'WP_REDIS_MAXTTL', 43200 ); // max cache half day
 
 if ( 'development' !== WP_ENV ) {
   Config::define( 'WP_REDIS_PASSWORD', getenv( 'REDIS_PASSWORD' ) );
+}
+
+Config::apply();
+
+/**
+ * Bootstrap WordPress
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+    define( 'ABSPATH', $webroot_dir . '/wp/' );
 }
