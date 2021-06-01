@@ -40,6 +40,10 @@
     {
       "type": "vcs",
       "url": "git@github.com:Koodimonni/Composer-Dropin-Installer.git"
+    },
+    {
+      "type": "composer",
+      "url": "https://digitoimisto-dude-oy:f26adb45cf0e6e6ce6b6f50aa1a0bfaa910632a4295d9ebadf30aee809de@rhubarbgroup.repo.packagist.com/digitoimisto-dude-oy/"
     }
   ],
   "require": {
@@ -53,7 +57,8 @@
     "wpackagist-plugin/simple-history": "*",
     "johnpbloch/wordpress": "5.6.1",
     "oscarotero/env": "^2.1",
-    "roots/wp-config": "^1.0"
+    "roots/wp-config": "^1.0",
+    "rhubarbgroup/object-cache-pro": "*"
   },
   "extra": {
     "dropin-paths": {
