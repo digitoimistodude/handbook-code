@@ -4,13 +4,21 @@
   "license": "MIT",
   "description": "A modern WordPress stack",
   "homepage": "https://github.com/digitoimistodude/dudestack",
-  "authors": [{
-    "name": "Roni Laukkarinen",
-    "email": "roni@dude.fi",
-    "homepage": "https://github.com/ronilaukkarinen"
-  }],
+  "authors": [
+    {
+      "name": "Roni Laukkarinen",
+      "email": "roni@dude.fi",
+      "homepage": "https://github.com/ronilaukkarinen"
+    }
+  ],
   "keywords": [
-    "bedrock", "roots", "wordpress", "stack", "composer", "vagrant", "wp"
+    "bedrock",
+    "roots",
+    "wordpress",
+    "stack",
+    "composer",
+    "vagrant",
+    "wp"
   ],
   "support": {
     "issues": "https://github.com/digitoimistodude/dudestack/issues"
@@ -26,9 +34,12 @@
     }
   },
   "scripts": {
-    "post-root-package-install": ["Roots\\Bedrock\\Installer::addSalts"]
+    "post-root-package-install": [
+      "Roots\\Bedrock\\Installer::addSalts"
+    ]
   },
-  "repositories": [{
+  "repositories": [
+    {
       "type": "composer",
       "url": "https://wpackagist.org",
       "minimum-stability": "dev"
@@ -55,24 +66,35 @@
     "wp-cli/wp-cli": "*",
     "vlucas/phpdotenv": "^5.3",
     "wpackagist-plugin/simple-history": "*",
-    "johnpbloch/wordpress": "5.6.1",
+    "johnpbloch/wordpress": "5.7.2",
     "oscarotero/env": "^2.1",
     "roots/wp-config": "^1.0",
     "rhubarbgroup/object-cache-pro": "*"
   },
   "extra": {
     "dropin-paths": {
-      "content/languages/": ["vendor:koodimonni-language"],
-      "content/languages/plugins/": ["vendor:koodimonni-plugin-language"],
-      "content/languages/themes/": ["vendor:koodimonni-theme-language"]
+      "content/languages/": [
+        "vendor:koodimonni-language"
+      ],
+      "content/languages/plugins/": [
+        "vendor:koodimonni-plugin-language"
+      ],
+      "content/languages/themes/": [
+        "vendor:koodimonni-theme-language"
+      ]
     },
     "installer-paths": {
-      "content/mu-plugins/{$name}/": ["type:wordpress-muplugin",
+      "content/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin",
         "wpackagist-plugin/simple-history",
         "digitoimistodude/air-helper"
       ],
-      "content/plugins/{$name}/": ["type:wordpress-plugin"],
-      "content/themes/{$name}/": ["type:wordpress-theme"]
+      "content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
     },
     "wordpress-install-dir": "wp"
   }
