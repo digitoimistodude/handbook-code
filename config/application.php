@@ -30,18 +30,19 @@ $webroot_dir = $root_dir;
  */
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable( $root_dir );
 if ( file_exists( $root_dir . '/.env' ) ) {
-    $dotenv->load();
-    $dotenv->required( [ 'WP_HOME', 'WP_SITEURL' ] );
-    if ( ! env( 'DATABASE_URL' ) ) {
-        $dotenv->required( [ 'DB_NAME', 'DB_USER', 'DB_PASSWORD' ] );
-    }
+  $dotenv->load();
+  $dotenv->required( [ 'WP_HOME', 'WP_SITEURL' ] );
+  if ( ! env( 'DATABASE_URL' ) ) {
+    $dotenv->required( [ 'DB_NAME', 'DB_USER', 'DB_PASSWORD' ] );
+  }
 }
 
 /**
  * Set up our global environment constant and load its config first
  * Default: production
  */
-define( 'WP_ENV', env( 'WP_ENV' ) ?: 'production' );
+Config::define( 'WP_ENVIRONMENT_TYPE', env( 'WP_ENV' ) ?: 'production' ); // new way
+Config::define( 'WP_ENV', env( 'WP_ENV' ) ?: 'production' ); // backward compatibility fallback
 
 /**
  * URLs
@@ -68,12 +69,12 @@ Config::define( 'DB_COLLATE', '' );
 $table_prefix = env( 'DB_PREFIX' ) ?: 'wp_';
 
 if ( env( 'DATABASE_URL' ) ) {
-    $dsn = (object) parse_url( env( 'DATABASE_URL' ) );
+  $dsn = (object) parse_url( env( 'DATABASE_URL' ) );
 
-    Config::define( 'DB_NAME', substr( $dsn->path, 1 ) );
-    Config::define( 'DB_USER', $dsn->user );
-    Config::define( 'DB_PASSWORD', isset( $dsn->pass ) ? $dsn->pass : null );
-    Config::define( 'DB_HOST', isset( $dsn->port ) ? "{$dsn->host}:{$dsn->port}" : $dsn->host );
+  Config::define( 'DB_NAME', substr( $dsn->path, 1 ) );
+  Config::define( 'DB_USER', $dsn->user );
+  Config::define( 'DB_PASSWORD', isset( $dsn->pass ) ? $dsn->pass : null );
+  Config::define( 'DB_HOST', isset( $dsn->port ) ? "{$dsn->host}:{$dsn->port}" : $dsn->host );
 }
 
 /**
@@ -93,12 +94,9 @@ Config::define( 'NONCE_SALT', env( 'NONCE_SALT' ) );
  */
 Config::define( 'AUTOMATIC_UPDATER_DISABLED', false );
 Config::define( 'DISABLE_WP_CRON', env( 'DISABLE_WP_CRON' ) ?: false );
-// Disable the plugin and theme file editor in the admin
-Config::define( 'DISALLOW_FILE_EDIT', true );
-// Disable plugin and theme updates and installation from the admin
-Config::define( 'DISALLOW_FILE_MODS', false );
-// Limit the number of post revisions that WordPress stores (true (default WP): store every revision)
-Config::define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?: true );
+Config::define( 'DISALLOW_FILE_EDIT', true ); // Disable the plugin and theme file editor in the admin
+Config::define( 'DISALLOW_FILE_MODS', false ); // Disable plugin and theme updates and installation from the admin
+Config::define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?: 15 ); // Limit the number of post revisions that WordPress stores
 
 /**
  * Debugging Settings
@@ -109,29 +107,42 @@ Config::define( 'SCRIPT_DEBUG', false );
 ini_set( 'display_errors', '0' );
 
 /**
+ *  Redis object cache settings for
+ *  https://objectcache.pro/docs/configuration-options/
+ */
+Config::define( 'WP_REDIS_CONFIG', [
+  'token'             => env( 'REDIS_TOKEN' ),
+  'host'              => '127.0.0.1',
+  'port'              => 6379,
+  'password'          => env( 'REDIS_PASSWORD' ),
+  'prefix'            => env( 'DB_NAME' ),
+  'database'          => env( 'REDIS_DATABASE' ) ?: 0,
+  'maxttl'            => 43200, // max cache half day
+  'timeout'           => 1.0,
+  'read_timeout'      => 1.0,
+  'split_alloptions'  => true,
+  'async_flush'       => true,
+  'debug'             => false,
+] );
+
+if ( 'production' === getenv( 'WP_ENV' ) ) {
+  Config::define( 'WP_REDIS_DISABLED', false );
+} else {
+  Config::define( 'WP_REDIS_DISABLED', true );
+}
+
+/**
  * Allow WordPress to detect HTTPS when used behind a reverse proxy or a load balancer
  * See https://codex.wordpress.org/Function_Reference/is_ssl#Notes
  */
 if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) {
-    $_SERVER['HTTPS'] = 'on';
+  $_SERVER['HTTPS'] = 'on';
 }
 
-$env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
+$env_config = __DIR__ . '/environments/' . env( 'WP_ENV' ) . '.php';
 
 if ( file_exists( $env_config ) ) {
-    require_once $env_config;
-}
-
-/**
- *  Redis object cache settings for
- *  https://wordpress.org/plugins/redis-cache/
- */
-Config::define( 'WP_REDIS_PREFIX', getenv( 'DB_NAME' ) );
-Config::define( 'WP_REDIS_SELECTIVE_FLUSH', true );
-Config::define( 'WP_REDIS_MAXTTL', 43200 ); // max cache half day
-
-if ( 'development' !== WP_ENV ) {
-  Config::define( 'WP_REDIS_PASSWORD', getenv( 'REDIS_PASSWORD' ) );
+  require_once $env_config;
 }
 
 Config::apply();
@@ -140,5 +151,5 @@ Config::apply();
  * Bootstrap WordPress
  */
 if ( ! defined( 'ABSPATH' ) ) {
-    define( 'ABSPATH', $webroot_dir . '/wp/' );
+  define( 'ABSPATH', $webroot_dir . '/wp/' );
 }
