@@ -13,6 +13,8 @@ use Roots\WPConfig\Config;
  * Example: `Config::define('DISALLOW_FILE_MODS', false);`
  */
 
+Config::define( 'WP_CACHE', true );
+Config::define( 'WPCACHEHOME', '/var/www/handbook.dude.fi/deploy/releases/20170807081724/content/plugins/wp-super-cache/' );
 Config::define( 'SAVEQUERIES', false );
 Config::define( 'WP_DEBUG', false );
 Config::define( 'WP_DEBUG_DISPLAY', false );
